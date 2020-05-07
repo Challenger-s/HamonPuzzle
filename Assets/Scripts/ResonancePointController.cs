@@ -5,5 +5,15 @@ using UnityEngine;
 public class ResonancePointController : MonoBehaviour
 {
     [SerializeField] RippleList m_rippleList;
-    List<bool> ripples_IsHitted = new List<bool>();
+    List<bool> m_ripplesIsHittedList = new List<bool>();
+
+    public void Add_ripplesIsHittedList()
+    {
+
+    }
+
+    public void Remove_ripplesIsHittedList(int index)
+    {
+
+    }
 }
