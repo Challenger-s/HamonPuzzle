@@ -18,12 +18,7 @@ public class RippleController : MonoBehaviour
     private float m_scale = 0;
 
     RippleGenerator rippleGenerator;
-
-    private void Reset()
-    {
-        m_lineRenderer = GetComponent<LineRenderer>();
-    }
-
+    
     private void Start()
     {
         InitLineRenderer();

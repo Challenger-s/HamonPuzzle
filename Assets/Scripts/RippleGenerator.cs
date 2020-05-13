@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RippleGenerator : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class RippleGenerator : MonoBehaviour
     [SerializeField] RippleList rippleList;     // 波紋のList
     [SerializeField] RippleList resonanceRippleList; // 共鳴から発生した波紋のList
     GameDirector m_gameDirector;
-
+    Text m_remainRippleCountText;
 
     int remainRippleCount;  // 波紋を生成できる残りの数
 
@@ -19,6 +20,12 @@ public class RippleGenerator : MonoBehaviour
     void Start()
     {
         remainRippleCount = maxRippleCount;
+        m_remainRippleCountText = this.transform.GetChild(0).             // 子オブジェクト(キャンバス)の取得
+                gameObject.transform.GetChild(0).   // 子オブジェクト(テキスト)の取得
+                gameObject.GetComponent<Text>();
+
+        RemainRippleCountTextUpdate();
+
         m_gameDirector = GameObject.Find("GameDirector").GetComponent<GameDirector>();
     }
 
@@ -30,6 +37,10 @@ public class RippleGenerator : MonoBehaviour
             if (Input.GetMouseButtonDown(0) && remainRippleCount > 0)
             {
                 GenerateRipple();
+            }
+            if (Input.GetMouseButtonDown(1))
+            {
+                Restart();
             }
         }
 
@@ -51,8 +62,14 @@ public class RippleGenerator : MonoBehaviour
         
         // 波紋の残りの数を減らす
         remainRippleCount--;
-    }
+        RemainRippleCountTextUpdate();
 
+    }
+    
+    void Restart()
+    {
+        remainRippleCount = maxRippleCount;
+    }
 
     public void GenerateResonanceRipple(Vector2 position)
     {
@@ -71,6 +88,12 @@ public class RippleGenerator : MonoBehaviour
     public void IncreaseRemainRippleCount()
     {
         remainRippleCount++;
+        RemainRippleCountTextUpdate();
+    }
+
+    void RemainRippleCountTextUpdate()
+    {
+        m_remainRippleCountText.text = remainRippleCount.ToString();
     }
 
     
