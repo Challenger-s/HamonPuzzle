@@ -25,12 +25,30 @@ public class GameDirector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (ClearCheck())
+        switch (m_phase)
         {
-            Clear();
+            case Phase.Play:
+
+                if (ClearCheck())
+                {
+                    Clear();
+                    break;
+                }
+
+                if (Input.GetMouseButtonDown(1))
+                {
+                    Restart();
+                }
+                break;
+
         }
-        
-        
+
+
+    }
+
+    void Restart()
+    {
+
     }
 
     bool ClearCheck()
