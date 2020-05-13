@@ -1,14 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RippleGenerator : MonoBehaviour
 {
     [SerializeField] int maxRippleCount;        // 同時に存在できる波紋の数
-    [SerializeField] GameObject ripplePrefab;   // 波紋のプレハブ
-    [SerializeField] RippleList rippleList;
+    [SerializeField] GameObject ripplePrefab;   // 波紋のPrefab
+    [SerializeField] GameObject resonanceRipplePrefab;   // 共鳴の波紋のPrefab
+    [SerializeField] RippleList rippleList;     // 波紋のList
+    [SerializeField] RippleList resonanceRippleList; // 共鳴から発生した波紋のList
     GameDirector m_gameDirector;
-
+    Text m_remainRippleCountText;
 
     int remainRippleCount;  // 波紋を生成できる残りの数
 
@@ -17,6 +20,12 @@ public class RippleGenerator : MonoBehaviour
     void Start()
     {
         remainRippleCount = maxRippleCount;
+        m_remainRippleCountText = this.transform.GetChild(0).             // 子オブジェクト(キャンバス)の取得
+                gameObject.transform.GetChild(0).   // 子オブジェクト(テキスト)の取得
+                gameObject.GetComponent<Text>();
+
+        RemainRippleCountTextUpdate();
+
         m_gameDirector = GameObject.Find("GameDirector").GetComponent<GameDirector>();
     }
 
@@ -28,6 +37,10 @@ public class RippleGenerator : MonoBehaviour
             if (Input.GetMouseButtonDown(0) && remainRippleCount > 0)
             {
                 GenerateRipple();
+            }
+            if (Input.GetMouseButtonDown(1))
+            {
+                Restart();
             }
         }
 
@@ -49,11 +62,38 @@ public class RippleGenerator : MonoBehaviour
         
         // 波紋の残りの数を減らす
         remainRippleCount--;
+        RemainRippleCountTextUpdate();
+
+    }
+    
+    void Restart()
+    {
+        remainRippleCount = maxRippleCount;
+    }
+
+    public void GenerateResonanceRipple(Vector2 position)
+    {
+        // 波紋を作成
+        GameObject ripple = Instantiate(ripplePrefab,
+                                        position,
+                                        Quaternion.identity);
+        RippleController rippleController = ripple.transform.GetChild(0).GetComponent<RippleController>();
+        rippleController.SetCenterPoint(position);
+        rippleController.SetRippleGenerator(this);
+        resonanceRippleList.AddRipple(rippleController);
+        
+
     }
 
     public void IncreaseRemainRippleCount()
     {
         remainRippleCount++;
+        RemainRippleCountTextUpdate();
+    }
+
+    void RemainRippleCountTextUpdate()
+    {
+        m_remainRippleCountText.text = remainRippleCount.ToString();
     }
 
     

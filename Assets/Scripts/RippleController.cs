@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public sealed class RippleController : MonoBehaviour
+public class RippleController : MonoBehaviour
 {
     [SerializeField] private LineRenderer m_lineRenderer = null; // 円を描画するための LineRenderer
     [SerializeField] private float m_radius = 0;    // 円の半径
@@ -18,12 +18,7 @@ public sealed class RippleController : MonoBehaviour
     private float m_scale = 0;
 
     RippleGenerator rippleGenerator;
-
-    private void Reset()
-    {
-        m_lineRenderer = GetComponent<LineRenderer>();
-    }
-
+    
     private void Start()
     {
         InitLineRenderer();
@@ -66,7 +61,7 @@ public sealed class RippleController : MonoBehaviour
         m_lineRenderer.SetPositions(points);
     }
 
-    void DestroyRipple()
+    virtual protected void DestroyRipple()
     {
         // 波紋を消す処理
 
