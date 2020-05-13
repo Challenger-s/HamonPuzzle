@@ -467,6 +467,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_rippleList: {fileID: 6075037348203972436}
   m_rippleGenerator: {fileID: 6075037348203972435}
+  ColliderSize: 0.1
 --- !u!1 &2117251285
 GameObject:
   m_ObjectHideFlags: 0
@@ -551,6 +552,11 @@ PrefabInstance:
       propertyPath: resonanceRippleList
       value: 
       objectReference: {fileID: 814034628}
+    - target: {fileID: 6075037348733455972, guid: 6c8fcc2184cb821448daf1e84602fb19,
+        type: 3}
+      propertyPath: m_resonanceDelay
+      value: 0.06
+      objectReference: {fileID: 0}
     - target: {fileID: 6075037348733455973, guid: 6c8fcc2184cb821448daf1e84602fb19,
         type: 3}
       propertyPath: m_LocalPosition.x

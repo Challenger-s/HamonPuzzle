@@ -11,7 +11,12 @@ public class RippleGenerator : MonoBehaviour
     [SerializeField] RippleList rippleList;     // 波紋のList
     [SerializeField] RippleList resonanceRippleList; // 共鳴から発生した波紋のList
     GameDirector m_gameDirector;
+<<<<<<< HEAD
     Text m_remainRippleCountText;
+=======
+
+    [SerializeField] float m_resonanceDelay;
+>>>>>>> 6b05a6758512de9ab6319534a8e2820a58520da9
 
     int remainRippleCount;  // 波紋を生成できる残りの数
 
@@ -73,6 +78,22 @@ public class RippleGenerator : MonoBehaviour
 
     public void GenerateResonanceRipple(Vector2 position)
     {
+
+        StartCoroutine(GenerateResonanceRipple_Coroutine(position));
+
+    }
+
+    public void IncreaseRemainRippleCount()
+    {
+        remainRippleCount++;
+    }
+
+    IEnumerator GenerateResonanceRipple_Coroutine(Vector2 position)
+    {
+
+        //1フレーム停止
+        yield return new WaitForSeconds(m_resonanceDelay);
+
         // 波紋を作成
         GameObject ripple = Instantiate(ripplePrefab,
                                         position,
@@ -81,6 +102,7 @@ public class RippleGenerator : MonoBehaviour
         rippleController.SetCenterPoint(position);
         rippleController.SetRippleGenerator(this);
         resonanceRippleList.AddRipple(rippleController);
+<<<<<<< HEAD
         
 
     }
@@ -94,6 +116,8 @@ public class RippleGenerator : MonoBehaviour
     void RemainRippleCountTextUpdate()
     {
         m_remainRippleCountText.text = remainRippleCount.ToString();
+=======
+>>>>>>> 6b05a6758512de9ab6319534a8e2820a58520da9
     }
 
     
