@@ -8,6 +8,7 @@ public class RippleList : MonoBehaviour
     List<RippleController> m_rippleList = new List<RippleController>();
     int m_rippleCount = 0;
 
+    List<RippleController> m_resonanceRippleList = new List<RippleController>();
     
 
     public void AddRipple(RippleController ripple)

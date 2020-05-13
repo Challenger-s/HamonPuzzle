@@ -5,8 +5,10 @@ using UnityEngine;
 public class RippleGenerator : MonoBehaviour
 {
     [SerializeField] int maxRippleCount;        // 同時に存在できる波紋の数
-    [SerializeField] GameObject ripplePrefab;   // 波紋のプレハブ
-    [SerializeField] RippleList rippleList;
+    [SerializeField] GameObject ripplePrefab;   // 波紋のPrefab
+    [SerializeField] GameObject resonanceRipplePrefab;   // 共鳴の波紋のPrefab
+    [SerializeField] RippleList rippleList;     // 波紋のList
+    [SerializeField] RippleList resonanceRippleList; // 共鳴から発生した波紋のList
     GameDirector m_gameDirector;
 
 
@@ -49,6 +51,21 @@ public class RippleGenerator : MonoBehaviour
         
         // 波紋の残りの数を減らす
         remainRippleCount--;
+    }
+
+
+    public void GenerateResonanceRipple(Vector2 position)
+    {
+        // 波紋を作成
+        GameObject ripple = Instantiate(ripplePrefab,
+                                        position,
+                                        Quaternion.identity);
+        RippleController rippleController = ripple.transform.GetChild(0).GetComponent<RippleController>();
+        rippleController.SetCenterPoint(position);
+        rippleController.SetRippleGenerator(this);
+        resonanceRippleList.AddRipple(rippleController);
+        
+
     }
 
     public void IncreaseRemainRippleCount()

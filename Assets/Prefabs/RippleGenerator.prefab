@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6075037348733455973}
   - component: {fileID: 6075037348733455972}
+  - component: {fileID: 5766449820591143994}
   m_Layer: 0
   m_Name: RippleGenerator
   m_TagString: Untagged
@@ -46,3 +47,20 @@ MonoBehaviour:
   maxRippleCount: 3
   ripplePrefab: {fileID: 5857793319786711656, guid: 519b035c68eb00d4d855327828e00076,
     type: 3}
+  resonanceRipplePrefab: {fileID: 5857793319786711656, guid: 6f9808091c0f03d4c9642ee507f78cfb,
+    type: 3}
+  rippleList: {fileID: 0}
+  resonanceRippleList: {fileID: 0}
+--- !u!114 &5766449820591143994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6075037348733455975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b0b6471738f43a42b2fb3eba321d4a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resonancePointList: {fileID: 0}
