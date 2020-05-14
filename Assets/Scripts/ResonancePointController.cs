@@ -6,6 +6,8 @@ public class ResonancePointController : MonoBehaviour
 {
     [SerializeField] RippleList m_rippleList;
     [SerializeField] RippleGenerator m_rippleGenerator;
+    [SerializeField] float ColliderSize;
+
     List<bool> m_ripplesIsHittedList = new List<bool>();
 
     private void Update()
@@ -30,13 +32,16 @@ public class ResonancePointController : MonoBehaviour
                                                   (this.transform.position.y - rippleCenterPoint.y) *
                                                   (this.transform.position.y - rippleCenterPoint.y)));
 
-            float distanceFromRipple_scaleCalculated_inner = (distanceFromRipple - this.transform.localScale.x / 2) - (rippleSize + rippleController.GetRippleColliderWidth());
-            float distanceFromRipple_scaleCalculated_outer = (rippleSize - rippleController.GetRippleColliderWidth()) - (distanceFromRipple + this.transform.localScale.x / 2);
+            float distanceFromRipple_scaleCalculated_inner = distanceFromRipple - rippleSize + rippleController.GetRippleColliderWidth();
+            float distanceFromRipple_scaleCalculated_outer = rippleSize - rippleController.GetRippleColliderWidth() - distanceFromRipple;
+            
+            //float distanceFromRipple_scaleCalculated_inner = (distanceFromRipple - this.transform.localScale.x / 2) - (rippleSize + rippleController.GetRippleColliderWidth());
+            //float distanceFromRipple_scaleCalculated_outer = (rippleSize - rippleController.GetRippleColliderWidth()) - (distanceFromRipple + this.transform.localScale.x / 2);
             
 
             Debug.Log(i.ToString());
             // 円の当たり判定の応用
-            if (distanceFromRipple_scaleCalculated_inner < 0 && distanceFromRipple_scaleCalculated_outer < 0)
+            if (distanceFromRipple_scaleCalculated_inner < ColliderSize && distanceFromRipple_scaleCalculated_outer < ColliderSize)
             {
                 m_ripplesIsHittedList[i] = true;
                 m_rippleGenerator.GenerateResonanceRipple(this.transform.position);
