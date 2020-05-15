@@ -15,6 +15,9 @@ public class RippleGenerator : MonoBehaviour
 
     [SerializeField] float m_resonanceDelay;
 
+    [SerializeField] ResonancePointList resonancePointList;
+    [SerializeField] FitzoneList fitzoneList;
+
     int remainRippleCount;  // 波紋を生成できる残りの数
 
 
@@ -109,5 +112,13 @@ public class RippleGenerator : MonoBehaviour
         m_remainRippleCountText.text = remainRippleCount.ToString();
     }
 
-    
+    bool HitCheck()
+    {
+
+        int fitzoneCount = fitzoneList.;
+        for(int i = 0;i < )
+
+
+        return false;
+    }
 }
