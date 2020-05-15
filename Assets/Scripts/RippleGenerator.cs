@@ -115,8 +115,8 @@ public class RippleGenerator : MonoBehaviour
     bool HitCheck()
     {
 
-        int fitzoneCount = fitzoneList.;
-        for(int i = 0;i < )
+        int fitzoneCount = fitzoneList.GetFitzoneCount();
+        //for(int i = 0;i < )
 
 
         return false;
