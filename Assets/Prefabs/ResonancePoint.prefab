@@ -96,3 +96,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_rippleList: {fileID: 0}
   m_rippleGenerator: {fileID: 0}
+  ColliderSize: 0.1

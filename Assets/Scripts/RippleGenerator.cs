@@ -13,6 +13,11 @@ public class RippleGenerator : MonoBehaviour
     GameDirector m_gameDirector;
     Text m_remainRippleCountText;
 
+    [SerializeField] float m_resonanceDelay;
+
+    [SerializeField] ResonancePointList resonancePointList;
+    [SerializeField] FitzoneList fitzoneList;
+
     int remainRippleCount;  // 波紋を生成できる残りの数
 
 
@@ -73,6 +78,18 @@ public class RippleGenerator : MonoBehaviour
 
     public void GenerateResonanceRipple(Vector2 position)
     {
+
+        StartCoroutine(GenerateResonanceRipple_Coroutine(position));
+
+    }
+    
+
+    IEnumerator GenerateResonanceRipple_Coroutine(Vector2 position)
+    {
+
+        //1フレーム停止
+        yield return new WaitForSeconds(m_resonanceDelay);
+
         // 波紋を作成
         GameObject ripple = Instantiate(ripplePrefab,
                                         position,
@@ -81,7 +98,6 @@ public class RippleGenerator : MonoBehaviour
         rippleController.SetCenterPoint(position);
         rippleController.SetRippleGenerator(this);
         resonanceRippleList.AddRipple(rippleController);
-        
 
     }
 
@@ -96,5 +112,13 @@ public class RippleGenerator : MonoBehaviour
         m_remainRippleCountText.text = remainRippleCount.ToString();
     }
 
-    
+    bool HitCheck()
+    {
+
+        int fitzoneCount = fitzoneList.GetFitzoneCount();
+        //for(int i = 0;i < )
+
+
+        return false;
+    }
 }
