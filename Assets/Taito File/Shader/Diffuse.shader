@@ -12,6 +12,8 @@
 		// 隠れていない部分を描画するパス
 		Pass
 		{
+			ColorMask 0
+
 			Stencil{
 				Ref 1
 				Comp NotEqual

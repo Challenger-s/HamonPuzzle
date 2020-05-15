@@ -11,7 +11,7 @@
 
 		Pass
 		{
-			ColorMask 0
+			
 
 			Stencil{
 				Ref 1
@@ -56,10 +56,10 @@
 
 			fixed4 frag(v2f i) : SV_Target
 			{
-				half3 diff = max(0, dot(i.normal, _WorldSpaceLightPos0.xyz)) * _LightColor0;
+				//half3 diff = max(0, dot(i.normal, _WorldSpaceLightPos0.xyz)) * _LightColor0;
 
 				fixed4 col;
-				col.rgb = _Color * diff;
+				col.rgb = _Color;
 				return col;
 			}
 			ENDCG

@@ -61,7 +61,7 @@ public class TransparentSphere : MonoBehaviour
             width = transform.localScale.x;
         }
 
-        float distance = Mathf.Sqrt(Mathf.Pow(spherePos.x - cameraPos.x, 2) + Mathf.Pow(spherePos.y - cameraPos.y, 2));
+        float distance = Mathf.Sqrt(Mathf.Pow(spherePos.x - cameraPos.x, 3) + Mathf.Pow(spherePos.y - cameraPos.y, 3));
 
 
         if ((width / 2) < distance)
