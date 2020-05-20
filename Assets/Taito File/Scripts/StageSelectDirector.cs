@@ -22,13 +22,16 @@ public class StageSelectDirector : MonoBehaviour
     Canvas canvas;
 
     [SerializeField]
-    Image unclearBackground;
+    Image BackGround;
 
     [SerializeField]
     Image forwardImage;
 
     [SerializeField]
     Camera camera;
+
+    [SerializeField]
+    GameObject mainCamera;
 
     [SerializeField]
     GameObject clearButtonColor;
@@ -42,6 +45,10 @@ public class StageSelectDirector : MonoBehaviour
     [SerializeField]
     GameObject[] stageButtons;
 
+
+    [SerializeField]
+    SpriteRenderer ac;
+
     float unclearImageWidth = 0;
 
     float c;
@@ -51,9 +58,14 @@ public class StageSelectDirector : MonoBehaviour
     bool fadeOut = false;
     bool playable = false;
 
+    bool sctollL = false;
+    bool sctollR = false;
+
     bool playebleA = false;
     bool playebleB = false;
     int number = 0;
+
+    float screenSizeX = 0;
 
 
     float delta = 0;
@@ -62,24 +74,21 @@ public class StageSelectDirector : MonoBehaviour
     Vector3 result = Vector3.zero;
     Vector3 result2 = Vector3.zero;
 
+    Vector3 screenPos;
+
+    Vector3 BackGroundColor;
+
     // Start is called before the first frame update
     void Start()
     {
         stageClearNumber = PlayerPrefs.GetInt("StageClear", 0);
 
+        BackGround = new Color(BackGround.color.r, BackGround.color.g, BackGround.color.b, BackGround.color.a);
 
-        unclearImageWidth = unclearBackground.rectTransform.sizeDelta.x;
+        c = (a.transform.position.x - b.transform.position.x) / 2;
 
-        Vector2 screenPos = RectTransformUtility.WorldToScreenPoint(canvas.worldCamera, unclearBackground.rectTransform.position);
-
-
-        //スクリーン座標→ワールド座標に変換
-        RectTransformUtility.ScreenPointToWorldPointInRectangle(unclearBackground.rectTransform, screenPos, canvas.worldCamera, out result);
-
-
-        c = Vector3.Distance(a.transform.position, b.transform.position);
-
-        result2.x = result.x + (c / 10f);
+        screenSizeX = ScreenSizeX();
+        screenPos = mainCamera.transform.position;
 
         camera.orthographicSize = 5f;
     }
@@ -93,6 +102,34 @@ public class StageSelectDirector : MonoBehaviour
         {
             StageAddition();
         }
+
+        if (sctollL)
+        {
+            if (mainCamera.transform.position.x > (screenPos.x - screenSizeX))
+            {
+                mainCamera.transform.position = new Vector3(mainCamera.transform.position.x - 20f * Time.deltaTime, mainCamera.transform.position.y, mainCamera.transform.position.z);
+            }
+            else
+            {
+                mainCamera.transform.position = new Vector3(screenPos.x - screenSizeX, mainCamera.transform.position.y, mainCamera.transform.position.z);
+                sctollL = false;
+            }
+        }
+
+
+        if (sctollR)
+        {
+            if (mainCamera.transform.position.x < screenPos.x + screenSizeX)
+            {
+                mainCamera.transform.position = new Vector3(mainCamera.transform.position.x + 20f * Time.deltaTime, mainCamera.transform.position.y, mainCamera.transform.position.z);
+            }
+            else
+            {
+                mainCamera.transform.position = new Vector3(screenPos.x + screenSizeX, mainCamera.transform.position.y, mainCamera.transform.position.z);
+                sctollR = false;
+            }
+        }
+
 
         if (playable)
         {
@@ -145,18 +182,27 @@ public class StageSelectDirector : MonoBehaviour
     void StageAddition()
     {
 
-        
-        Vector2 screenPos = RectTransformUtility.WorldToScreenPoint(canvas.worldCamera, unclearBackground.rectTransform.position);
+
+        if (clearButtonColor.transform.position.x + (ac.bounds.size.x / 2f) < a.transform.position.x + (3.5f / 2) + ((stageClearNumber - 1) * 3.5f)) 
+        {
+            parentClearButtonColor.transform.localScale = new Vector3(parentClearButtonColor.transform.localScale.x + 1.15f * Time.deltaTime, parentClearButtonColor.transform.localScale.y, 0);
+ 
+        }
+        else
+        {
+            currentStage = stageClearNumber;
+            BackGround.color
+            playable = true;
+            playebleA = true;
+        }
+
+        /*
+         *   Vector2 screenPos = RectTransformUtility.WorldToScreenPoint(canvas.worldCamera, unclearBackground.rectTransform.position);
 
 
         //スクリーン座標→ワールド座標に変換
         RectTransformUtility.ScreenPointToWorldPointInRectangle(unclearBackground.rectTransform, screenPos, canvas.worldCamera, out result);
 
-
-        if(clearButtonColor.transform.position.x + clearButtonColor.transform.localScale.x) 
-        clearButtonColor.transform.localScale = new Vector3(clearButtonColor.transform.localScale.x + 1.15f * Time.deltaTime, clearButtonColor.transform.localScale.y, 0);
-
-        /*
         if (result.x < (result2.x) + ((3.5f / 2f) * stageClearNumber))
         {
            unclearBackground.rectTransform.sizeDelta = new Vector2(unclearBackground.rectTransform.sizeDelta.x - (backGroundMoveSpeed * 0.84f) * Time.deltaTime, unclearBackground.rectTransform.sizeDelta.y);
@@ -187,10 +233,25 @@ public class StageSelectDirector : MonoBehaviour
         }
         */
     }
-   
+
+    public void Sctoll(bool left)
+    {
+        screenSizeX = ScreenSizeX();
+        screenPos = mainCamera.transform.position;
+
+        if (left)
+        {
+            sctollL = true;
+        }
+        else
+        {
+            sctollR = true;
+        }
+    }
 
 
-        public void ButtonFalling(int buttonNumber)
+
+    public void ButtonFalling(int buttonNumber)
     {
         stageButtons[buttonNumber].transform.localScale = new Vector3(0.22f, 0.22f, 0);
     }
@@ -215,6 +276,17 @@ public class StageSelectDirector : MonoBehaviour
         }
     }
 
+    private float ScreenSizeX()
+    {
+        Vector3 topLeft = camera.ScreenToWorldPoint(Vector3.zero);
+        topLeft.Scale(new Vector3(1f, -1f, 1f));
+
+        Vector3 topRight = camera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0.0f));
+
+        float screenSizeX = Mathf.Sqrt(Mathf.Pow(topLeft.x - topRight.x, 2));
+ 
+        return screenSizeX;
+    }
 
 
     void NextGame()
@@ -222,4 +294,6 @@ public class StageSelectDirector : MonoBehaviour
         PlayerPrefs.SetInt("StageClear", stageClearNumber);
         PlayerPrefs.Save();
     }
+
+
 }
