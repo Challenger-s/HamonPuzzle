@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine;
 
-public sealed class RippleController : MonoBehaviour
+public sealed class RippleController1 : MonoBehaviour
 {
     [SerializeField] private LineRenderer m_lineRenderer = null; // 円を描画するための LineRenderer
     [SerializeField] private float m_radius = 0;    // 円の半径

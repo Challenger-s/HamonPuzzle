@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 137697270477652635}
   - component: {fileID: 761406432907108424}
-  - component: {fileID: 8668303627312742194}
+  - component: {fileID: 7703627511753421055}
   m_Layer: 0
   m_Name: Ripple
   m_TagString: Untagged
@@ -129,7 +129,7 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
---- !u!114 &8668303627312742194
+--- !u!114 &7703627511753421055
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,22 +143,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_lineRenderer: {fileID: 761406432907108424}
   m_radius: 1
-<<<<<<< HEAD
-<<<<<<< HEAD
-  m_lineWidth: 0.5
-  m_colliderWidth: 0.125
-  m_speed: 2
-=======
   m_lineWidth: 0.4
   m_colliderWidth: 0.15
   m_speed: 2.4
   m_wallList: {fileID: 0}
->>>>>>> kairi/work
-=======
-  m_lineWidth: 0.4
-  m_colliderWidth: 0.15
-  m_speed: 2.4
->>>>>>> kikakuTeam
 --- !u!1 &5857793319786711656
 GameObject:
   m_ObjectHideFlags: 0
@@ -169,7 +157,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3213647665346453789}
   m_Layer: 0
-  m_Name: ResonanceRipple
+  m_Name: Ripple
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

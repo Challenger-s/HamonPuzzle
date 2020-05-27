@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RippleList : MonoBehaviour
+public class RippleList1 : MonoBehaviour
 {
     List<RippleController> m_rippleList = new List<RippleController>();
     int m_rippleCount = 0;
