@@ -144,6 +144,7 @@ MonoBehaviour:
   m_lineRenderer: {fileID: 761406432907108424}
   m_radius: 1
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_lineWidth: 0.5
   m_colliderWidth: 0.125
   m_speed: 2
@@ -153,6 +154,11 @@ MonoBehaviour:
   m_speed: 2.4
   m_wallList: {fileID: 0}
 >>>>>>> kairi/work
+=======
+  m_lineWidth: 0.4
+  m_colliderWidth: 0.15
+  m_speed: 2.4
+>>>>>>> kikakuTeam
 --- !u!1 &5857793319786711656
 GameObject:
   m_ObjectHideFlags: 0
