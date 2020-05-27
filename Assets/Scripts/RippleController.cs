@@ -12,7 +12,9 @@ public class RippleController : MonoBehaviour
     [SerializeField] private float m_lineWidth = 0;    // 円の線の太さ
     [SerializeField] private float m_colliderWidth = 0;    // 円の当たり判定のの太さ
     [SerializeField] private float m_speed; // 波紋の速度
-    
+
+    [SerializeField] WallList m_wallList;
+
     private float m_elapedTime = 0;
     private Vector2 m_centerPoint;
     private float m_scale = 0;
@@ -36,6 +38,16 @@ public class RippleController : MonoBehaviour
             transform.localScale = new Vector3(m_scale, m_scale, 1);
         }
 
+    }
+
+    void WallHitCheck()
+    {
+        int wallcount = m_wallList.GetWallCount();
+
+        for(int i =0;i < wallcount; i++)
+        {
+
+        }
     }
 
     private void InitLineRenderer()
