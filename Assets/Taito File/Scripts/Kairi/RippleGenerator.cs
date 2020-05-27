@@ -50,7 +50,7 @@ public class RippleGenerator : MonoBehaviour
     // 波紋の生成関数
     void GenerateRipple()
     {
-        span = Random.Range(0.5f, 1.5f);
+        span = Random.Range(0.2f, 0.5f);
         float x = Random.Range(topRight.x - 1, topLeft.x + 1);
         float y = Random.Range(topRight.y - 1, bomttomLeft.y + 1);
 

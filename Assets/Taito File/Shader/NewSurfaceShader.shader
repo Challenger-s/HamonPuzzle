@@ -1,4 +1,4 @@
-﻿Shader "Unlit/NewSurfaceShader"
+﻿Shader "Custom/NewSurfaceShader"
 {
     Properties
     {
@@ -9,7 +9,7 @@
     }
     SubShader
     {
-        Tags { "Queue" = "Geometry-2" }
+		Tags {"Queue" = "Geometry-2"}
         LOD 200
 
         CGPROGRAM
@@ -23,7 +23,7 @@
 
         struct Input
         {
-            float2 uv_MainTex;
+            //float2 uv_MainTex;
         };
 
         half _Glossiness;
@@ -43,7 +43,7 @@
             fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;
             o.Albedo = c.rgb;
             // Metallic and smoothness come from slider variables
-            o.Metallic = _Metallic;
+            //o.Metallic = _Metallic;
             o.Smoothness = _Glossiness;
             o.Alpha = c.a;
         }

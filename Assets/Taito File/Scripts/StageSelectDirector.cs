@@ -22,7 +22,16 @@ public class StageSelectDirector : MonoBehaviour
     Canvas canvas;
 
     [SerializeField]
-    Image BackGround;
+    Image[] BackGround;
+
+    [SerializeField]
+    Color startColor;
+
+    [SerializeField]
+    Color endColor;
+
+    [Range(0f, 1f)]
+    public float t;
 
     [SerializeField]
     Image forwardImage;
@@ -43,17 +52,29 @@ public class StageSelectDirector : MonoBehaviour
     GameObject unClearButtonColor;
 
     [SerializeField]
+    GameObject parentUnClearButtonColor;
+
+    [SerializeField]
     GameObject[] stageButtons;
 
+    [SerializeField]
+    GameObject[] buttons;
 
     [SerializeField]
     SpriteRenderer ac;
+
+    [SerializeField]
+    SpriteRenderer unClearColor;
+
+    [SerializeField]
+    SpriteRenderer stageBuuttonSizse;
 
     float unclearImageWidth = 0;
 
     float c;
 
     int currentStage;
+    int backGuroundNumber = 0;
 
     bool fadeOut = false;
     bool playable = false;
@@ -61,29 +82,36 @@ public class StageSelectDirector : MonoBehaviour
     bool sctollL = false;
     bool sctollR = false;
 
-    bool playebleA = false;
-    bool playebleB = false;
+    bool newStage = false;
+
     int number = 0;
 
     float screenSizeX = 0;
 
 
     float delta = 0;
-    float span = 0.5f;
+    float span = 0.2f;
 
     Vector3 result = Vector3.zero;
     Vector3 result2 = Vector3.zero;
 
     Vector3 screenPos;
 
-    Vector3 BackGroundColor;
+    enum Button
+    {
+        large,
+        smaller,
+
+        normal,
+    }
+
+    Button button = Button.normal;
+
 
     // Start is called before the first frame update
     void Start()
     {
         stageClearNumber = PlayerPrefs.GetInt("StageClear", 0);
-
-        BackGround = new Color(BackGround.color.r, BackGround.color.g, BackGround.color.b, BackGround.color.a);
 
         c = (a.transform.position.x - b.transform.position.x) / 2;
 
@@ -91,16 +119,26 @@ public class StageSelectDirector : MonoBehaviour
         screenPos = mainCamera.transform.position;
 
         camera.orthographicSize = 5f;
+
+        BackGround[0].color = Color.Lerp(startColor, endColor, t);
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
 
-        if(stageClearNumber > currentStage)
+        if (stageClearNumber > currentStage)
         {
-            StageAddition();
+            
+            if (newStage)
+            {
+                NewStage();
+            }
+            else
+            {
+                StageAddition();
+            }
         }
 
         if (sctollL)
@@ -113,11 +151,13 @@ public class StageSelectDirector : MonoBehaviour
             {
                 mainCamera.transform.position = new Vector3(screenPos.x - screenSizeX, mainCamera.transform.position.y, mainCamera.transform.position.z);
                 sctollL = false;
+                backGuroundNumber--;
+                ButtonOff(true);
             }
         }
 
 
-        if (sctollR)
+        if (sctollR )
         {
             if (mainCamera.transform.position.x < screenPos.x + screenSizeX)
             {
@@ -127,50 +167,45 @@ public class StageSelectDirector : MonoBehaviour
             {
                 mainCamera.transform.position = new Vector3(screenPos.x + screenSizeX, mainCamera.transform.position.y, mainCamera.transform.position.z);
                 sctollR = false;
+                backGuroundNumber++;
+                ButtonOff(true);
             }
         }
 
 
-        if (playable)
-        {
-            if (playebleA)
-            {
-                if (stageButtons[currentStage - 1].transform.localScale.x < 0.22)
+       switch (button)
+       {
+            case Button.large:
+
+                //stageButtons[currentStage - 1].transform.localScale = new Vector3(stageButtons[currentStage - 1].transform.localScale.x + 0.01f + Time.deltaTime, stageButtons[currentStage - 1].transform.localScale.y + 0.01f + Time.deltaTime, 0);
+                ButtonFalling(stageClearNumber - 1);
+
+                delta += Time.deltaTime;
+                if(delta > span)
                 {
-                    stageButtons[currentStage - 1].transform.localScale = new Vector3(stageButtons[currentStage - 1].transform.localScale.x + 0.01f + Time.deltaTime, stageButtons[currentStage - 1].transform.localScale.y + 0.01f + Time.deltaTime, 0);
-                }
-                else if (stageButtons[currentStage - 1].transform.localScale.x > 0.22)
-                {
-                    delta += Time.deltaTime;
-                    if (delta > span)
-                    {
-                        delta = 0;
-                        playebleA = false;
-                        playebleB = true;
-                    }                  
-                }
-            }
-            
-            if (playebleB)
-            {
-                if (stageButtons[currentStage - 1].transform.localScale.x > 0.2)
-                {
-                    stageButtons[currentStage - 1].transform.localScale = new Vector3(stageButtons[currentStage - 1].transform.localScale.x - 0.01f + Time.deltaTime, stageButtons[currentStage - 1].transform.localScale.y - 0.01f + Time.deltaTime, 0);
-                }
-                else if (stageButtons[currentStage - 1].transform.localScale.x > 0.2)
-                {
-                    playebleB = false;
-                    playable = false;
-                }
-            }
+                    delta = 0;
+                    button = Button.smaller;
+                }              
+                break;
+
+            case Button.smaller:
+
+                //stageButtons[currentStage - 1].transform.localScale = new Vector3(stageButtons[currentStage - 1].transform.localScale.x - 0.01f + Time.deltaTime, stageButtons[currentStage - 1].transform.localScale.y - 0.01f + Time.deltaTime, 0);
+                NotButtonFalling(stageClearNumber - 1);
+   
+                button = Button.normal;              
+                break;
+       }
         
-        }
+
+        
+        
 
         if (fadeOut)
         {
             forwardImage.color = new Color(255, 255, 255, forwardImage.color.a + (0.3f * Time.deltaTime));
 
-            camera.orthographicSize = camera.orthographicSize - (1f * Time.deltaTime);
+            //camera.orthographicSize = camera.orthographicSize - (1f * Time.deltaTime);
 
             if (forwardImage.color.a > 0.9f)
             {
@@ -190,10 +225,10 @@ public class StageSelectDirector : MonoBehaviour
         }
         else
         {
-            currentStage = stageClearNumber;
-            BackGround.color
-            playable = true;
-            playebleA = true;
+                     
+            BackGroundColor();
+            newStage = true;
+            button = Button.large;
         }
 
         /*
@@ -234,19 +269,49 @@ public class StageSelectDirector : MonoBehaviour
         */
     }
 
-    public void Sctoll(bool left)
+    void NewStage()
     {
-        screenSizeX = ScreenSizeX();
-        screenPos = mainCamera.transform.position;
-
-        if (left)
+        if(unClearButtonColor.transform.position.x + unClearColor.bounds.size.x < stageButtons[0].transform.position.x + (stageBuuttonSizse.bounds.size.x / 2f) + (stageClearNumber * 3.5f))
         {
-            sctollL = true;
+            unClearButtonColor.transform.localScale = new Vector3(unClearButtonColor.transform.localScale.x + 1.15f * Time.deltaTime, unClearButtonColor.transform.localScale.y, 0);
         }
         else
         {
-            sctollR = true;
+            currentStage = stageClearNumber;
+            newStage = false;
         }
+    }
+
+    private void BackGroundColor()
+    {
+        
+        BackGround[backGuroundNumber].color = Color.Lerp(startColor, endColor, t += 1f / 5f);
+    }
+
+    public void Sctoll(bool left)
+    {
+       
+        if (left)
+        {
+            if (backGuroundNumber > 0)
+            {
+                screenSizeX = ScreenSizeX();
+                screenPos = mainCamera.transform.position;
+                ButtonOff(false);
+                sctollL = true;
+            }
+        }
+        else
+        {
+            if (backGuroundNumber < BackGround.Length)
+            {
+                screenSizeX = ScreenSizeX();
+                screenPos = mainCamera.transform.position;
+                ButtonOff(false);
+                sctollR = true;
+            }
+        }
+        
     }
 
 
@@ -286,6 +351,14 @@ public class StageSelectDirector : MonoBehaviour
         float screenSizeX = Mathf.Sqrt(Mathf.Pow(topLeft.x - topRight.x, 2));
  
         return screenSizeX;
+    }
+
+    void ButtonOff(bool off)
+    {
+        for(int i = 0; i < buttons.Length; i++)
+        {
+            buttons[i].SetActive(off);
+        } 
     }
 
 

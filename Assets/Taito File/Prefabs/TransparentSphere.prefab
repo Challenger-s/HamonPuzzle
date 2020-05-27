@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1198350254177551866}
   m_Layer: 0
   m_Name: TransparentSphere
-  m_TagString: Untagged
+  m_TagString: TransparentSphere
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

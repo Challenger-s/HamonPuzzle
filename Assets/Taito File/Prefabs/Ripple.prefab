@@ -143,7 +143,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_lineRenderer: {fileID: 761406432907108424}
   m_radius: 1.2
-  m_lineWidth: 0.1
+  m_lineWidth: 0.15
   m_colliderWidth: 0.35
   m_speed: 1
   rippleParent: {fileID: 5857793319786711656}
