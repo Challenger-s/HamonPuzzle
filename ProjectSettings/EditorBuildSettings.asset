@@ -6,12 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Taito File/Scenes/SampleScene.unity
+    path: Assets/Kairi/Taito File/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Taito File/Scenes/New Scene.unity
+    path: Assets/Kairi/Taito File/Scenes/New Scene.unity
     guid: 727383c6ae1671a44a8508c00a3f5588
   - enabled: 1
-    path: Assets/Taito File/Scenes/GameScene1.unity
+    path: Assets/Kairi/Taito File/Scenes/GameScene1.unity
     guid: a43aed5598ceee9458eef5d88853755d
   m_configObjects: {}

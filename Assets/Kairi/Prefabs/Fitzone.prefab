@@ -97,6 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_clearCount: 1
   m_rippleList: {fileID: 0}
+  m_resonanceRippleList: {fileID: 0}
   m_gameDirector: {fileID: 0}
 --- !u!1 &8767748955623982786
 GameObject:
