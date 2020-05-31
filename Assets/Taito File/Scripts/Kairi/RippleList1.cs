@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RippleList : MonoBehaviour
+public class RippleList1 : MonoBehaviour
 {
-    List<RippleController> m_rippleList = new List<RippleController>();
+    List<RippleController1> m_rippleList = new List<RippleController1>();
     int m_rippleCount = 0;
     
-    public void AddRipple(RippleController ripple)
+    public void AddRipple(RippleController1 ripple)
     {
         m_rippleList.Add(ripple);
         m_rippleCount++;
     }
 
-    public void RemoveRipple(RippleController ripple)
+    public void RemoveRipple(RippleController1 ripple)
     {
         m_rippleList.Remove(ripple);
         m_rippleCount--;
@@ -24,7 +24,7 @@ public class RippleList : MonoBehaviour
         return m_rippleCount;
     }
 
-    public RippleController GetRippleController(int index)
+    public RippleController1 GetRippleController(int index)
     {
         return m_rippleList[index];
     }

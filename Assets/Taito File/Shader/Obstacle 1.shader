@@ -1,4 +1,4 @@
-﻿Shader "Obstacle" {
+﻿Shader "Obstacle1" {
 	Properties
 	{
 		_MainTex("2D Texture", 2D) = "white" {}
@@ -13,7 +13,7 @@
 		{
 		
 			Stencil{
-				Ref 1
+				Ref 2
 				Comp always
 				Pass replace
 			}

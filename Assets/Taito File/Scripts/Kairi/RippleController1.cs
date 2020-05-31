@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine;
 
-public sealed class RippleController : MonoBehaviour
+public sealed class RippleController1 : MonoBehaviour
 {
     [SerializeField] private LineRenderer m_lineRenderer = null; // 円を描画するための LineRenderer
     [SerializeField] private float m_radius = 0;    // 円の半径
@@ -17,11 +17,13 @@ public sealed class RippleController : MonoBehaviour
     [SerializeField]
     GameObject rippleParent;
 
+    [SerializeField]
     private float m_elapedTime = 0;
+
     private Vector2 m_centerPoint;
     private float m_scale = 0;
 
-    RippleGenerator rippleGenerator;
+    RippleGenerator1 rippleGenerator;
 
     float maxSize = 0;
 
@@ -92,7 +94,7 @@ public sealed class RippleController : MonoBehaviour
         rippleGenerator.IncreaseRemainRippleCount();
     }
 
-    public void SetRippleGenerator(RippleGenerator rippleGenerator)
+    public void SetRippleGenerator(RippleGenerator1 rippleGenerator)
     {
         this.rippleGenerator = rippleGenerator;
     }

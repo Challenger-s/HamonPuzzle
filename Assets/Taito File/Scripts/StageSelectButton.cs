@@ -15,7 +15,9 @@ public class StageSelectButton : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
     public void OnClick()
     {
-        selectDirector.FadeOut(stageNumber);
+        selectDirector.number = stageNumber;
+        selectDirector.sceneTransition = true;
+  
     }
 
 

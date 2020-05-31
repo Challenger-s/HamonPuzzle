@@ -76,7 +76,9 @@ public class StageSelectDirector : MonoBehaviour
     int currentStage;
     int backGuroundNumber = 0;
 
-    bool fadeOut = false;
+    public bool sceneTransition = false;
+    bool fadeIN = false;
+
     bool playable = false;
 
     bool sctollL = false;
@@ -84,7 +86,7 @@ public class StageSelectDirector : MonoBehaviour
 
     bool newStage = false;
 
-    int number = 0;
+    public int number = 0;
 
     float screenSizeX = 0;
 
@@ -113,7 +115,7 @@ public class StageSelectDirector : MonoBehaviour
     {
         stageClearNumber = PlayerPrefs.GetInt("StageClear", 0);
 
-        c = (a.transform.position.x - b.transform.position.x) / 2;
+        //c = (a.transform.position.x - b.transform.position.x) / 2;
 
         screenSizeX = ScreenSizeX();
         screenPos = mainCamera.transform.position;
@@ -122,11 +124,21 @@ public class StageSelectDirector : MonoBehaviour
 
         BackGround[0].color = Color.Lerp(startColor, endColor, t);
 
+        forwardImage.color = new Color(1, 1, 1, 1);
+        fadeIN = true;
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (fadeIN)
+        {
+            if (FadeIn(forwardImage))
+            {
+                fadeIN = false;
+            }
+        }
 
         if (stageClearNumber > currentStage)
         {
@@ -196,22 +208,13 @@ public class StageSelectDirector : MonoBehaviour
                 button = Button.normal;              
                 break;
        }
-        
 
-        
-        
 
-        if (fadeOut)
+        if (sceneTransition)
         {
-            forwardImage.color = new Color(255, 255, 255, forwardImage.color.a + (0.3f * Time.deltaTime));
-
-            //camera.orthographicSize = camera.orthographicSize - (1f * Time.deltaTime);
-
-            if (forwardImage.color.a > 0.9f)
-            {
-                SceneManager.LoadScene(number);
-            }
+            SceneTransition();
         }
+   
     }
 
     void StageAddition()
@@ -318,28 +321,56 @@ public class StageSelectDirector : MonoBehaviour
 
     public void ButtonFalling(int buttonNumber)
     {
-        stageButtons[buttonNumber].transform.localScale = new Vector3(0.22f, 0.22f, 0);
+        stageButtons[buttonNumber].transform.localScale = new Vector3(0.2f , 0.2f, 0);
     }
 
     public void NotButtonFalling(int buttonNumber)
     {
-        stageButtons[buttonNumber].transform.localScale = new Vector3(0.2f, 0.2f, 0);
+        stageButtons[buttonNumber].transform.localScale = new Vector3(0.17f, 0.17f, 0);
     }
 
-
-    public void FadeOut(int stageNumber)
+    public void SceneTransition()
     {
-        number = stageNumber;
 
         if (number > 0)
         {
-             fadeOut =  true;
+            if (FadeOut(forwardImage))
+            {
+                SceneManager.LoadScene(number);
+                number = 0;
+            }
+        }
+    }
+
+
+    bool FadeOut(Image image)
+    {
+        image.color = new Color(255, 255, 255, image.color.a + (0.3f * Time.deltaTime));
+
+        if (image.color.a > 1)
+        {
+            return true;
         }
         else
         {
-            fadeOut = false;
+            return false;
         }
     }
+
+    bool FadeIn(Image image)
+    {
+        image.color = new Color(255, 255, 255, image.color.a - (0.3f * Time.deltaTime));
+
+        if (image.color.a < 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
 
     private float ScreenSizeX()
     {

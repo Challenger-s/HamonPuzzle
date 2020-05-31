@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RippleGenerator : MonoBehaviour
+public class RippleGenerator1 : MonoBehaviour
 {
     [SerializeField] int maxRippleCount;        // 同時に存在できる波紋の数
     [SerializeField] GameObject ripplePrefab;   // 波紋のプレハブ
-    [SerializeField] RippleList rippleList;
+    [SerializeField] RippleList1 rippleList;
 
     [SerializeField]
     Camera mainCamera;
@@ -60,9 +60,9 @@ public class RippleGenerator : MonoBehaviour
         GameObject ripple = Instantiate(ripplePrefab,
                                         GeneratePosition,
                                         Quaternion.identity);
-        RippleController rippleController = ripple.transform.GetChild(0).GetComponent<RippleController>();
+        RippleController1 rippleController = ripple.transform.GetChild(0).GetComponent<RippleController1>();
         rippleController.SetCenterPoint(GeneratePosition);
-        rippleController.SetRippleGenerator(this);
+        //rippleController.SetRippleGenerator(this);
         rippleList.AddRipple(rippleController);
         
         // 波紋の残りの数を減らす
