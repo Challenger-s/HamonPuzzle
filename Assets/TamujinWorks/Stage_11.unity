@@ -275,6 +275,11 @@ PrefabInstance:
       propertyPath: m_clearCount
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 8767748954998365478, guid: 7491ba2b2343f7247a822f09909201a0,
+        type: 3}
+      propertyPath: rippleGenerator
+      value: 
+      objectReference: {fileID: 2035644606}
     - target: {fileID: 8767748954998365479, guid: 7491ba2b2343f7247a822f09909201a0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -370,6 +375,7 @@ GameObject:
   - component: {fileID: 963748081}
   - component: {fileID: 963748080}
   - component: {fileID: 963748079}
+  - component: {fileID: 963748082}
   m_Layer: 0
   m_Name: ResonancePoint
   m_TagString: Untagged
@@ -391,7 +397,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_rippleList: {fileID: 2035644605}
   m_rippleGenerator: {fileID: 2035644606}
+  rippleGenerator: {fileID: 2035644606}
   ColliderSize: 0.1
+  rotationTakeTime: 10
+  speedUpTimes: 20
+  returnTakeTime: 5
 --- !u!212 &963748080
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -456,6 +466,81 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &963748082
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963748078}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 3, y: 3}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.34, y: -0.33666667}
+      - {x: 0.47, y: 0.06333333}
+      - {x: 0.47333336, y: 0.07666667}
+      - {x: 0.48000002, y: 0.09666667}
+      - {x: 0.48000002, y: 0.10666667}
+      - {x: 0.45666668, y: 0.12666667}
+      - {x: 0.42333335, y: 0.15333334}
+      - {x: 0.41, y: 0.16}
+      - {x: 0.38333336, y: 0.18}
+      - {x: 0.36333334, y: 0.19666667}
+      - {x: 0.033333335, y: 0.43666667}
+      - {x: 0.006666667, y: 0.45333335}
+      - {x: -0.006666667, y: 0.45333335}
+      - {x: -0.033333335, y: 0.43666667}
+      - {x: -0.18, y: 0.33}
+      - {x: -0.20333333, y: 0.31}
+      - {x: -0.21666667, y: 0.30333334}
+      - {x: -0.24000001, y: 0.28333333}
+      - {x: -0.25333333, y: 0.27666667}
+      - {x: -0.27666667, y: 0.25666666}
+      - {x: -0.29000002, y: 0.25}
+      - {x: -0.31333333, y: 0.23}
+      - {x: -0.32666668, y: 0.22333334}
+      - {x: -0.35, y: 0.20333333}
+      - {x: -0.3866667, y: 0.18}
+      - {x: -0.39666668, y: 0.17}
+      - {x: -0.42333335, y: 0.15333334}
+      - {x: -0.43333334, y: 0.14333333}
+      - {x: -0.46, y: 0.12666667}
+      - {x: -0.48000002, y: 0.10666667}
+      - {x: -0.48000002, y: 0.09666667}
+      - {x: -0.4766667, y: 0.086666666}
+      - {x: -0.47, y: 0.060000002}
+      - {x: -0.46333334, y: 0.04}
+      - {x: -0.43333334, y: -0.046666667}
+      - {x: -0.42666668, y: -0.07333334}
+      - {x: -0.42000002, y: -0.093333334}
+      - {x: -0.39000002, y: -0.18}
+      - {x: -0.38333336, y: -0.20666668}
+      - {x: -0.37666667, y: -0.22666667}
+      - {x: -0.34666666, y: -0.31333333}
+      - {x: -0.34, y: -0.34}
+      - {x: -0.33333334, y: -0.36}
+      - {x: -0.31333333, y: -0.4166667}
+      - {x: -0.30333334, y: -0.4466667}
+      - {x: -0.29333335, y: -0.46}
+      - {x: 0.29333335, y: -0.46}
+      - {x: 0.3, y: -0.45333335}
+      - {x: 0.30666667, y: -0.44}
+      - {x: 0.31333333, y: -0.4166667}
 --- !u!1001 &1147172377
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -483,6 +568,11 @@ PrefabInstance:
       propertyPath: m_gameDirector
       value: 
       objectReference: {fileID: 1934888047}
+    - target: {fileID: 8767748954998365478, guid: 7491ba2b2343f7247a822f09909201a0,
+        type: 3}
+      propertyPath: rippleGenerator
+      value: 
+      objectReference: {fileID: 2035644606}
     - target: {fileID: 8767748954998365479, guid: 7491ba2b2343f7247a822f09909201a0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -639,6 +729,11 @@ PrefabInstance:
       propertyPath: m_gameDirector
       value: 
       objectReference: {fileID: 1934888047}
+    - target: {fileID: 8767748954998365478, guid: 7491ba2b2343f7247a822f09909201a0,
+        type: 3}
+      propertyPath: rippleGenerator
+      value: 
+      objectReference: {fileID: 2035644606}
     - target: {fileID: 8767748954998365479, guid: 7491ba2b2343f7247a822f09909201a0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -826,6 +921,11 @@ PrefabInstance:
       propertyPath: m_clearCount
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 8767748954998365478, guid: 7491ba2b2343f7247a822f09909201a0,
+        type: 3}
+      propertyPath: rippleGenerator
+      value: 
+      objectReference: {fileID: 2035644606}
     - target: {fileID: 8767748954998365479, guid: 7491ba2b2343f7247a822f09909201a0,
         type: 3}
       propertyPath: m_LocalPosition.x

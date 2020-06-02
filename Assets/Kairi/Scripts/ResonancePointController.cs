@@ -6,14 +6,31 @@ public class ResonancePointController : MonoBehaviour
 {
     [SerializeField] RippleList m_rippleList;
     [SerializeField] RippleGenerator m_rippleGenerator;
+    [SerializeField] RippleGenerator rippleGenerator;
     [SerializeField] float ColliderSize;
+    [SerializeField] float rotationTakeTime = 10f;
+    [SerializeField] float speedUpTimes = 5f;
+    [SerializeField] float returnTakeTime = 5f;
 
     List<bool> m_ripplesIsHittedList = new List<bool>();
 
+    float defoultRotationTakeTime = 0f;
+
+
+    //　最初の1フレームのみ実行
+    private void Start()
+    {
+        defoultRotationTakeTime = rotationTakeTime;
+    }
+
+
+    //　常に実行
     private void Update()
     {
         HitCheck();
+        Rotate();
     }
+
 
     void HitCheck()
     {
@@ -44,11 +61,28 @@ public class ResonancePointController : MonoBehaviour
             if (distanceFromRipple_scaleCalculated_inner < ColliderSize && distanceFromRipple_scaleCalculated_outer < ColliderSize)
             {
                 m_ripplesIsHittedList[i] = true;
+                rotationTakeTime = rotationTakeTime / speedUpTimes;
                 m_rippleGenerator.GenerateResonanceRipple(this.transform.position);
             }
 
         }
 
+    }
+
+    //　回転
+    void Rotate()
+    {
+        //　徐々に通常の回転速度に戻す処理
+        if (rotationTakeTime < defoultRotationTakeTime)
+        {
+            rotationTakeTime += Time.deltaTime * (defoultRotationTakeTime - rotationTakeTime / speedUpTimes) / returnTakeTime;
+
+            if (rotationTakeTime > defoultRotationTakeTime)
+            {
+                rotationTakeTime = defoultRotationTakeTime;
+            }
+        }
+        this.transform.Rotate(0, 0, Time.deltaTime * 360 / rotationTakeTime);  //　常に回転
     }
 
     public void Add_ripplesIsHittedList()
@@ -60,5 +94,17 @@ public class ResonancePointController : MonoBehaviour
     public void Remove_ripplesIsHittedList(int index)
     {
         m_ripplesIsHittedList.Remove(m_ripplesIsHittedList[index]);
+    }
+
+    //　カーソルが重なっているかの判定 
+    private void OnMouseEnter()
+    {
+        this.rippleGenerator.OverObject(true);
+    }
+
+    //　カーソルが離れた時の判定
+    private void OnMouseExit()
+    {
+        this.rippleGenerator.OverObject(false);
     }
 }

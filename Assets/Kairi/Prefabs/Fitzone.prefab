@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8767748954998365479}
   - component: {fileID: 8767748954998365476}
   - component: {fileID: 8767748954998365478}
+  - component: {fileID: 1459818544909692805}
   m_Layer: 0
   m_Name: Fitzone
   m_TagString: Untagged
@@ -97,7 +98,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_clearCount: 1
   m_rippleList: {fileID: 0}
+  m_resonanceRippleList: {fileID: 0}
   m_gameDirector: {fileID: 0}
+--- !u!58 &1459818544909692805
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8767748954998365477}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &8767748955623982786
 GameObject:
   m_ObjectHideFlags: 0

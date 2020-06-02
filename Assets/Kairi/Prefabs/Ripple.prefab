@@ -146,6 +146,7 @@ MonoBehaviour:
   m_lineWidth: 0.4
   m_colliderWidth: 0.15
   m_speed: 2.4
+  stageSize: {x: 8, y: 4.5}
   m_wallList: {fileID: 0}
 --- !u!1 &5857793319786711656
 GameObject:
