@@ -52,17 +52,6 @@ public class RippleController : MonoBehaviour
     }
 
 
-    void WallHitCheck()
-    {
-        int wallcount = m_wallList.GetWallCount();
-
-        for(int i =0;i < wallcount; i++)
-        {
-
-        }
-    }
-
-
     //　波紋の初期状態を準備する
     private void InitLineRenderer()
     {
@@ -107,7 +96,6 @@ public class RippleController : MonoBehaviour
             DestroyRipple();
         }
     }
-
 
     //　波紋を消す関数
     virtual protected void DestroyRipple()
@@ -168,6 +156,5 @@ public class RippleController : MonoBehaviour
     {
         return m_colliderWidth;
     }
-
 
 }

@@ -20,6 +20,8 @@ public class ClearDiector : MonoBehaviour
     [SerializeField]
     Material RippleTexture;
 
+    GameDirector gameDirector;
+
     float span = 0;
     float delta = 0;
 
@@ -35,6 +37,7 @@ public class ClearDiector : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameDirector = GameObject.Find("GameDirector").GetComponent<GameDirector>();
         StageClearText.SetActive(false);
         BackImage.color = new Color(255, 255, 255, 0);
         ForwardImage.color = new Color(255, 255, 255, 0);
@@ -45,7 +48,7 @@ public class ClearDiector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (clear)
+        if(gameDirector.m_phase == GameDirector.Phase.Clear)
         {
             clearProduction();
         }
@@ -55,7 +58,7 @@ public class ClearDiector : MonoBehaviour
     {
         if (c)
         {
-
+            Debug.Log("c");
             ForwardImage.color = new Color(255, 255, 255, ForwardImage.color.a + (0.7f * Time.deltaTime));
             if(ForwardImage.color.a < 0)
             {
@@ -66,8 +69,8 @@ public class ClearDiector : MonoBehaviour
 
         if (b)
         {
-
             ForwardImage.color = new Color(255, 255, 255, ForwardImage.color.a - (0.5f * Time.deltaTime));
+            
             if (ForwardImage.color.a < 0)
             {
                 b = false;
@@ -78,7 +81,7 @@ public class ClearDiector : MonoBehaviour
         if (a)
         {
             a = false;
-            ForwardImage.color = new Color(255, 255, 255, 1);
+            ForwardImage.color = new Color(255, 255, 255, 1f);
             mainCamera.backgroundColor = new Color(1, 1, 1, 1);
             Destroy(BackImage);
             RippleTexture.color = new Color32(0, 255,255,120);
@@ -87,12 +90,14 @@ public class ClearDiector : MonoBehaviour
 
         }
 
-        if (BackImage.color.a < 1)
+        if (BackImage.color.a < 1 && BackImage != null)
         {
+            Debug.Log(BackImage.color.a + (0.3f * Time.deltaTime));
             BackImage.color = new Color(255, 255, 255, BackImage.color.a + (0.3f * Time.deltaTime));
+
             if (BackImage.color.a > 0.9f)
             {
-                for(int i = 0; i < fitZones.Length; ++i)
+                for (int i = 0; i < fitZones.Length; ++i)
                 {
                     Destroy(fitZones[i]);
                 }
