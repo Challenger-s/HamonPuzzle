@@ -9,24 +9,28 @@ public class FitzoneController : MonoBehaviour
     [SerializeField] RippleList m_rippleList;
     [SerializeField] RippleList m_resonanceRippleList;
     [SerializeField] GameDirector m_gameDirector;
+    RippleGenerator rippleGenerator;
 
     int m_hittingRippleCount=0;    // 現在重なっている波紋の数
     Text m_countText;     // フィットゾーンの数字
 
-    // Start is called before the first frame update
+
+    //　画面遷移時に実行
     void Start()
     {
-        m_countText = this.transform.GetChild(0).             // 子オブジェクト(キャンバス)の取得
+        m_countText = this.transform.Find("Canvas").           // 子オブジェクト(キャンバス)の取得
                         gameObject.transform.GetChild(0).   // 子オブジェクト(テキスト)の取得
                         gameObject.GetComponent<Text>();
         Camera camera = GameObject.Find("Main Camera").GetComponent<Camera>();
-
         m_countText.rectTransform.position = RectTransformUtility.WorldToScreenPoint(camera,this.transform.position);
+
+        rippleGenerator = GameObject.Find("RippleGenerator").GetComponent<RippleGenerator>();
 
         CountTextUpdate();
     }
 
-    // Update is called once per frame
+
+    //　常に実行
     void Update()
     {
         if(m_gameDirector.m_phase == GameDirector.Phase.Play)
@@ -99,6 +103,16 @@ public class FitzoneController : MonoBehaviour
     {
         return m_clearCount - m_hittingRippleCount;
     }
-        
-        
+
+    //　カーソルが重なっているかの判定 
+    private void OnMouseEnter()
+    {
+        this.rippleGenerator.OverObject(true);
+    }
+
+    //　カーソルが離れた時の判定
+    private void OnMouseExit()
+    {
+        this.rippleGenerator.OverObject(false);
+    }
 }

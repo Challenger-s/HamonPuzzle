@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4869820953297382107}
   - component: {fileID: 4869820953297382106}
   - component: {fileID: 4869820953297382100}
+  - component: {fileID: 3214189807554411931}
   m_Layer: 0
   m_Name: ResonancePoint
   m_TagString: Untagged
@@ -96,4 +97,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_rippleList: {fileID: 0}
   m_rippleGenerator: {fileID: 0}
-  ColliderSize: 0.1
+  rippleGenerator: {fileID: 0}
+  ColliderSize: 0
+  rotationSpeed: 30
+--- !u!64 &3214189807554411931
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4869820953297382105}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}

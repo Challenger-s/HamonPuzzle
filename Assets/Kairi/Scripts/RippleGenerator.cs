@@ -16,12 +16,12 @@ public class RippleGenerator : MonoBehaviour
     [SerializeField] float m_resonanceDelay;
 
     [SerializeField] ResonancePointList resonancePointList;
-    [SerializeField] FitzoneList fitzoneList;
 
-    int remainRippleCount;  // 波紋を生成できる残りの数
+    int remainRippleCount;      // 波紋を生成できる残りの数
+    bool overObject = false;    //　カーソルがオブジェクトに重なっているかのフラグ
 
 
-    // Start is called before the first frame update
+    //　画面遷移時に実行
     void Start()
     {
         remainRippleCount = maxRippleCount;
@@ -34,12 +34,12 @@ public class RippleGenerator : MonoBehaviour
         m_gameDirector = GameObject.Find("GameDirector").GetComponent<GameDirector>();
     }
 
-    // Update is called once per frame
+    //　常に実行
     void Update()
     {
         if (m_gameDirector.m_phase == GameDirector.Phase.Play)
         {
-            if (Input.GetMouseButtonDown(0) && remainRippleCount > 0)
+            if (Input.GetMouseButtonDown(0) && remainRippleCount > 0 && !overObject)
             {
                 GenerateRipple();
             }
@@ -48,7 +48,6 @@ public class RippleGenerator : MonoBehaviour
                 Restart();
             }
         }
-
     }
 
     // 波紋の生成関数
@@ -69,6 +68,7 @@ public class RippleGenerator : MonoBehaviour
         remainRippleCount--;
         RemainRippleCountTextUpdate();
 
+        ripple.tag = "Ripple";
     }
     
     void Restart()
@@ -91,7 +91,7 @@ public class RippleGenerator : MonoBehaviour
         yield return new WaitForSeconds(m_resonanceDelay);
 
         // 波紋を作成
-        GameObject ripple = Instantiate(ripplePrefab,
+        GameObject ripple = Instantiate(resonanceRipplePrefab,
                                         position,
                                         Quaternion.identity);
         RippleController rippleController = ripple.transform.GetChild(0).GetComponent<RippleController>();
@@ -99,26 +99,25 @@ public class RippleGenerator : MonoBehaviour
         rippleController.SetRippleGenerator(this);
         resonanceRippleList.AddRipple(rippleController);
 
+        ripple.tag = "ResonanceRipple";
     }
 
+    //　波紋を起こせる回数が復活する処理
     public void IncreaseRemainRippleCount()
     {
         remainRippleCount++;
         RemainRippleCountTextUpdate();
     }
 
+    //　波紋を起こせる回数のUI更新
     void RemainRippleCountTextUpdate()
     {
         m_remainRippleCountText.text = remainRippleCount.ToString();
     }
 
-    bool HitCheck()
+    //　カーソルがオブジェクトに重なっているかの判定を受け取る関数
+    public void OverObject(bool check)
     {
-
-        int fitzoneCount = fitzoneList.GetFitzoneCount();
-        //for(int i = 0;i < )
-
-
-        return false;
+        this.overObject = check;
     }
 }

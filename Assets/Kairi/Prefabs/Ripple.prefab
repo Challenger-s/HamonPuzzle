@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 3529648684219769093}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 3213647665346453789}
   m_RootOrder: 0
@@ -70,7 +70,7 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Positions:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 1}
@@ -128,7 +128,7 @@ LineRenderer:
     shadowBias: 0.5
     generateLightingData: 0
   m_UseWorldSpace: 1
-  m_Loop: 0
+  m_Loop: 1
 --- !u!114 &7703627511753421055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,6 +146,7 @@ MonoBehaviour:
   m_lineWidth: 0.4
   m_colliderWidth: 0.15
   m_speed: 2.4
+  stageSize: {x: 8, y: 4.5}
   m_wallList: {fileID: 0}
 --- !u!1 &5857793319786711656
 GameObject:
@@ -158,7 +159,7 @@ GameObject:
   - component: {fileID: 3213647665346453789}
   m_Layer: 0
   m_Name: Ripple
-  m_TagString: Untagged
+  m_TagString: Ripple
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
