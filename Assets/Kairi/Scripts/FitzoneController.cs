@@ -18,7 +18,7 @@ public class FitzoneController : MonoBehaviour
     //　画面遷移時に実行
     void Start()
     {
-        m_countText = this.transform.GetChild(0).             // 子オブジェクト(キャンバス)の取得
+        m_countText = this.transform.Find("Canvas").           // 子オブジェクト(キャンバス)の取得
                         gameObject.transform.GetChild(0).   // 子オブジェクト(テキスト)の取得
                         gameObject.GetComponent<Text>();
         Camera camera = GameObject.Find("Main Camera").GetComponent<Camera>();
