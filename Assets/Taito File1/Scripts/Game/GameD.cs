@@ -12,7 +12,11 @@ public class GameD : MonoBehaviour
     [SerializeField]
     Image forwardImage;
 
-    public bool menu = false; 
+    [SerializeField] RippleGenerator rippleGenerator;
+
+    public bool menu = false;
+
+    bool poseDisplay = false;
 
     // Start is called before the first frame update
     void Start()
@@ -24,12 +28,23 @@ public class GameD : MonoBehaviour
     void Update()
     {
 
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Escape))
         {
-            for (int i = 0; i < pauseObjects.Length; i++)
+            if (! poseDisplay)
             {
-                Time.timeScale = 0f;
-                pauseObjects[i].SetActive(true);
+                poseDisplay = true;
+                this.rippleGenerator.ChangePoseFlag(poseDisplay);
+                for (int i = 0; i < pauseObjects.Length; i++)
+                {
+                    Time.timeScale = 0f;
+                    pauseObjects[i].SetActive(true);
+                }
+            }
+            else
+            {
+                poseDisplay = false;
+                this.rippleGenerator.ChangePoseFlag(poseDisplay);
+                Continue();
             }
         }
 

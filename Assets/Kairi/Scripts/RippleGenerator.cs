@@ -10,7 +10,8 @@ public class RippleGenerator : MonoBehaviour
     [SerializeField] GameObject resonanceRipplePrefab;   // 共鳴の波紋のPrefab
     [SerializeField] RippleList rippleList;     // 波紋のList
     [SerializeField] RippleList resonanceRippleList; // 共鳴から発生した波紋のList
-    GameDirector m_gameDirector;
+    [SerializeField] GameDirector m_gameDirector;
+    [SerializeField] UI_RippleCount ui_RippleCount;
     Text m_remainRippleCountText;
 
     [SerializeField] float m_resonanceDelay;
@@ -19,19 +20,20 @@ public class RippleGenerator : MonoBehaviour
 
     int remainRippleCount;      // 波紋を生成できる残りの数
     bool overObject = false;    //　カーソルがオブジェクトに重なっているかのフラグ
-
+    bool poseFlag = false;      //　ポーズ画面が開いているかのフラグ
 
     //　画面遷移時に実行
     void Start()
     {
         remainRippleCount = maxRippleCount;
         m_remainRippleCountText = this.transform.GetChild(0).             // 子オブジェクト(キャンバス)の取得
-                gameObject.transform.GetChild(0).   // 子オブジェクト(テキスト)の取得
+                gameObject.transform.GetChild(0).
+                gameObject.transform.GetChild(0).// 子オブジェクト(テキスト)の取得
                 gameObject.GetComponent<Text>();
 
         RemainRippleCountTextUpdate();
 
-        m_gameDirector = GameObject.Find("GameDirector").GetComponent<GameDirector>();
+        //m_gameDirector = GameObject.Find("GameDirector").GetComponent<GameDirector>();
     }
 
     //　常に実行
@@ -39,7 +41,7 @@ public class RippleGenerator : MonoBehaviour
     {
         if (m_gameDirector.m_phase == GameDirector.Phase.Play)
         {
-            if (Input.GetMouseButtonDown(0) && remainRippleCount > 0 && !overObject)
+            if (Input.GetMouseButtonDown(0) && remainRippleCount > 0 && !overObject && !poseFlag)
             {
                 GenerateRipple();
             }
@@ -69,6 +71,8 @@ public class RippleGenerator : MonoBehaviour
         RemainRippleCountTextUpdate();
 
         ripple.tag = "Ripple";
+
+        ui_RippleCount.GenerateUIRipple();  //　UIの波紋が出てくる
     }
     
     void Restart()
@@ -119,5 +123,11 @@ public class RippleGenerator : MonoBehaviour
     public void OverObject(bool check)
     {
         this.overObject = check;
+    }
+
+    //　ポーズフラグを変更する関数
+    public void ChangePoseFlag(bool flag)
+    {
+        poseFlag = flag;
     }
 }
