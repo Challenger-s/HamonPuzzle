@@ -64,7 +64,6 @@ public class ClearDiector : MonoBehaviour
             {
                 clear = false;
             }
-
         }
 
         if (b)
@@ -87,7 +86,6 @@ public class ClearDiector : MonoBehaviour
             RippleTexture.color = new Color32(0, 255,255,120);
             StageClearText.SetActive(true);
             b = true;
-
         }
 
         if (BackImage.color.a < 1 && BackImage != null)
@@ -103,7 +101,6 @@ public class ClearDiector : MonoBehaviour
                 }
                 a = true;
             }
-
         }
     }
 }
