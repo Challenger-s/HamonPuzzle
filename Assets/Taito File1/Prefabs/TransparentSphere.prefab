@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6115700584790821465}
   - component: {fileID: 6115700584790821466}
   - component: {fileID: 6115700584790821467}
-  - component: {fileID: 1198350254177551866}
+  - component: {fileID: 4097868432222441905}
   m_Layer: 0
   m_Name: TransparentSphere
   m_TagString: TransparentSphere
@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 12c2292f7f50d9a44bfee93caf0c31c5, type: 2}
+  - {fileID: 2100000, guid: 4ce05baf778b7ae49937c3b0aa2b56f0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -94,7 +94,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1198350254177551866
+--- !u!114 &4097868432222441905
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -103,10 +103,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6115700584790821460}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70b8971fcaf5abb4eb56c8044e667e5a, type: 3}
+  m_Script: {fileID: 11500000, guid: eb00e80baecf86b458df9a28f89364f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mainCamera: {fileID: 6236060370572056455, guid: 93ffc8f02348dc141bf3e8e9ac37d8d0,
+  _mainCamera: {fileID: 6236060370572056455, guid: 2482dde7fda63a24d84ad89ea3b972c6,
     type: 3}
   Object2D: 0
   expansionSpeed: 10

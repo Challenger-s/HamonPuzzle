@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 3529648684219769093}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 3213647665346453789}
   m_RootOrder: 0
@@ -50,7 +50,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bbba17d4fe03c534fb85336d8a06c990, type: 2}
+  - {fileID: 2100000, guid: 2888e86297f2d2e498abf1444517a343, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -70,7 +70,7 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: -1
   m_Positions:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 1}
@@ -142,12 +142,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_lineRenderer: {fileID: 761406432907108424}
-  m_radius: 5
-  m_lineWidth: 0.5
+  m_radius: 1.2
+  m_lineWidth: 0.15
   m_colliderWidth: 0.35
   m_speed: 1
   rippleParent: {fileID: 5857793319786711656}
-  m_elapedTime: 0.05
+  m_elapedTime: 0
 --- !u!1 &5857793319786711656
 GameObject:
   m_ObjectHideFlags: 0
@@ -158,7 +158,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3213647665346453789}
   m_Layer: 0
-  m_Name: TitleRipple
+  m_Name: GameSceneRippleTaito
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
