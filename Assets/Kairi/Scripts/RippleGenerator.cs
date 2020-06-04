@@ -16,7 +16,6 @@ public class RippleGenerator : MonoBehaviour
     [SerializeField] float m_resonanceDelay;
 
     [SerializeField] ResonancePointList resonancePointList;
-    [SerializeField] FitzoneList fitzoneList;
 
     int remainRippleCount;      // 波紋を生成できる残りの数
     bool overObject = false;    //　カーソルがオブジェクトに重なっているかのフラグ
@@ -92,7 +91,7 @@ public class RippleGenerator : MonoBehaviour
         yield return new WaitForSeconds(m_resonanceDelay);
 
         // 波紋を作成
-        GameObject ripple = Instantiate(ripplePrefab,
+        GameObject ripple = Instantiate(resonanceRipplePrefab,
                                         position,
                                         Quaternion.identity);
         RippleController rippleController = ripple.transform.GetChild(0).GetComponent<RippleController>();
@@ -114,16 +113,6 @@ public class RippleGenerator : MonoBehaviour
     void RemainRippleCountTextUpdate()
     {
         m_remainRippleCountText.text = remainRippleCount.ToString();
-    }
-
-    bool HitCheck()
-    {
-
-        int fitzoneCount = fitzoneList.GetFitzoneCount();
-        //for(int i = 0;i < )
-
-
-        return false;
     }
 
     //　カーソルがオブジェクトに重なっているかの判定を受け取る関数

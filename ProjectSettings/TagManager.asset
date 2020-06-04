@@ -45,9 +45,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Title
+    uniqueID: 3110097849
+    locked: 0
   - name: Menu
     uniqueID: 3938007795
     locked: 0
-  - name: Title
-    uniqueID: 3110097849
+  - name: WhiteCircle
+    uniqueID: 2148281157
     locked: 0

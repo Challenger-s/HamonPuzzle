@@ -5,13 +5,12 @@ using UnityEngine;
 public class ResonancePointController : MonoBehaviour
 {
     [SerializeField] RippleList m_rippleList;
-    [SerializeField] RippleGenerator m_rippleGenerator;
-    [SerializeField] RippleGenerator rippleGenerator;
     [SerializeField] float ColliderSize;
     [SerializeField] float rotationTakeTime = 10f;
     [SerializeField] float speedUpTimes = 5f;
     [SerializeField] float returnTakeTime = 5f;
 
+    RippleGenerator m_rippleGenerator;
     List<bool> m_ripplesIsHittedList = new List<bool>();
 
     float defoultRotationTakeTime = 0f;
@@ -20,6 +19,7 @@ public class ResonancePointController : MonoBehaviour
     //　最初の1フレームのみ実行
     private void Start()
     {
+        m_rippleGenerator = GameObject.Find("RippleGenerator").GetComponent<RippleGenerator>();
         defoultRotationTakeTime = rotationTakeTime;
     }
 
@@ -99,12 +99,12 @@ public class ResonancePointController : MonoBehaviour
     //　カーソルが重なっているかの判定 
     private void OnMouseEnter()
     {
-        this.rippleGenerator.OverObject(true);
+        this.m_rippleGenerator.OverObject(true);
     }
 
     //　カーソルが離れた時の判定
     private void OnMouseExit()
     {
-        this.rippleGenerator.OverObject(false);
+        this.m_rippleGenerator.OverObject(false);
     }
 }

@@ -9,7 +9,7 @@ public class FitzoneController : MonoBehaviour
     [SerializeField] RippleList m_rippleList;
     [SerializeField] RippleList m_resonanceRippleList;
     [SerializeField] GameDirector m_gameDirector;
-    [SerializeField] RippleGenerator rippleGenerator;
+    RippleGenerator rippleGenerator;
 
     int m_hittingRippleCount=0;    // 現在重なっている波紋の数
     Text m_countText;     // フィットゾーンの数字
@@ -22,8 +22,9 @@ public class FitzoneController : MonoBehaviour
                         gameObject.transform.GetChild(0).   // 子オブジェクト(テキスト)の取得
                         gameObject.GetComponent<Text>();
         Camera camera = GameObject.Find("Main Camera").GetComponent<Camera>();
-
         m_countText.rectTransform.position = RectTransformUtility.WorldToScreenPoint(camera,this.transform.position);
+
+        rippleGenerator = GameObject.Find("RippleGenerator").GetComponent<RippleGenerator>();
 
         CountTextUpdate();
     }

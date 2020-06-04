@@ -19,7 +19,7 @@ public class GameDirector : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        m_phase = Phase.Play;
+
     }
 
     // Update is called once per frame
@@ -53,21 +53,17 @@ public class GameDirector : MonoBehaviour
 
     bool ClearCheck()
     {
-        bool isCleared = true;
-
         for (int i = 0; i < m_fitzoneArray.Length; i++)
         {
-            if (m_fitzoneArray[i].GetCount() != 0) { isCleared = false; }
+            if (m_fitzoneArray[i].GetCount() != 0) { return false; }
         }
 
-        return isCleared;
+        return true;
     }
 
     void Clear()
     {
-        Debug.Log("Clear!");
         m_phase = Phase.Clear;
-
     }
 
     

@@ -10,8 +10,9 @@ public class TransparentSphere : MonoBehaviour
     Vector3 bomttomLeft;
     Vector3 topRight;
     Vector3 bomttomRight;
+    
+    GameDirector gameDirector;
 
-    [SerializeField]
     Camera _mainCamera;
 
     [SerializeField]
@@ -24,6 +25,9 @@ public class TransparentSphere : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
+        gameDirector = GameObject.Find("GameDirector").GetComponent<GameDirector>();
+
         transform.localScale = new Vector3(0, 0, 0);
         sphereScale  = transform.localScale;
 
@@ -36,12 +40,19 @@ public class TransparentSphere : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (expansion(topLeft)     ||
-            expansion(bomttomLeft) ||
-            expansion(topRight)    ||
-            expansion(bomttomRight))
+        if (gameDirector.m_phase == GameDirector.Phase.Clear)
         {
-            transform.localScale = new Vector3(sphereScale.x += (expansionSpeed * Time.deltaTime), sphereScale.y += (expansionSpeed * Time.deltaTime), 0);
+            if (
+                expansion(topLeft) ||
+                expansion(bomttomLeft) ||
+                expansion(topRight) ||
+                expansion(bomttomRight)
+               )
+            {
+                transform.localScale = new Vector3(sphereScale.x += (expansionSpeed * Time.deltaTime),
+                                                    sphereScale.y += (expansionSpeed * Time.deltaTime),
+                                                    0);
+            }
         }
 
     }
