@@ -130,4 +130,10 @@ public class RippleGenerator : MonoBehaviour
     {
         poseFlag = flag;
     }
+
+    //PlayScene_MusicDirectorに変数を送る
+    public int GetRippleCount()
+    {
+        return remainRippleCount;
+    }
 }

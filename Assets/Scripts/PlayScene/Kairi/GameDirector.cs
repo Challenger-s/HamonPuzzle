@@ -10,6 +10,11 @@ public class GameDirector : MonoBehaviour
     [SerializeField] Image fadeImage;
     [SerializeField] float fadeInSpeed = 0.5f;
 
+    bool stageClearFlag = false; //ステージをクリアしたかどうかの判定フラグ
+    float musicCountUpTimer = 0; //クリア後、白円音が鳴るまでの間
+
+    AudioSource[] audioSource; //オーディオソース使用（３つ）
+
     public enum Phase
     {
         PreStart,
@@ -23,7 +28,7 @@ public class GameDirector : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        audioSource = GetComponents<AudioSource>(); //オーディオソース取得
     }
 
     // Update is called once per frame
@@ -57,7 +62,15 @@ public class GameDirector : MonoBehaviour
                 break;
         }
 
-
+        if (this.stageClearFlag == true) //クリアフラグがオンになったら
+        {
+            this.musicCountUpTimer += Time.deltaTime; //カウント加算
+            if(this.musicCountUpTimer > 1) //カウントタイマーが１より大きくなったとき
+            {
+                audioSource[1].Play(); //1番目の音を鳴らす
+                this.stageClearFlag = false; //クリアフラグオフ
+            }
+        }
     }
 
     void Restart()
@@ -78,8 +91,8 @@ public class GameDirector : MonoBehaviour
     void Clear()
     {
         m_phase = Phase.Clear;
-    }
 
+<<<<<<< HEAD
 
     bool FadeIn(Image image)
     {
@@ -93,5 +106,10 @@ public class GameDirector : MonoBehaviour
         {
             return false;
         }
+=======
+        audioSource[0].Play(); //0番目の音を鳴らす
+
+        this.stageClearFlag = true; //フラグオン
+>>>>>>> 336b1aaf3c76b88f83afc91e5042f28b6ace0fd3
     }
 }
