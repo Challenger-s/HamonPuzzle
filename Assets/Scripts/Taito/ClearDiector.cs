@@ -110,7 +110,6 @@ public class ClearDiector : MonoBehaviour
                 {
                     Destroy(fitZones[i]);
                 }
-                Debug.Log("fadein");
                 a = true;
             }
         }

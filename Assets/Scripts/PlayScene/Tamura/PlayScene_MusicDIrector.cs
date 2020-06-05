@@ -15,6 +15,8 @@ public class PlayScene_MusicDIrector : MonoBehaviour
     [SerializeField]
     RippleGenerator rippleGenerator; //他スクリプトから使用
 
+    [SerializeField] GameDirector gameDirector;
+
     int rippleCounter = 0; //波紋を出せる回数
     int rippleVariation = -1; //ランダムに決める波紋の組み合わせ
 
@@ -27,7 +29,7 @@ public class PlayScene_MusicDIrector : MonoBehaviour
     {
         this.rippleCounter = rippleGenerator.GetRippleCount(); //RippleGeneratorから波紋を出せる回数を取得
 
-        if (Input.GetMouseButtonDown(0) && this.rippleCounter > 0) //左マウスボタンを押した瞬間、波紋カウンターが０より大きいとき
+        if (Input.GetMouseButtonDown(0) && this.rippleCounter > 0 && gameDirector.ReturnPhase()) //左マウスボタンを押した瞬間、波紋カウンターが０より大きいとき
         {
             this.resetStopflag = false; //リセ止めフラグオフ　リセットできるようになる
 

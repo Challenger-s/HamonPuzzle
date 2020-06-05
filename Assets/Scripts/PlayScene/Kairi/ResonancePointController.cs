@@ -9,8 +9,8 @@ public class ResonancePointController : MonoBehaviour
     [SerializeField] float rotationTakeTime = 10f;
     [SerializeField] float speedUpTimes = 5f;
     [SerializeField] float returnTakeTime = 5f;
+    [SerializeField] RippleGenerator m_rippleGenerator;
 
-    RippleGenerator m_rippleGenerator;
     List<bool> m_ripplesIsHittedList = new List<bool>();
 
     float defoultRotationTakeTime = 0f;
@@ -22,7 +22,6 @@ public class ResonancePointController : MonoBehaviour
     {
         audioSource = GetComponents<AudioSource>(); //オーディオソース取得
 
-        m_rippleGenerator = GameObject.Find("RippleGenerator").GetComponent<RippleGenerator>();
         defoultRotationTakeTime = rotationTakeTime;
     }
 

@@ -91,8 +91,9 @@ public class GameDirector : MonoBehaviour
     void Clear()
     {
         m_phase = Phase.Clear;
-
-<<<<<<< HEAD
+        audioSource[0].Play(); //0番目の音を鳴らす
+        this.stageClearFlag = true; //フラグオン
+    }
 
     bool FadeIn(Image image)
     {
@@ -106,10 +107,18 @@ public class GameDirector : MonoBehaviour
         {
             return false;
         }
-=======
-        audioSource[0].Play(); //0番目の音を鳴らす
+    }
 
-        this.stageClearFlag = true; //フラグオン
->>>>>>> 336b1aaf3c76b88f83afc91e5042f28b6ace0fd3
+    //　Phaseを返す
+    public bool ReturnPhase()
+    {
+        if (m_phase == Phase.Play)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }
