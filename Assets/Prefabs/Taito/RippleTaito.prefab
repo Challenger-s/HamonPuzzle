@@ -50,7 +50,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31eb82a36c203fc4181fb024a7a2050d, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -138,15 +138,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 3529648684219769093}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42164145db99ef04abfcb24b9ccaa765, type: 3}
+  m_Script: {fileID: 11500000, guid: ffe00094d2f59b244951d8100fff068f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_lineRenderer: {fileID: 761406432907108424}
-  m_radius: 1.2
-  m_lineWidth: 0.15
-  m_colliderWidth: 0.35
-  m_speed: 1
-  rippleParent: {fileID: 5857793319786711656}
+  m_lineRenderer: {fileID: 0}
+  m_radius: 0
+  m_lineWidth: 0
+  m_colliderWidth: 0
+  m_speed: 0
+  rippleParent: {fileID: 0}
   m_elapedTime: 0
 --- !u!1 &5857793319786711656
 GameObject:
@@ -158,7 +158,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3213647665346453789}
   m_Layer: 0
-  m_Name: Ripple
+  m_Name: RippleTaito
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

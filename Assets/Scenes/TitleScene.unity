@@ -586,9 +586,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxRippleCount: 2147483647
-  ripplePrefab: {fileID: 5857793319786711656, guid: d62db4e95745dc640a4afca726e95462,
+  ripplePrefab: {fileID: 5857793319786711656, guid: df53e04fff3e37c48b890edb88f113cb,
     type: 3}
   rippleList: {fileID: 635962108}
+  shortSpan: 0.1
+  longSpan: 0.5
   mainCamera: {fileID: 1362408980}
 --- !u!114 &635962108 stripped
 MonoBehaviour:
@@ -832,6 +834,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1139246587011433639, guid: fa2a1739247387c468a76fadae502967,
+        type: 3}
+      propertyPath: maxRippleCount
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6075037348733455973, guid: fa2a1739247387c468a76fadae502967,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -890,10 +897,11 @@ PrefabInstance:
     - target: {fileID: 6075037348733455975, guid: fa2a1739247387c468a76fadae502967,
         type: 3}
       propertyPath: m_Name
-      value: TitleRippleGenerator
+      value: TitleBackGroundRipple
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8822492795779667029, guid: fa2a1739247387c468a76fadae502967, type: 3}
+    - {fileID: 1139246587011433639, guid: fa2a1739247387c468a76fadae502967, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fa2a1739247387c468a76fadae502967, type: 3}
 --- !u!1001 &779604423
 PrefabInstance:
@@ -960,11 +968,12 @@ PrefabInstance:
     - target: {fileID: 6075037348733455975, guid: fa2a1739247387c468a76fadae502967,
         type: 3}
       propertyPath: m_Name
-      value: StageSelectRippleGenerator
+      value: TitlePlayerRippleGenerator
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
     - {fileID: 8822492795779667029, guid: fa2a1739247387c468a76fadae502967, type: 3}
+    - {fileID: 1139246587011433639, guid: fa2a1739247387c468a76fadae502967, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fa2a1739247387c468a76fadae502967, type: 3}
 --- !u!1 &779604424 stripped
 GameObject:
@@ -1923,6 +1932,7 @@ MonoBehaviour:
   - {fileID: 728494791}
   - {fileID: 1557077847}
   - {fileID: 588068710}
+  TitleRippleGenerator: {fileID: 779604424}
   delete: 0
   sceneReload: 0
 --- !u!4 &2088528051

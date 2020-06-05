@@ -6,7 +6,8 @@ public sealed class RippleController1 : MonoBehaviour
 {
     [SerializeField] private LineRenderer m_lineRenderer = null; // 円を描画するための LineRenderer
     [SerializeField] private float m_radius = 0;    // 円の半径
-
+    [SerializeField] float maxRndSize = 3f;
+    [SerializeField] float minRndSize = 1f;
 
 
     // staticを付ける/別のスクリプトへ隔離
@@ -37,13 +38,11 @@ public sealed class RippleController1 : MonoBehaviour
     private void Start()
     {
         InitLineRenderer();
-        maxSize = Random.Range(2.0f, 4.0f);
+        maxSize = Random.Range(minRndSize, maxRndSize);
     }
 
     private void Update()
     {
-
-        
         m_elapedTime += Time.deltaTime;
 
         m_scale = m_elapedTime * m_speed;
@@ -54,7 +53,8 @@ public sealed class RippleController1 : MonoBehaviour
         {
             Destroy(rippleParent);
 
-        }else if(GetRippleSize() > maxSize - 1)
+        }
+        else if(GetRippleSize() > maxSize - 2)
         {
             GetComponent<Renderer>().material.color = new Color(GetComponent<Renderer>().material.color.r,
                                                                GetComponent<Renderer>().material.color.g,

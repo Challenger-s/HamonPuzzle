@@ -7,6 +7,8 @@ public class RippleGenerator1 : MonoBehaviour
     [SerializeField] int maxRippleCount;        // 同時に存在できる波紋の数
     [SerializeField] GameObject ripplePrefab;   // 波紋のプレハブ
     [SerializeField] RippleList1 rippleList;
+    [SerializeField] float shortSpan = 0.1f;
+    [SerializeField] float longSpan = 0.5f;
 
     [SerializeField]
     Camera mainCamera;
@@ -31,7 +33,6 @@ public class RippleGenerator1 : MonoBehaviour
         bomttomLeft = getScreenBottomLeft();
         topRight = getSceenTopRight();
         bomttomRight = getScreenBottomRight();
-
     }
 
     // Update is called once per frame
@@ -44,13 +45,12 @@ public class RippleGenerator1 : MonoBehaviour
             delta = 0;
             GenerateRipple();
         }
-       
     }
 
     // 波紋の生成関数
     void GenerateRipple()
     {
-        span = Random.Range(0.5f, 0.7f);
+        span = Random.Range(shortSpan, longSpan);
         float x = Random.Range(topRight.x - 0.5f, topLeft.x + 0.5f);
         float y = Random.Range(topRight.y - 0.5f, bomttomLeft.y + 0.5f);
 

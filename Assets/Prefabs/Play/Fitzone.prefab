@@ -103,6 +103,7 @@ MonoBehaviour:
   m_clearCount: 1
   m_rippleList: {fileID: 0}
   m_resonanceRippleList: {fileID: 0}
+  rippleGenerator: {fileID: 0}
   m_gameDirector: {fileID: 0}
 --- !u!58 &1459818544909692805
 CircleCollider2D:
@@ -206,12 +207,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 70
-    m_FontStyle: 0
+    m_Font: {fileID: 12800000, guid: abdffbcb37734b646924d283b48867a3, type: 3}
+    m_FontSize: 60
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
-    m_MaxSize: 70
+    m_MaxSize: 93
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -327,6 +328,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8767748954998365479}
     m_Modifications:
+    - target: {fileID: 816812312524748476, guid: 3c84977a0eba39d47a26278037d516f7,
+        type: 3}
+      propertyPath: m_Name
+      value: Circle (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1557601591421028618, guid: 3c84977a0eba39d47a26278037d516f7,
+        type: 3}
+      propertyPath: m_Name
+      value: Circle (2)
+      objectReference: {fileID: 0}
     - target: {fileID: 2981793467238276067, guid: 3c84977a0eba39d47a26278037d516f7,
         type: 3}
       propertyPath: m_Name
@@ -446,6 +457,21 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4634062961038036976, guid: 22b5d86cd581f1943bf0b0baf369c235,
+        type: 3}
+      propertyPath: m_Name
+      value: Circle (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4725693617282176202, guid: 22b5d86cd581f1943bf0b0baf369c235,
+        type: 3}
+      propertyPath: m_Name
+      value: Circle (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5427283572666305330, guid: 22b5d86cd581f1943bf0b0baf369c235,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7872236860275054935, guid: 22b5d86cd581f1943bf0b0baf369c235,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -511,6 +537,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7953406841055935840, guid: 22b5d86cd581f1943bf0b0baf369c235,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22b5d86cd581f1943bf0b0baf369c235, type: 3}
 --- !u!1 &2737164327874943026 stripped
@@ -532,6 +563,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8767748954998365479}
     m_Modifications:
+    - target: {fileID: 307143155348929839, guid: 9c7bfdda5e55f3e469a511cf0172b4f0,
+        type: 3}
+      propertyPath: m_Name
+      value: Circle (2)
+      objectReference: {fileID: 0}
     - target: {fileID: 2439807821256920495, guid: 9c7bfdda5e55f3e469a511cf0172b4f0,
         type: 3}
       propertyPath: m_Name
@@ -541,6 +577,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6276070669226350671, guid: 9c7bfdda5e55f3e469a511cf0172b4f0,
+        type: 3}
+      propertyPath: m_Name
+      value: Circle (1)
       objectReference: {fileID: 0}
     - target: {fileID: 8170276315250957588, guid: 9c7bfdda5e55f3e469a511cf0172b4f0,
         type: 3}

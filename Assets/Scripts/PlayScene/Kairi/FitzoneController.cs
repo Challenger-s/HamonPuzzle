@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
 public class FitzoneController : MonoBehaviour
 {
     [SerializeField] int m_clearCount;  // クリアになる波紋の数
 
     [SerializeField] RippleList m_rippleList;
     [SerializeField] RippleList m_resonanceRippleList;
+    [SerializeField] RippleGenerator rippleGenerator;
     [SerializeField] GameDirector m_gameDirector;
-    RippleGenerator rippleGenerator;
 
     int m_hittingRippleCount=0;    // 現在重なっている波紋の数
     Text m_countText;     // フィットゾーンの数字
@@ -24,7 +25,7 @@ public class FitzoneController : MonoBehaviour
         Camera camera = GameObject.Find("Main Camera").GetComponent<Camera>();
         m_countText.rectTransform.position = RectTransformUtility.WorldToScreenPoint(camera,this.transform.position);
 
-        rippleGenerator = GameObject.Find("RippleGenerator").GetComponent<RippleGenerator>();
+        //rippleGenerator = GameObject.Find("RippleGenerator").GetComponent<RippleGenerator>();
 
         CountTextUpdate();
     }

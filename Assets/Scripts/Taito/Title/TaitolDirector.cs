@@ -32,6 +32,8 @@ public class TaitolDirector : MonoBehaviour
     [SerializeField]
     GameObject[] buttons;
 
+    [SerializeField] GameObject TitleRippleGenerator;
+
     public bool delete = false;
 
     bool click = true;
@@ -82,6 +84,7 @@ public class TaitolDirector : MonoBehaviour
                 clickPosition.z = 5f;
 
                 Instantiate(TransparentSpherePrefab, Camera.main.ScreenToWorldPoint(clickPosition), TransparentSpherePrefab.transform.rotation);
+                Destroy(TitleRippleGenerator);
                 click = false;
             }
         }
