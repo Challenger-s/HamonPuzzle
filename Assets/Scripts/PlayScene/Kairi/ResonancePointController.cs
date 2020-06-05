@@ -15,10 +15,13 @@ public class ResonancePointController : MonoBehaviour
 
     float defoultRotationTakeTime = 0f;
 
+    AudioSource[] audioSource; //オーディオソース使用
 
     //　最初の1フレームのみ実行
     private void Start()
     {
+        audioSource = GetComponents<AudioSource>(); //オーディオソース取得
+
         m_rippleGenerator = GameObject.Find("RippleGenerator").GetComponent<RippleGenerator>();
         defoultRotationTakeTime = rotationTakeTime;
     }
@@ -60,6 +63,8 @@ public class ResonancePointController : MonoBehaviour
             // 円の当たり判定の応用
             if (distanceFromRipple_scaleCalculated_inner < ColliderSize && distanceFromRipple_scaleCalculated_outer < ColliderSize)
             {
+                audioSource[Random.Range(0,2)].Play(); //0か1番目の音を鳴らす
+
                 m_ripplesIsHittedList[i] = true;
                 rotationTakeTime = rotationTakeTime / speedUpTimes;
                 m_rippleGenerator.GenerateResonanceRipple(this.transform.position);
