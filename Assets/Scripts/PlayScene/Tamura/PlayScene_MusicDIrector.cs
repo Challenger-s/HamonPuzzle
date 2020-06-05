@@ -35,7 +35,6 @@ public class PlayScene_MusicDIrector : MonoBehaviour
             {
                 audioSource[Random.Range(0, 4)].Play(); //0~3の中の音をランダムで鳴らす
             }
-
             else if (this.maxRippleCount == 2) //ステージの波紋最大数が２のとき
             {
                 if (this.randomStopflag == false) //抽選を止めるフラグがオフの時
@@ -46,12 +45,13 @@ public class PlayScene_MusicDIrector : MonoBehaviour
 
                 RippleSound_2(this.rippleVariation); //波紋の音を鳴らす処理（出せる回数が２回のとき）
             }
-
             else if (this.maxRippleCount == 3) //ステージの波紋最大数が３のとき
             {
                 if (this.randomStopflag == false) //抽選を止めるフラグがオフの時
                 {
+                    Debug.Log("３回　抽選");
                     this.rippleVariation = Random.Range(0, 9); //0~8の数字を抽選し、変数に代入
+                    Debug.Log(rippleVariation);
                     this.randomStopflag = true; //抽選を止めるフラグをオン
                 }
 
@@ -62,6 +62,7 @@ public class PlayScene_MusicDIrector : MonoBehaviour
         //波紋を出せる回数が回復したときに、音の情報をリセットする処理
         if (this.rippleCounter == this.maxRippleCount && this.resetStopflag == false) //波紋カウンタが最大値に回復し、かつリセ止めフラグがオフだったら
         {
+            Debug.Log("リセット");
             this.randomStopflag = false; //抽選止めフラグをオフ　抽選できるようにする
             this.resetStopflag = true; //リセ止めフラグをオン　不要なリセットを止める
             this.rippleVariation = -1; //バリエーション決め変数をリセットする
@@ -138,6 +139,8 @@ public class PlayScene_MusicDIrector : MonoBehaviour
 
     void RippleSound_3(int rippleVar) //波紋の音を鳴らす処理（出せる回数が３回のとき）
     {
+        Debug.Log("３回　開始");
+
         /*
         波紋の組み合わせ
         ・３回の時
