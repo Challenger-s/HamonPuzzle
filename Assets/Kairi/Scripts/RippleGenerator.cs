@@ -120,4 +120,9 @@ public class RippleGenerator : MonoBehaviour
     {
         this.overObject = check;
     }
+
+    public int GetRippleCount()
+    {
+        return remainRippleCount;
+    }
 }
