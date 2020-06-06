@@ -5,13 +5,40 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Taito File1/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/TitleScene.unity
+    guid: 3583d8d2f95784d4582762efb3406b20
+  - enabled: 0
+    path: Assets/Scenes/Taito/StageSerelect.unity
+    guid: dc033a88aacbbab49acb2305239e38d9
   - enabled: 1
-    path: Assets/Taito File1/Scenes/New Scene.unity
-    guid: 727383c6ae1671a44a8508c00a3f5588
+    path: Assets/Scenes/Stage/Stage_1.unity
+    guid: 4a9de9128fdda1d4cab08b1f9b51322b
   - enabled: 1
-    path: Assets/Taito File1/Scenes/GameScene1.unity
-    guid: a43aed5598ceee9458eef5d88853755d
+    path: Assets/Scenes/Stage/Stage_3.unity
+    guid: 3e2a993fedecfba438a1f23ce6801c5b
+  - enabled: 1
+    path: Assets/Scenes/Stage/Stage_4.unity
+    guid: 71fbc1191ec68a644b9a9822df6279f3
+  - enabled: 1
+    path: Assets/Scenes/Stage/Stage_8.unity
+    guid: 99a84276391db7c4ca666b515c64742c
+  - enabled: 1
+    path: Assets/Scenes/Stage/Stage_9.unity
+    guid: da13d2318337659468411bcd7832b2b9
+  - enabled: 1
+    path: Assets/Scenes/Stage/Stage_10.unity
+    guid: 62d89596dcc04494596ec5117d62488e
+  - enabled: 1
+    path: Assets/Scenes/Stage/Stage_11.unity
+    guid: 694b7fdbd88d0884caa06a99beb3a123
   m_configObjects: {}
