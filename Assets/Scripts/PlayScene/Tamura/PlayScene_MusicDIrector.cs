@@ -29,7 +29,7 @@ public class PlayScene_MusicDIrector : MonoBehaviour
     {
         if (Input.GetMouseButton(0) && this.rippleCounter >= 1 && gameDirector.ReturnPhase())
         {
-            audioSource[Random.Range(0, 4)].Play();
+            audioSource[Random.Range(0, 3)].Play();
         }
         this.rippleCounter = rippleGenerator.GetRippleCount(); //RippleGeneratorから波紋を出せる回数を取得
     }

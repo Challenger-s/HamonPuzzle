@@ -13,7 +13,7 @@ public class GameDirector : MonoBehaviour
 
     AudioSource[] audioSource; //オーディオソース使用（３つ
 
-    bool stageClearFlag = false;
+    bool whiteCircleFlag = true;
 
     public enum Phase
     {
@@ -68,9 +68,10 @@ public class GameDirector : MonoBehaviour
                 break;
 
             case Phase.Clear:
-                if (!this.audioSource[1].isPlaying) //クリアフラグがオンになったら
+                if (!this.audioSource[1].isPlaying && whiteCircleFlag) //クリアフラグがオンになったら
                 {
                     audioSource[1].Play(); //1番目の音を鳴らす
+                    whiteCircleFlag = false;
                 }
                 break;
         }

@@ -11,7 +11,6 @@ public class TitleTransparentSpher : MonoBehaviour
     Vector3 topRight;
     Vector3 bomttomRight;
 
-    [SerializeField]
     Camera _mainCamera;
 
     [SerializeField]
@@ -24,6 +23,7 @@ public class TitleTransparentSpher : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
         transform.localScale = new Vector3(0, 0, 0);
         sphereScale = transform.localScale;
 
@@ -31,7 +31,6 @@ public class TitleTransparentSpher : MonoBehaviour
         bomttomLeft = getScreenBottomLeft();
         topRight = getSceenTopRight();
         bomttomRight = getScreenBottomRight();
-        _mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
     }
 
     // Update is called once per frame
