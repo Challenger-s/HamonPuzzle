@@ -156,7 +156,6 @@ public class FitzoneChange : MonoBehaviour
                 SpNotEnoughs[i].color = new Color(SpNotEnoughs[i].color.r, SpNotEnoughs[i].color.g, SpNotEnoughs[i].color.b, SpNotEnoughs[i].color.a - (1 / 3f));
             }
             */
-            Debug.Log("a");
             change = Change.NotEnougLarge;
         }
         else
