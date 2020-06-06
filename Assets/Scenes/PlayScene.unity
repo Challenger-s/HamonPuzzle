@@ -185,7 +185,7 @@ MonoBehaviour:
   ui_RippleCount: {fileID: 406296760}
   fadeImage: {fileID: 588491928}
   fadeInSpeed: 1
-  clearStopTime: 1
+  clearStopTime: 1.5
   m_phase: 0
 --- !u!4 &63021661
 Transform:
@@ -2220,7 +2220,7 @@ PrefabInstance:
     - target: {fileID: 4869820953297382105, guid: 3827bb90eeacd2e44babae77acabaa33,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4869820953297382107, guid: 3827bb90eeacd2e44babae77acabaa33,
         type: 3}
@@ -2384,12 +2384,12 @@ PrefabInstance:
     - target: {fileID: 1139246587011433639, guid: fa2a1739247387c468a76fadae502967,
         type: 3}
       propertyPath: shortSpan
-      value: 0.4
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 1139246587011433639, guid: fa2a1739247387c468a76fadae502967,
         type: 3}
       propertyPath: longSpan
-      value: 0.6
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6075037348733455973, guid: fa2a1739247387c468a76fadae502967,
         type: 3}

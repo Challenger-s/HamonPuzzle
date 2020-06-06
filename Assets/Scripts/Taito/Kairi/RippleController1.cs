@@ -21,12 +21,14 @@ public sealed class RippleController1 : MonoBehaviour
     [SerializeField]
     private float m_elapedTime = 0;
 
+    [SerializeField] bool SE_OFF = true;
+
     private Vector2 m_centerPoint;
     private float m_scale = 0;
 
     RippleGenerator1 rippleGenerator;
 
-    AudioSource[] audioSource;
+    AudioSource[] audioSource = null;
 
     float maxSize = 0;
 
@@ -41,9 +43,19 @@ public sealed class RippleController1 : MonoBehaviour
     {
         InitLineRenderer();
         maxSize = Random.Range(minRndSize, maxRndSize);
-        int random = Random.Range(0, 3);
-        audioSource = GetComponents<AudioSource>();
-        audioSource[random].Play();
+
+        if (!SE_OFF)
+        {
+            audioSource = GetComponents<AudioSource>();
+            if (audioSource != null)
+            {
+                int random = Random.Range(0, 4);
+                if (random <= 2)
+                {
+                    audioSource[random].Play();
+                }
+            }
+        }
     }
 
     private void Update()
