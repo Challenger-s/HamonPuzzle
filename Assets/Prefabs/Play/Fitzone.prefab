@@ -141,6 +141,7 @@ MonoBehaviour:
   - {fileID: 1529167236300465485}
   complete: {fileID: 2737164327874943026}
   burst: {fileID: 2175130969393538816}
+  gameDirector: {fileID: 0}
   GrowingSpeed: 1
   SmallerSpeed: 0.3
 --- !u!1 &8767748955623982786
@@ -177,8 +178,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 200}
+  m_AnchoredPosition: {x: 0, y: 200}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8767748955623982791
 CanvasRenderer:
@@ -207,9 +208,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: abdffbcb37734b646924d283b48867a3, type: 3}
-    m_FontSize: 100
-    m_FontStyle: 1
+    m_Font: {fileID: 12800000, guid: a981298b8ce76dd4fa388784a794dc3e, type: 3}
+    m_FontSize: 60
+    m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 187
