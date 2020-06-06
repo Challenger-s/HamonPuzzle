@@ -1765,7 +1765,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_FontData.m_Font
       value: 
-      objectReference: {fileID: 12800000, guid: abdffbcb37734b646924d283b48867a3,
+      objectReference: {fileID: 12800000, guid: a981298b8ce76dd4fa388784a794dc3e,
         type: 3}
     - target: {fileID: 3090488076306313056, guid: 89be0d4f1eb685a488c2666aeec2ac00,
         type: 3}
@@ -3106,6 +3106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2032126732e4abf4baa7352d634ecbef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
 --- !u!1 &1912559762
 GameObject:
   m_ObjectHideFlags: 0
@@ -3540,6 +3541,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+=======
+>>>>>>> NewShibata
 --- !u!4 &1922021912 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8767748954998365479, guid: deca3ed0a4729da4aa475bc87cbe0284,
@@ -3810,6 +3813,85 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deca3ed0a4729da4aa475bc87cbe0284, type: 3}
+--- !u!1001 &1961782603
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5155842876033552871, guid: 897e706249901714a936312ca0fe1045,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.046307515
+      objectReference: {fileID: 0}
+    - target: {fileID: 5155842876033552871, guid: 897e706249901714a936312ca0fe1045,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.013196804
+      objectReference: {fileID: 0}
+    - target: {fileID: 5155842876033552871, guid: 897e706249901714a936312ca0fe1045,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -21.425076
+      objectReference: {fileID: 0}
+    - target: {fileID: 5155842876033552871, guid: 897e706249901714a936312ca0fe1045,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5155842876033552871, guid: 897e706249901714a936312ca0fe1045,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5155842876033552871, guid: 897e706249901714a936312ca0fe1045,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5155842876033552871, guid: 897e706249901714a936312ca0fe1045,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5155842876033552871, guid: 897e706249901714a936312ca0fe1045,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 5155842876033552871, guid: 897e706249901714a936312ca0fe1045,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5155842876033552871, guid: 897e706249901714a936312ca0fe1045,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5155842876033552871, guid: 897e706249901714a936312ca0fe1045,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5155842876033552872, guid: 897e706249901714a936312ca0fe1045,
+        type: 3}
+      propertyPath: rippleGenerator
+      value: 
+      objectReference: {fileID: 728341108}
+    - target: {fileID: 5155842876033552872, guid: 897e706249901714a936312ca0fe1045,
+        type: 3}
+      propertyPath: gameDirector
+      value: 
+      objectReference: {fileID: 63021660}
+    - target: {fileID: 5155842876033552877, guid: 897e706249901714a936312ca0fe1045,
+        type: 3}
+      propertyPath: m_Name
+      value: MusicDirector
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 897e706249901714a936312ca0fe1045, type: 3}
 --- !u!1 &1993160662
 GameObject:
   m_ObjectHideFlags: 0
