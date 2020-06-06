@@ -26,6 +26,8 @@ public sealed class RippleController1 : MonoBehaviour
 
     RippleGenerator1 rippleGenerator;
 
+    AudioSource[] audioSource;
+
     float maxSize = 0;
 
     
@@ -39,6 +41,9 @@ public sealed class RippleController1 : MonoBehaviour
     {
         InitLineRenderer();
         maxSize = Random.Range(minRndSize, maxRndSize);
+        int random = Random.Range(0, 3);
+        audioSource = GetComponents<AudioSource>();
+        audioSource[random].Play();
     }
 
     private void Update()

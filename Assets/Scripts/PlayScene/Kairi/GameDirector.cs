@@ -11,16 +11,16 @@ public class GameDirector : MonoBehaviour
     [SerializeField] float fadeInSpeed = 0.5f;
     [SerializeField] float clearStopTime = 0.5f;
 
-    bool stageClearFlag = false; //ステージをクリアしたかどうかの判定フラグ
-    float musicCountUpTimer = 0; //クリア後、白円音が鳴るまでの間
+    AudioSource[] audioSource; //オーディオソース使用（３つ
 
-    AudioSource[] audioSource; //オーディオソース使用（３つ）
+    bool stageClearFlag = false;
 
     public enum Phase
     {
         PreStart,
         Play,
         Pause,
+        BeforeClear,
         Clear,
     }
 
@@ -48,7 +48,7 @@ public class GameDirector : MonoBehaviour
             case Phase.Play:
                 if (ClearCheck())
                 {
-                    Clear();
+                    BeforeClear();
                     break;
                 }
 
@@ -58,20 +58,21 @@ public class GameDirector : MonoBehaviour
                 }
                 break;
 
-            case Phase.Clear:
+            case Phase.BeforeClear:
                 clearStopTime -= Time.deltaTime;
+                if (clearStopTime <= 0)
+                {
+                    m_phase = Phase.Clear;
+                }
                 ui_RippleCount.UI_OUT();
                 break;
-        }
 
-        if (this.stageClearFlag == true) //クリアフラグがオンになったら
-        {
-            this.musicCountUpTimer += Time.deltaTime; //カウント加算
-            if(this.musicCountUpTimer > 1) //カウントタイマーが１より大きくなったとき
-            {
-                audioSource[1].Play(); //1番目の音を鳴らす
-                this.stageClearFlag = false; //クリアフラグオフ
-            }
+            case Phase.Clear:
+                if (!this.audioSource[1].isPlaying) //クリアフラグがオンになったら
+                {
+                    audioSource[1].Play(); //1番目の音を鳴らす
+                }
+                break;
         }
     }
 
@@ -90,11 +91,10 @@ public class GameDirector : MonoBehaviour
         return true;
     }
 
-    void Clear()
+    void BeforeClear()
     {
-        m_phase = Phase.Clear;
+        m_phase = Phase.BeforeClear;
         audioSource[0].Play(); //0番目の音を鳴らす
-        this.stageClearFlag = true; //フラグオン
     }
 
     bool FadeIn(Image image)

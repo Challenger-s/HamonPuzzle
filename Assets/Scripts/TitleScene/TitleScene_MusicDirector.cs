@@ -27,8 +27,10 @@ public class TitleScene_MusicDirector : MonoBehaviour
             this.destroyCountUpTimer += Time.deltaTime; // タイマー加算
             if (this.destroyCountUpTimer > 2) //２秒後に判定
             {
-                Destroy(this.gameObject);//このオブジェクトをデストロイする
+                audioSource[0].Stop();
             }
+
+            audioSource[1].volume = audioSource[1].volume - 0.3f * Time.deltaTime;
         }
     }
 }

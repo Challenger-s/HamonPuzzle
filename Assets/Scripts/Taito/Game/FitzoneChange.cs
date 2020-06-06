@@ -19,6 +19,8 @@ public class FitzoneChange : MonoBehaviour
     [SerializeField]
     GameObject burst;
 
+    [SerializeField] GameDirector gameDirector;
+
     [SerializeField]
     float GrowingSpeed = 0.3f;
 
@@ -60,81 +62,81 @@ public class FitzoneChange : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //if (gameDirector.ReturnPhase())
+        //{
+            delta += Time.deltaTime;
 
-        delta += Time.deltaTime;
-
-        if (delta > span)
-        {
-            //notEnough.transform.localScale = new Vector3(0.5f, 0.5f, 1);
-
-            //complete.transform.localScale = new Vector3(0.5f, 0.5f, 1);
-        }
-
-        switch (change)
-        {
-            case Change.NotEnougLarge:
-                if (Large(notEnough))
-                {
-
-                    change = Change.NotEnougSmall;
-                }
-                break;
-            case Change.NotEnougSmall:
-                if (Small(notEnough))
-                {
-                    change = Change.NULL;
-                }
-                break;
-
-
-            case Change.CompleteLrage:
-                if (Large(complete))
-                {
-                    change = Change.CompleteSmall;
-                }
-                break;
-            case Change.CompleteSmall:
-                if (Small(complete))
-                {
-                    change = Change.NULL;
-                }
-                break;
-
-
-            case Change.BurstLarge:
-                if (Large(burst))
-                {
-                    change = Change.BurstSmall;
-                }
-                break;
-            case Change.BurstSmall:
-                if (Small(burst))
-                {
-                    change = Change.NULL;
-                }
-                break;
-
-
-        }
-
-        if (!(lastCont == fitzoneController.GetCount()))
-        {
-            lastCont = fitzoneController.GetCount();
-            if (fitzoneController.GetCount() == 0)
+            if (delta > span)
             {
+                //notEnough.transform.localScale = new Vector3(0.5f, 0.5f, 1);
 
-                Complete();
+                //complete.transform.localScale = new Vector3(0.5f, 0.5f, 1);
             }
-            else if (fitzoneController.GetCount() < 0)
-            {
-                Burst();
-            }
-            else if (fitzoneController.GetCount() > 0)
-            {
 
-                NotEnough();
+            switch (change)
+            {
+                case Change.NotEnougLarge:
+                    if (Large(notEnough))
+                    {
+
+                        change = Change.NotEnougSmall;
+                    }
+                    break;
+                case Change.NotEnougSmall:
+                    if (Small(notEnough))
+                    {
+                        change = Change.NULL;
+                    }
+                    break;
+
+
+                case Change.CompleteLrage:
+                    if (Large(complete))
+                    {
+                        change = Change.CompleteSmall;
+                    }
+                    break;
+                case Change.CompleteSmall:
+                    if (Small(complete))
+                    {
+                        change = Change.NULL;
+                    }
+                    break;
+
+
+                case Change.BurstLarge:
+                    if (Large(burst))
+                    {
+                        change = Change.BurstSmall;
+                    }
+                    break;
+                case Change.BurstSmall:
+                    if (Small(burst))
+                    {
+                        change = Change.NULL;
+                    }
+                    break;
             }
-        }
+
+            if (!(lastCont == fitzoneController.GetCount()))
+            {
+                lastCont = fitzoneController.GetCount();
+                if (fitzoneController.GetCount() == 0)
+                {
+
+                    Complete();
+                }
+                else if (fitzoneController.GetCount() < 0)
+                {
+                    Burst();
+                }
+                else if (fitzoneController.GetCount() > 0)
+                {
+
+                    NotEnough();
+                }
+            }
+        //}
     }
 
     void NotEnough()
@@ -156,11 +158,9 @@ public class FitzoneChange : MonoBehaviour
             */
             Debug.Log("a");
             change = Change.NotEnougLarge;
-
         }
         else
         {
-
             //notEnough.transform.localScale = new Vector3(minsize, minsize, 1);
             for (int i = 0; i < SpNotEnoughs.Length; i++)
             {
