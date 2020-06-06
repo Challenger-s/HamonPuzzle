@@ -58,7 +58,7 @@ public class ResonancePointController : MonoBehaviour
             //float distanceFromRipple_scaleCalculated_outer = (rippleSize - rippleController.GetRippleColliderWidth()) - (distanceFromRipple + this.transform.localScale.x / 2);
 
 
-            Debug.Log(i.ToString());
+            //Debug.Log(i.ToString());
             // 円の当たり判定の応用
             if (distanceFromRipple_scaleCalculated_inner < ColliderSize && distanceFromRipple_scaleCalculated_outer < ColliderSize)
             {
@@ -104,11 +104,13 @@ public class ResonancePointController : MonoBehaviour
     private void OnMouseEnter()
     {
         this.m_rippleGenerator.OverObject(true);
+        Debug.Log("hairu");
     }
 
     //　カーソルが離れた時の判定
     private void OnMouseExit()
     {
         this.m_rippleGenerator.OverObject(false);
+        Debug.Log("hazureta");
     }
 }
