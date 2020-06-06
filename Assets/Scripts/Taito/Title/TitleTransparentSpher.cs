@@ -31,6 +31,7 @@ public class TitleTransparentSpher : MonoBehaviour
         bomttomLeft = getScreenBottomLeft();
         topRight = getSceenTopRight();
         bomttomRight = getScreenBottomRight();
+        _mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
     }
 
     // Update is called once per frame

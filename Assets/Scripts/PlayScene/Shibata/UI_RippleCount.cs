@@ -5,7 +5,6 @@ using UnityEngine;
 public class UI_RippleCount : MonoBehaviour
 {
     [SerializeField] GameObject ui_CounterPrefab;
-    [SerializeField] float positionY = 0;
 
     Animator animator;
 
