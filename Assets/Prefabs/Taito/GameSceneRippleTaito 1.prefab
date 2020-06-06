@@ -143,6 +143,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_lineRenderer: {fileID: 761406432907108424}
   m_radius: 1.2
+  maxRndSize: 3
+  minRndSize: 1
   m_lineWidth: 0.15
   m_colliderWidth: 0.35
   m_speed: 1

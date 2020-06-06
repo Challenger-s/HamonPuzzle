@@ -32,26 +32,35 @@ public class FitzoneChange : MonoBehaviour
     float delta = 0;
     float span = 0.3f;
 
-    float size = 0;
+    float minsize = 0;
     float maxSize = 0;
 
-    bool a = false;
-    bool b = false;
+    enum Change
+    {
+        NotEnougLarge,
+        NotEnougSmall,
+        CompleteLrage,
+        CompleteSmall,
+        BurstLarge,
+        BurstSmall,
+        NULL,
+    }
+    Change change = Change.NULL;
 
     // Start is called before the first frame update
     void Start()
     {
         maxSize = notEnough.transform.localScale.x * 1.2f;
-        size = notEnough.transform.localScale.x;
+        minsize = notEnough.transform.localScale.x;
 
         clearCont = fitzoneController.GetCount();
         lastCont = fitzoneController.GetCount();
-        //Debug.Log(clearCont);
     }
 
     // Update is called once per frame
     void Update()
     {
+
         delta += Time.deltaTime;
 
         if (delta > span)
@@ -61,41 +70,59 @@ public class FitzoneChange : MonoBehaviour
             //complete.transform.localScale = new Vector3(0.5f, 0.5f, 1);
         }
 
-        if (a)
+        switch (change)
         {
-            if (notEnough.transform.localScale.x < maxSize || complete.transform.localScale.x < maxSize)
-            {
-                notEnough.transform.localScale = new Vector3(notEnough.transform.localScale.x + GrowingSpeed * Time.deltaTime, notEnough.transform.localScale.y + GrowingSpeed * Time.deltaTime, 1);
-                complete.transform.localScale = new Vector3(complete.transform.localScale.x + GrowingSpeed * Time.deltaTime, complete.transform.localScale.y + GrowingSpeed * Time.deltaTime, 1);
-            }
-            else
-            {
-                a = false;
-                b = true;
-            }
+            case Change.NotEnougLarge:
+                if (Large(notEnough))
+                {
+
+                    change = Change.NotEnougSmall;
+                }
+                break;
+            case Change.NotEnougSmall:
+                if (Small(notEnough))
+                {
+                    change = Change.NULL;
+                }
+                break;
+
+
+            case Change.CompleteLrage:
+                if (Large(complete))
+                {
+                    change = Change.CompleteSmall;
+                }
+                break;
+            case Change.CompleteSmall:
+                if (Small(complete))
+                {
+                    change = Change.NULL;
+                }
+                break;
+
+
+            case Change.BurstLarge:
+                if (Large(burst))
+                {
+                    change = Change.BurstSmall;
+                }
+                break;
+            case Change.BurstSmall:
+                if (Small(burst))
+                {
+                    change = Change.NULL;
+                }
+                break;
+
+
         }
-
-        if (b)
-        {
-            if (notEnough.transform.localScale.x > size || complete.transform.localScale.x > size)
-            {
-                notEnough.transform.localScale = new Vector3(notEnough.transform.localScale.x - SmallerSpeed * Time.deltaTime, notEnough.transform.localScale.y - SmallerSpeed * Time.deltaTime, 1);
-                complete.transform.localScale = new Vector3(complete.transform.localScale.x - SmallerSpeed * Time.deltaTime, complete.transform.localScale.y - SmallerSpeed * Time.deltaTime, 1);
-            }
-            else
-            {
-                b = false;
-            }
-        }
-
-
-
 
         if (!(lastCont == fitzoneController.GetCount()))
         {
             lastCont = fitzoneController.GetCount();
             if (fitzoneController.GetCount() == 0)
             {
+
                 Complete();
             }
             else if (fitzoneController.GetCount() < 0)
@@ -104,6 +131,7 @@ public class FitzoneChange : MonoBehaviour
             }
             else if (fitzoneController.GetCount() > 0)
             {
+
                 NotEnough();
             }
         }
@@ -126,12 +154,14 @@ public class FitzoneChange : MonoBehaviour
                 SpNotEnoughs[i].color = new Color(SpNotEnoughs[i].color.r, SpNotEnoughs[i].color.g, SpNotEnoughs[i].color.b, SpNotEnoughs[i].color.a - (1 / 3f));
             }
             */
-            a = true;
+            Debug.Log("a");
+            change = Change.NotEnougLarge;
 
         }
         else
         {
-            notEnough.transform.localScale = new Vector3(size, size, 1);
+
+            //notEnough.transform.localScale = new Vector3(minsize, minsize, 1);
             for (int i = 0; i < SpNotEnoughs.Length; i++)
             {
                 SpNotEnoughs[i].color = new Color(SpNotEnoughs[i].color.r, SpNotEnoughs[i].color.g, SpNotEnoughs[i].color.b, 1);
@@ -141,12 +171,11 @@ public class FitzoneChange : MonoBehaviour
 
     void Complete()
     {
-        delta = 0f;
         burst.SetActive(false);
         notEnough.SetActive(false);
         complete.SetActive(true);
         //complete.transform.localScale = new Vector3(0.6f, 0.6f, 1);
-        a = true;
+        change = Change.CompleteLrage;
     }
 
     void Burst()
@@ -154,5 +183,34 @@ public class FitzoneChange : MonoBehaviour
         notEnough.SetActive(false);
         complete.SetActive(false);
         burst.SetActive(true);
+        change = Change.BurstLarge;
+    }
+
+    bool Large(GameObject fitzone)
+    {
+        fitzone.transform.localScale = new Vector3(fitzone.transform.localScale.x + GrowingSpeed * Time.deltaTime, fitzone.transform.localScale.y + GrowingSpeed * Time.deltaTime, 1);
+
+        if (fitzone.transform.localScale.x > maxSize)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    bool Small(GameObject fitzone)
+    {
+        fitzone.transform.localScale = new Vector3(fitzone.transform.localScale.x - GrowingSpeed * Time.deltaTime, fitzone.transform.localScale.y - GrowingSpeed * Time.deltaTime, 1);
+
+        if (fitzone.transform.localScale.x < minsize)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

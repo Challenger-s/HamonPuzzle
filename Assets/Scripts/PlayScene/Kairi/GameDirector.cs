@@ -9,6 +9,7 @@ public class GameDirector : MonoBehaviour
     [SerializeField] UI_RippleCount ui_RippleCount;
     [SerializeField] Image fadeImage;
     [SerializeField] float fadeInSpeed = 0.5f;
+    [SerializeField] float clearStopTime = 0.5f;
 
     bool stageClearFlag = false; //ステージをクリアしたかどうかの判定フラグ
     float musicCountUpTimer = 0; //クリア後、白円音が鳴るまでの間
@@ -58,6 +59,7 @@ public class GameDirector : MonoBehaviour
                 break;
 
             case Phase.Clear:
+                clearStopTime -= Time.deltaTime;
                 ui_RippleCount.UI_OUT();
                 break;
         }
@@ -113,6 +115,19 @@ public class GameDirector : MonoBehaviour
     public bool ReturnPhase()
     {
         if (m_phase == Phase.Play)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    //　クリアの時の止まっている時間
+    public bool ReturnClearStopTIme()
+    {
+        if (clearStopTime <= 0)
         {
             return true;
         }

@@ -27,8 +27,16 @@ public class PlayScene_MusicDIrector : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetMouseButton(0) && this.rippleCounter >= 1 && gameDirector.ReturnPhase())
+        {
+            audioSource[Random.Range(0, 4)].Play();
+        }
         this.rippleCounter = rippleGenerator.GetRippleCount(); //RippleGeneratorから波紋を出せる回数を取得
+    }
 
+    /*
+    void Update()
+    {  
         if (Input.GetMouseButtonDown(0) && this.rippleCounter > 0 && gameDirector.ReturnPhase()) //左マウスボタンを押した瞬間、波紋カウンターが０より大きいとき
         {
             this.resetStopflag = false; //リセ止めフラグオフ　リセットできるようになる
@@ -69,7 +77,7 @@ public class PlayScene_MusicDIrector : MonoBehaviour
             this.resetStopflag = true; //リセ止めフラグをオン　不要なリセットを止める
             this.rippleVariation = -1; //バリエーション決め変数をリセットする
         }
-    }
+}*/
 
     void RippleSound_2(int rippleVar) //波紋の音を鳴らす処理（出せる回数が２回のとき）
     {
@@ -264,4 +272,5 @@ public class PlayScene_MusicDIrector : MonoBehaviour
             this.randomStopflag = false; //抽選を止めるフラグをオフ
         }
     }
+
 }
