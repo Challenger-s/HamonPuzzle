@@ -125,6 +125,12 @@ public class RippleGenerator : MonoBehaviour
         this.overObject = check;
     }
 
+    //　カーソルがオブジェクトに重なっているかを返す
+    public bool ReturnOverObject()
+    {
+        return overObject;
+    }
+
     //　ポーズフラグを変更する関数
     public void ChangePoseFlag(bool flag)
     {
