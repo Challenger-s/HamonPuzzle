@@ -28,11 +28,7 @@ public class PlayScene_MusicDIrector : MonoBehaviour
 
     void Update()
     {
-<<<<<<< HEAD
-        if (Input.GetMouseButtonDown(0) && this.rippleCounter > 0 && gameDirector.ReturnPhase())
-=======
         if (Input.GetMouseButtonDown(0) && this.rippleCounter > 0 && gameDirector.ReturnPhase() && !rippleGenerator.ReturnOverObject() && !poseDirector.ReturnPoseDisplay())
->>>>>>> NewShibata
         {
             audioSource[Random.Range(0, 3)].Play();
         }

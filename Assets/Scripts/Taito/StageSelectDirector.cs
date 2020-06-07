@@ -227,9 +227,7 @@ public class StageSelectDirector : MonoBehaviour
 
     void StageAddition()
     {
-
-
-       // if (clearButtonColor.transform.position.x + (ac.bounds.size.x / 2f) < stageButtons[stageClearNumber - 1].transform.position ) 
+       /* if (clearButtonColor.transform.position.x + (ac.bounds.size.x / 2f) < stageButtons[stageClearNumber - 1].transform.position ) 
         {
             parentClearButtonColor.transform.localScale = new Vector3(parentClearButtonColor.transform.localScale.x + 1.15f * Time.deltaTime, 
                 parentClearButtonColor.transform.localScale.y, 
@@ -245,7 +243,7 @@ public class StageSelectDirector : MonoBehaviour
             newStage = true;
             button = Button.large;
         }
-
+        */
         /*
          *   Vector2 screenPos = RectTransformUtility.WorldToScreenPoint(canvas.worldCamera, unclearBackground.rectTransform.position);
 
