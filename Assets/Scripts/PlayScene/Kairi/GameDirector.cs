@@ -10,6 +10,7 @@ public class GameDirector : MonoBehaviour
     [SerializeField] Image fadeImage;
     [SerializeField] float fadeInSpeed = 0.5f;
     [SerializeField] float clearStopTime = 0.5f;
+    [SerializeField] float pauseRainVolume = 0.5f;
 
     AudioSource[] audioSource; //オーディオソース使用（３つ
 
@@ -58,7 +59,7 @@ public class GameDirector : MonoBehaviour
                 }
                 break;
 
-            case Phase.Pause:
+            case Phase.Pause:                
                 break;
 
             case Phase.BeforeClear:
@@ -93,6 +94,20 @@ public class GameDirector : MonoBehaviour
         }
 
         return true;
+    }
+
+    //　ポーズ画面に入る
+    public void EnterPause()
+    {
+        m_phase = Phase.Pause;
+        audioSource[2].volume = pauseRainVolume;
+    }
+
+    //　ポーズ画面から出る
+    public void ExitPause()
+    {
+        m_phase = Phase.Play;
+        audioSource[2].volume = 1f;
     }
 
     void BeforeClear()
