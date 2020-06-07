@@ -12,11 +12,6 @@ public class StageSelectDirector : MonoBehaviour
     [SerializeField]
     int stageClearNumber = 1;
 
-    [SerializeField]
-    GameObject a;
-
-    [SerializeField]
-    GameObject b;
 
     [SerializeField]
     Canvas canvas;
@@ -58,7 +53,13 @@ public class StageSelectDirector : MonoBehaviour
     GameObject[] stageButtons;
 
     [SerializeField]
-    GameObject[] buttons;
+    SpriteRenderer[] stageButtonsSp;
+
+    [SerializeField]
+    GameObject[] buttons1;
+
+    [SerializeField]
+    GameObject[] buttons2;
 
     [SerializeField]
     SpriteRenderer ac;
@@ -113,6 +114,27 @@ public class StageSelectDirector : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameObject[][] buttonsALL = {buttons1,buttons2};
+
+        int c = 0;
+
+        for (int i = 0; i < buttonsALL.Length; i++)
+        {
+            if(i == 0)
+            {
+                c = stageClearNumber + 1;
+
+            }else if(i == 1)
+            {
+                c = stageClearNumber;
+            }
+
+            for (int j = c; j < buttonsALL[i].Length; j++)
+            {
+                buttonsALL[i][j].SetActive(false);
+            }
+        }
+   
         stageClearNumber = PlayerPrefs.GetInt("StageClear", 0);
 
         //c = (a.transform.position.x - b.transform.position.x) / 2;
@@ -227,23 +249,26 @@ public class StageSelectDirector : MonoBehaviour
 
     void StageAddition()
     {
-       /* if (clearButtonColor.transform.position.x + (ac.bounds.size.x / 2f) < stageButtons[stageClearNumber - 1].transform.position ) 
+        float a = (stageButtons[stageClearNumber].transform.position.x + (stageButtonsSp[stageClearNumber].bounds.size.x / 2f));
+        float b = (stageButtons[stageClearNumber - 1].transform.position.x - (stageButtonsSp[stageClearNumber - 1].bounds.size.x / 2f));
+        float c = ((a - b) / 2f) + b;
+
+        if (clearButtonColor.transform.position.x + (ac.bounds.size.x / 2f) < c) 
         {
             parentClearButtonColor.transform.localScale = new Vector3(parentClearButtonColor.transform.localScale.x + 1.15f * Time.deltaTime, 
                 parentClearButtonColor.transform.localScale.y, 
                 0);
-
-            parentUnClearButtonColor.transform.localScale = new Vector3(parentClearButtonColor.transform.localScale.x +1.15f * Time.deltaTime,
-                parentClearButtonColor.transform.localScale.y, 
-                0);
         }
         else
-        {                   
+        {
+            parentUnClearButtonColor.transform.localScale = new Vector3(parentClearButtonColor.transform.localScale.x + 1.15f * Time.deltaTime,
+          parentClearButtonColor.transform.localScale.y,
+          0);
             BackGroundColor();
             newStage = true;
             button = Button.large;
         }
-        */
+        
         /*
          *   Vector2 screenPos = RectTransformUtility.WorldToScreenPoint(canvas.worldCamera, unclearBackground.rectTransform.position);
 
@@ -395,10 +420,40 @@ public class StageSelectDirector : MonoBehaviour
 
     void ButtonOff(bool off)
     {
-        for(int i = 0; i < buttons.Length; i++)
+        GameObject[][] buttonsALL = { buttons1, buttons2 };
+        if (off)
         {
-            buttons[i].SetActive(off);
-        } 
+            int c = 0;
+
+            if (backGuroundNumber == 0)
+            {
+                c = stageClearNumber;
+            }
+            else if (backGuroundNumber == 1)
+            {
+                c = stageClearNumber;
+            }
+
+            for (int i = 0; i < buttonsALL[backGuroundNumber].Length; i++)
+            {
+                buttonsALL[backGuroundNumber][i].SetActive(off);
+            }
+
+            
+    
+            
+
+        }
+        else
+        {          
+            for (int i = 0; i < buttonsALL.Length; i++)
+            {
+                for (int j = 0; j < buttonsALL[i].Length; j++)
+                {
+                    buttonsALL[i][j].SetActive(false);
+                }
+            }
+        }
     }
 
 
