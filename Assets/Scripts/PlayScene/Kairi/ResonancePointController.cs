@@ -104,13 +104,11 @@ public class ResonancePointController : MonoBehaviour
     private void OnMouseEnter()
     {
         this.m_rippleGenerator.OverObject(true);
-        Debug.Log("hairu");
     }
 
     //　カーソルが離れた時の判定
     private void OnMouseExit()
     {
-        this.m_rippleGenerator.OverObject(false);
-        Debug.Log("hazureta");
+        this.m_rippleGenerator.OverObject(false);        
     }
 }

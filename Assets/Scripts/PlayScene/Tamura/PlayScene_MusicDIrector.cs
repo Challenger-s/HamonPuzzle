@@ -16,6 +16,7 @@ public class PlayScene_MusicDIrector : MonoBehaviour
     RippleGenerator rippleGenerator; //他スクリプトから使用
 
     [SerializeField] GameDirector gameDirector;
+    [SerializeField] GameD poseDirector;
 
     int rippleCounter = 0; //波紋を出せる回数
     int rippleVariation = -1; //ランダムに決める波紋の組み合わせ
@@ -27,7 +28,11 @@ public class PlayScene_MusicDIrector : MonoBehaviour
 
     void Update()
     {
+<<<<<<< HEAD
         if (Input.GetMouseButtonDown(0) && this.rippleCounter > 0 && gameDirector.ReturnPhase())
+=======
+        if (Input.GetMouseButtonDown(0) && this.rippleCounter > 0 && gameDirector.ReturnPhase() && !rippleGenerator.ReturnOverObject() && !poseDirector.ReturnPoseDisplay())
+>>>>>>> NewShibata
         {
             audioSource[Random.Range(0, 3)].Play();
         }

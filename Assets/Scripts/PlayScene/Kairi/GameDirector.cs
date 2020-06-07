@@ -58,6 +58,9 @@ public class GameDirector : MonoBehaviour
                 }
                 break;
 
+            case Phase.Pause:
+                break;
+
             case Phase.BeforeClear:
                 clearStopTime -= Time.deltaTime;
                 if (clearStopTime <= 0)
@@ -123,6 +126,11 @@ public class GameDirector : MonoBehaviour
         {
             return false;
         }
+    }
+
+    public void PhaseChange(Phase change)
+    {
+        m_phase = change;
     }
 
     //　クリアの時の止まっている時間
