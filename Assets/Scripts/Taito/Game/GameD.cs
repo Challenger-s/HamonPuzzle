@@ -29,34 +29,37 @@ public class GameD : MonoBehaviour
         {
             Menu();
         }
-        else if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Escape)) && gameDirector.ReturnPhase())
+        else if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Escape)) && (gameDirector.m_phase == GameDirector.Phase.Play || gameDirector.m_phase == GameDirector.Phase.Pause))
         {            
             if (! poseDisplay)
             {
                 poseDisplay = true;
                 this.rippleGenerator.ChangePoseFlag(poseDisplay);
+                gameDirector.EnterPause();                          //　Phase を Pause に変更
                 for (int i = 0; i < pauseObjects.Length; i++)
                 {
                     Time.timeScale = 0f;
                     pauseObjects[i].SetActive(true);
                 }
-                Debug.Log("pose");
             }
             else
             {
                 poseDisplay = false;
                 this.rippleGenerator.ChangePoseFlag(poseDisplay);
+                gameDirector.ExitPause();                           //　Phase を Play に変更
                 Continue();
             }
         }
     }
 
+    //　続けるボタンを押したとき
     public void Continue()
     {
         for(int i = 0; i < pauseObjects.Length; i++)
         {
             poseDisplay = false;
             this.rippleGenerator.ChangePoseFlag(poseDisplay);
+            gameDirector.ExitPause();                           //　Phase を Play に変更
             pauseObjects[i].SetActive(false);
             Time.timeScale = 1f;
         }

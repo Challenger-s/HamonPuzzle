@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class ContinueButton : MonoBehaviour
 {
-    [SerializeField]
-    GameD gameD;
-
+    [SerializeField] GameD gameD;
+    [SerializeField] PoseButton poseButton;
 
     public void OnClck()
     {
+        poseButton.SizeReset();
         gameD.Continue();
     }
 }
