@@ -27,7 +27,7 @@ public class PlayScene_MusicDIrector : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButton(0) && this.rippleCounter > 0 && gameDirector.ReturnPhase())
+        if (Input.GetMouseButtonDown(0) && this.rippleCounter > 0 && gameDirector.ReturnPhase())
         {
             audioSource[Random.Range(0, 3)].Play();
         }

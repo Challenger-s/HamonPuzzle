@@ -157,11 +157,15 @@ public class StageSelectDirector : MonoBehaviour
         {
             if (mainCamera.transform.position.x > (screenPos.x - screenSizeX))
             {
-                mainCamera.transform.position = new Vector3(mainCamera.transform.position.x - 20f * Time.deltaTime, mainCamera.transform.position.y, mainCamera.transform.position.z);
+                mainCamera.transform.position = new Vector3(mainCamera.transform.position.x - 20f * Time.deltaTime,
+                    mainCamera.transform.position.y,
+                    mainCamera.transform.position.z);
             }
             else
             {
-                mainCamera.transform.position = new Vector3(screenPos.x - screenSizeX, mainCamera.transform.position.y, mainCamera.transform.position.z);
+                mainCamera.transform.position = new Vector3(screenPos.x - screenSizeX,
+                    mainCamera.transform.position.y,
+                    mainCamera.transform.position.z);
                 sctollL = false;
                 backGuroundNumber--;
                 ButtonOff(true);
@@ -173,11 +177,15 @@ public class StageSelectDirector : MonoBehaviour
         {
             if (mainCamera.transform.position.x < screenPos.x + screenSizeX)
             {
-                mainCamera.transform.position = new Vector3(mainCamera.transform.position.x + 20f * Time.deltaTime, mainCamera.transform.position.y, mainCamera.transform.position.z);
+                mainCamera.transform.position = new Vector3(mainCamera.transform.position.x + 20f * Time.deltaTime,
+                    mainCamera.transform.position.y,
+                    mainCamera.transform.position.z);
             }
             else
             {
-                mainCamera.transform.position = new Vector3(screenPos.x + screenSizeX, mainCamera.transform.position.y, mainCamera.transform.position.z);
+                mainCamera.transform.position = new Vector3(screenPos.x + screenSizeX,
+                    mainCamera.transform.position.y, 
+                    mainCamera.transform.position.z);
                 sctollR = false;
                 backGuroundNumber++;
                 ButtonOff(true);
@@ -221,14 +229,18 @@ public class StageSelectDirector : MonoBehaviour
     {
 
 
-        if (clearButtonColor.transform.position.x + (ac.bounds.size.x / 2f) < a.transform.position.x + (3.5f / 2) + ((stageClearNumber - 1) * 3.5f)) 
+       // if (clearButtonColor.transform.position.x + (ac.bounds.size.x / 2f) < stageButtons[stageClearNumber - 1].transform.position ) 
         {
-            parentClearButtonColor.transform.localScale = new Vector3(parentClearButtonColor.transform.localScale.x + 1.15f * Time.deltaTime, parentClearButtonColor.transform.localScale.y, 0);
- 
+            parentClearButtonColor.transform.localScale = new Vector3(parentClearButtonColor.transform.localScale.x + 1.15f * Time.deltaTime, 
+                parentClearButtonColor.transform.localScale.y, 
+                0);
+
+            parentUnClearButtonColor.transform.localScale = new Vector3(parentClearButtonColor.transform.localScale.x +1.15f * Time.deltaTime,
+                parentClearButtonColor.transform.localScale.y, 
+                0);
         }
         else
-        {
-                     
+        {                   
             BackGroundColor();
             newStage = true;
             button = Button.large;
@@ -274,9 +286,9 @@ public class StageSelectDirector : MonoBehaviour
 
     void NewStage()
     {
-        if(unClearButtonColor.transform.position.x + unClearColor.bounds.size.x < stageButtons[0].transform.position.x + (stageBuuttonSizse.bounds.size.x / 2f) + (stageClearNumber * 3.5f))
+        if (unClearButtonColor.transform.position.x + (unClearColor.bounds.size.x / 2f) < stageButtons[stageClearNumber].transform.position.x + (stageBuuttonSizse.bounds.size.x / 2f))
         {
-            unClearButtonColor.transform.localScale = new Vector3(unClearButtonColor.transform.localScale.x + 1.15f * Time.deltaTime, unClearButtonColor.transform.localScale.y, 0);
+            parentUnClearButtonColor.transform.localScale = new Vector3(parentUnClearButtonColor.transform.localScale.x + 1.15f * Time.deltaTime, parentUnClearButtonColor.transform.localScale.y, 0);
         }
         else
         {
@@ -286,8 +298,7 @@ public class StageSelectDirector : MonoBehaviour
     }
 
     private void BackGroundColor()
-    {
-        
+    {       
         BackGround[backGuroundNumber].color = Color.Lerp(startColor, endColor, t += 1f / 5f);
     }
 
@@ -398,6 +409,4 @@ public class StageSelectDirector : MonoBehaviour
         PlayerPrefs.SetInt("StageClear", stageClearNumber);
         PlayerPrefs.Save();
     }
-
-
 }
