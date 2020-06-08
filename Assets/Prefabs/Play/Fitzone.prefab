@@ -105,6 +105,7 @@ MonoBehaviour:
   m_resonanceRippleList: {fileID: 0}
   rippleGenerator: {fileID: 0}
   m_gameDirector: {fileID: 0}
+  m_hittingRippleCount: 0
 --- !u!58 &1459818544909692805
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -281,7 +282,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 3
+  m_SortingOrder: -1
   m_TargetDisplay: 0
 --- !u!114 &8767748956236654857
 MonoBehaviour:
