@@ -51,6 +51,11 @@ public class NewBehaviourScript : MonoBehaviour
             SceneManager.LoadScene(7);
         }
 
+        if (Input.GetKey(KeyCode.Alpha8))
+        {
+            SceneManager.LoadScene(8);
+        }
+
         if (Input.GetKey(KeyCode.Alpha0))
         {
             SceneManager.LoadScene(0);

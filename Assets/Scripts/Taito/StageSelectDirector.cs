@@ -118,30 +118,26 @@ public class StageSelectDirector : MonoBehaviour
     void Start()
     {
         Restoration();
-        GameObject[][] buttonsALL = {buttons1,buttons2};
 
-        int c = 0;
-
+        GameObject[][] buttonsALL = { buttons1, buttons2 };
+        sctollButton[0].SetActive(false);
+        sctollButton[1].SetActive(false);
         for (int i = 0; i < buttonsALL.Length; i++)
         {
-            if(i == 0)
-            {
-                c = stageClearNumber + 1;
-
-            }else if(i == 1)
-            {
-                c = stageClearNumber;
-            }
-
-            for (int j = c; j < buttonsALL[i].Length; j++)
+            for (int j = 0; j < buttonsALL[i].Length; j++)
             {
                 buttonsALL[i][j].SetActive(false);
             }
         }
-   
-        stageClearNumber = PlayerPrefs.GetInt("StageClear", 0);
 
-        //c = (a.transform.position.x - b.transform.position.x) / 2;
+        ButtonOff(true);
+
+
+        stageClearNumber = PlayerPrefs.GetInt("StageClear");
+        
+
+        currentStage = PlayerPrefs.GetInt("CurrentStage");
+      
 
         screenSizeX = ScreenSizeX();
         screenPos = mainCamera.transform.position;
@@ -169,7 +165,7 @@ public class StageSelectDirector : MonoBehaviour
 
         if (stageClearNumber > currentStage)
         {
-            
+          
             if (newStage)
             {
                 NewStage();
@@ -274,42 +270,6 @@ public class StageSelectDirector : MonoBehaviour
             button = Button.large;
         }
         
-        /*
-         *   Vector2 screenPos = RectTransformUtility.WorldToScreenPoint(canvas.worldCamera, unclearBackground.rectTransform.position);
-
-
-        //スクリーン座標→ワールド座標に変換
-        RectTransformUtility.ScreenPointToWorldPointInRectangle(unclearBackground.rectTransform, screenPos, canvas.worldCamera, out result);
-
-        if (result.x < (result2.x) + ((3.5f / 2f) * stageClearNumber))
-        {
-           unclearBackground.rectTransform.sizeDelta = new Vector2(unclearBackground.rectTransform.sizeDelta.x - (backGroundMoveSpeed * 0.84f) * Time.deltaTime, unclearBackground.rectTransform.sizeDelta.y);
-            unclearBackground.rectTransform.position = new Vector3(unclearBackground.rectTransform.position.x + backGroundMoveSpeed * Time.deltaTime, 0, 0);
-
-            unClearButtonColor.transform.position = new Vector3(unClearButtonColor.transform.position.x + 1f * Time.deltaTime, unClearButtonColor.transform.position.y, 0);
-
-            if(!(stageClearNumber == 0))
-            {
-                unClearButtonColor.transform.localScale = new Vector3(unClearButtonColor.transform.localScale.x - 0.6f * Time.deltaTime, unClearButtonColor.transform.localScale.y, 0);
-
-                //unClearButtonColor.transform.localScale = new Vector3(unClearButtonColor.transform.localScale.x + 0.6f * Time.deltaTime, unClearButtonColor.transform.localScale.y, 0);
-            }
-            else
-            {
-                unClearButtonColor.transform.localScale = new Vector3(unClearButtonColor.transform.localScale.x - 0.5f * Time.deltaTime, unClearButtonColor.transform.localScale.y, 0);
-            }
-
-            clearButtonColor.transform.localScale = new Vector3(clearButtonColor.transform.localScale.x + 1.15f * Time.deltaTime, clearButtonColor.transform.localScale.y, 0);
-
-
-        }
-        else
-        {
-            currentStage = stageClearNumber;
-            playable = true;
-            playebleA = true;
-        }
-        */
     }
 
     void NewStage()
@@ -321,10 +281,12 @@ public class StageSelectDirector : MonoBehaviour
         else
         {
             currentStage = stageClearNumber;
+            SaveCurrent();
             ButtonOff(true);
             newStage = false;
         }
     }
+
 
     private void BackGroundColor()
     {       
@@ -429,13 +391,13 @@ public class StageSelectDirector : MonoBehaviour
         GameObject[][] buttonsALL = { buttons1, buttons2 };
         if (off)
         {
+
             sctollButton[0].SetActive(true);
             sctollButton[1].SetActive(true);
             int c = 0;
             
             if (backGuroundNumber == 0)
             {
-                Debug.Log(backGuroundNumber);
                 c = stageClearNumber + 1;
             }
             else if (backGuroundNumber == 1)
@@ -478,8 +440,10 @@ public class StageSelectDirector : MonoBehaviour
         float b = (stageButtons[stageClearNumber - 1].transform.position.x - (stageButtonsSp[stageClearNumber - 1].bounds.size.x / 2f));
         float c = ((a - b) / 2f) + b;
 
-        bool x = true;
-        while (x) {
+        bool clear = true;
+        bool unClear = true;
+
+        while (clear || unClear) {
             if (clearButtonColor.transform.position.x + (ac.bounds.size.x / 2f) < c)
             {
                 parentClearButtonColor.transform.localScale = new Vector3(parentClearButtonColor.transform.localScale.x + 1.15f * Time.deltaTime,
@@ -488,13 +452,35 @@ public class StageSelectDirector : MonoBehaviour
             }
             else
             {
-                x = false;
+ 
+                clear = false;
             }
 
+            if (clear == false)
+            {
+
+                if (unClearButtonColor.transform.position.x + (unClearColor.bounds.size.x / 2f) < stageButtons[stageClearNumber].transform.position.x + (stageBuuttonSizse.bounds.size.x / 2f))
+                {
+                    parentUnClearButtonColor.transform.localScale = new Vector3(parentUnClearButtonColor.transform.localScale.x + 1.15f * Time.deltaTime, parentUnClearButtonColor.transform.localScale.y, 0);
+                }
+                else
+                {
+                    unClear = false;
+                }
+            }
         }
     }
 
-
+    void SaveCurrent()
+    {       
+        PlayerPrefs.SetInt("CurrentStage", currentStage);
+        PlayerPrefs.Save();
+        if (PlayerPrefs.HasKey("CurrentStage"))
+        {
+            Debug.Log(currentStage);
+        }
+        
+    }
 
     void NextGame()
     {
