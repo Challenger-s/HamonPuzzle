@@ -187,6 +187,7 @@ MonoBehaviour:
   fadeImage: {fileID: 588491928}
   fadeInSpeed: 1
   clearStopTime: 1.5
+  pauseRainVolume: 0.5
   m_phase: 0
 --- !u!4 &63021661
 Transform:
@@ -200,7 +201,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &63021662
 AudioSource:
@@ -1184,7 +1185,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &718631135
 PrefabInstance:
@@ -1712,7 +1713,7 @@ PrefabInstance:
     - target: {fileID: 8767748954998365479, guid: deca3ed0a4729da4aa475bc87cbe0284,
         type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 8767748954998365479, guid: deca3ed0a4729da4aa475bc87cbe0284,
         type: 3}
@@ -2021,7 +2022,7 @@ PrefabInstance:
     - target: {fileID: 6075037348733455973, guid: fa2a1739247387c468a76fadae502967,
         type: 3}
       propertyPath: m_RootOrder
-      value: 18
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 6075037348733455973, guid: fa2a1739247387c468a76fadae502967,
         type: 3}
@@ -2168,7 +2169,7 @@ PrefabInstance:
     - target: {fileID: 8767748954998365479, guid: deca3ed0a4729da4aa475bc87cbe0284,
         type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 8767748954998365479, guid: deca3ed0a4729da4aa475bc87cbe0284,
         type: 3}
@@ -2286,7 +2287,7 @@ Transform:
   m_LocalScale: {x: 17, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1276757352
 PrefabInstance:
@@ -2409,6 +2410,8 @@ MonoBehaviour:
   pauseObjects: []
   forwardImage: {fileID: 1820511822}
   rippleGenerator: {fileID: 728341108}
+  gameDirector: {fileID: 63021660}
+  fadeSpeed: 0.5
   menu: 0
 --- !u!4 &1292679578
 Transform:
@@ -2607,7 +2610,7 @@ PrefabInstance:
     - target: {fileID: 5155842876033552871, guid: 897e706249901714a936312ca0fe1045,
         type: 3}
       propertyPath: m_RootOrder
-      value: 19
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5155842876033552871, guid: 897e706249901714a936312ca0fe1045,
         type: 3}
@@ -2634,6 +2637,11 @@ PrefabInstance:
       propertyPath: gameDirector
       value: 
       objectReference: {fileID: 63021660}
+    - target: {fileID: 5155842876033552872, guid: 897e706249901714a936312ca0fe1045,
+        type: 3}
+      propertyPath: poseDirector
+      value: 
+      objectReference: {fileID: 1292679577}
     - target: {fileID: 5155842876033552877, guid: 897e706249901714a936312ca0fe1045,
         type: 3}
       propertyPath: m_Name
@@ -2979,7 +2987,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1810295110
 GameObject:
@@ -3169,7 +3177,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1922021912 stripped
 Transform:
@@ -3402,7 +3410,7 @@ PrefabInstance:
     - target: {fileID: 8767748954998365479, guid: deca3ed0a4729da4aa475bc87cbe0284,
         type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 8767748954998365479, guid: deca3ed0a4729da4aa475bc87cbe0284,
         type: 3}
@@ -3618,7 +3626,7 @@ PrefabInstance:
     - target: {fileID: 8767748954998365479, guid: deca3ed0a4729da4aa475bc87cbe0284,
         type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 8767748954998365479, guid: deca3ed0a4729da4aa475bc87cbe0284,
         type: 3}
