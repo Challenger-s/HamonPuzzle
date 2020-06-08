@@ -6,20 +6,18 @@ public class MenuButton : MonoBehaviour
 {
     [SerializeField]
     GameD gameD;
-    // Start is called before the first frame update
+
+    AudioSource[] audioSource; //オーディオソース使用
+
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        audioSource = GetComponents<AudioSource>(); //オーディオソース取得
     }
 
     public void OnClck()
     {
+        audioSource[0].Play(); //音
+
         gameD.menu = true;
     }
 }
