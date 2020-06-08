@@ -62,6 +62,9 @@ public class StageSelectDirector : MonoBehaviour
     GameObject[] buttons2;
 
     [SerializeField]
+    GameObject[] sctollButton;
+
+    [SerializeField]
     SpriteRenderer ac;
 
     [SerializeField]
@@ -114,6 +117,7 @@ public class StageSelectDirector : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Restoration();
         GameObject[][] buttonsALL = {buttons1,buttons2};
 
         int c = 0;
@@ -149,6 +153,7 @@ public class StageSelectDirector : MonoBehaviour
         forwardImage.color = new Color(1, 1, 1, 1);
         fadeIN = true;
 
+       
     }
 
     // Update is called once per frame
@@ -316,6 +321,7 @@ public class StageSelectDirector : MonoBehaviour
         else
         {
             currentStage = stageClearNumber;
+            ButtonOff(true);
             newStage = false;
         }
     }
@@ -423,29 +429,39 @@ public class StageSelectDirector : MonoBehaviour
         GameObject[][] buttonsALL = { buttons1, buttons2 };
         if (off)
         {
+            sctollButton[0].SetActive(true);
+            sctollButton[1].SetActive(true);
             int c = 0;
-
+            
             if (backGuroundNumber == 0)
             {
-                c = stageClearNumber;
+                Debug.Log(backGuroundNumber);
+                c = stageClearNumber + 1;
             }
             else if (backGuroundNumber == 1)
             {
-                c = stageClearNumber;
+                Debug.Log(backGuroundNumber);
+                c = stageClearNumber - buttons2.Length + 1;
+            }
+            else
+            {
+                c = 0;
             }
 
-            for (int i = 0; i < buttonsALL[backGuroundNumber].Length; i++)
+            if (c > 6)
+            {
+                c = 6;
+            }
+
+            for (int i = 0; i < c; i++)
             {
                 buttonsALL[backGuroundNumber][i].SetActive(off);
-            }
-
-            
-    
-            
-
+            }            
         }
         else
-        {          
+        {
+            sctollButton[0].SetActive(false);
+            sctollButton[1].SetActive(false);
             for (int i = 0; i < buttonsALL.Length; i++)
             {
                 for (int j = 0; j < buttonsALL[i].Length; j++)
@@ -455,6 +471,29 @@ public class StageSelectDirector : MonoBehaviour
             }
         }
     }
+
+    void Restoration()
+    {
+        float a = (stageButtons[stageClearNumber].transform.position.x + (stageButtonsSp[stageClearNumber].bounds.size.x / 2f));
+        float b = (stageButtons[stageClearNumber - 1].transform.position.x - (stageButtonsSp[stageClearNumber - 1].bounds.size.x / 2f));
+        float c = ((a - b) / 2f) + b;
+
+        bool x = true;
+        while (x) {
+            if (clearButtonColor.transform.position.x + (ac.bounds.size.x / 2f) < c)
+            {
+                parentClearButtonColor.transform.localScale = new Vector3(parentClearButtonColor.transform.localScale.x + 1.15f * Time.deltaTime,
+                    parentClearButtonColor.transform.localScale.y,
+                    0);
+            }
+            else
+            {
+                x = false;
+            }
+
+        }
+    }
+
 
 
     void NextGame()
