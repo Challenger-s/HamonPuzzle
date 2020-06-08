@@ -9,11 +9,11 @@ public sealed class RippleController1 : MonoBehaviour
     [SerializeField] float maxRndSize = 3f;
     [SerializeField] float minRndSize = 1f;
 
-
     // staticを付ける/別のスクリプトへ隔離
     [SerializeField] private float m_lineWidth = 0;    // 円の線の太さ
     [SerializeField] private float m_colliderWidth = 0;    // 円の当たり判定のの太さ
-    [SerializeField] private float m_speed; // 波紋の速度
+    [SerializeField] private float maxRndSpeed = 1.2f;  // 波紋の速度
+    [SerializeField] private float minRndSpeed = 0.8f;  // 波紋の速度
 
     [SerializeField]
     GameObject rippleParent;
@@ -31,6 +31,7 @@ public sealed class RippleController1 : MonoBehaviour
     AudioSource[] audioSource = null;
 
     float maxSize = 0;
+    float m_speed = 0;
 
     
 
@@ -43,6 +44,7 @@ public sealed class RippleController1 : MonoBehaviour
     {
         InitLineRenderer();
         maxSize = Random.Range(minRndSize, maxRndSize);
+        m_speed = Random.Range(minRndSpeed, maxRndSpeed);
 
         if (!SE_OFF)
         {
