@@ -17,6 +17,8 @@ public class ResonancePointController : MonoBehaviour
 
     AudioSource[] audioSource; //オーディオソース使用
 
+    int resonanceCounter = 0; //共鳴が鳴った回数を
+
     //　最初の1フレームのみ実行
     private void Start()
     {
@@ -62,7 +64,17 @@ public class ResonancePointController : MonoBehaviour
             // 円の当たり判定の応用
             if (distanceFromRipple_scaleCalculated_inner < ColliderSize && distanceFromRipple_scaleCalculated_outer < ColliderSize)
             {
-                audioSource[Random.Range(0,2)].Play(); //0か1番目の音を鳴らす
+                switch (this.resonanceCounter)
+                {
+                    case 0:
+                        audioSource[Random.Range(0, 2)].Play(); //0か1番目の音を鳴らす
+                        this.resonanceCounter = 1; //カウントを１に
+                        break;
+                    case 1:
+                        audioSource[Random.Range(2, 4)].Play(); //2か3番目の音を鳴らす
+                        this.resonanceCounter = 0; //カウントを０に
+                        break;
+                }
 
                 m_ripplesIsHittedList[i] = true;
                 rotationTakeTime = rotationTakeTime / speedUpTimes;
