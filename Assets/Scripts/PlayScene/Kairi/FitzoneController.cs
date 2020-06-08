@@ -12,9 +12,8 @@ public class FitzoneController : MonoBehaviour
     [SerializeField] RippleGenerator rippleGenerator;
     [SerializeField] GameDirector m_gameDirector;
 
-    int m_hittingRippleCount=0;    // 現在重なっている波紋の数
-    Text m_countText;     // フィットゾーンの数字
-
+    public int m_hittingRippleCount = 0;   // 現在重なっている波紋の数
+    Text m_countText;               // フィットゾーンの数字
 
     //　画面遷移時に実行
     void Start()
@@ -90,7 +89,6 @@ public class FitzoneController : MonoBehaviour
             {
                 m_hittingRippleCount++;
             }
-            
         }
     }
     
@@ -103,6 +101,13 @@ public class FitzoneController : MonoBehaviour
     public int GetCount()
     {
         return m_clearCount - m_hittingRippleCount;
+    }
+
+    //　右クリック時に呼ばれる
+    public void Restart()
+    {
+        m_hittingRippleCount = 0;   // クリアカウントをリセット
+        CountTextUpdate();                  //　テキストを更新
     }
 
     //　カーソルが重なっているかの判定 

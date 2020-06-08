@@ -26,10 +26,10 @@ public class RippleGenerator : MonoBehaviour
     void Start()
     {
         remainRippleCount = maxRippleCount;
-        m_remainRippleCountText = this.transform.GetChild(0).             // 子オブジェクト(キャンバス)の取得
+        m_remainRippleCountText = this.transform.GetChild(0).           // 子オブジェクト(キャンバス)の取得
                 gameObject.transform.GetChild(0).
-                gameObject.transform.GetChild(0).// 子オブジェクト(テキスト)の取得
-                gameObject.GetComponent<Text>();
+                gameObject.transform.GetChild(0).                       // UI取得
+                gameObject.GetComponent<Text>();                        // 子オブジェクト(テキスト)の取得
 
         RemainRippleCountTextUpdate();
 
@@ -44,10 +44,6 @@ public class RippleGenerator : MonoBehaviour
             if (Input.GetMouseButtonDown(0) && remainRippleCount > 0 && !overObject && !poseFlag)
             {
                 GenerateRipple();
-            }
-            if (Input.GetMouseButtonDown(1))
-            {
-                Restart();
             }
         }
     }
@@ -75,16 +71,16 @@ public class RippleGenerator : MonoBehaviour
         ui_RippleCount.GenerateUIRipple();  //　UIの波紋が出てくる
     }
     
-    void Restart()
+    //　右クリック時に呼ばれる
+    public void Restart()
     {
-        remainRippleCount = maxRippleCount;
+        remainRippleCount = maxRippleCount;     //　カウントを復活
+        RemainRippleCountTextUpdate();          //　テキストを更新
     }
 
     public void GenerateResonanceRipple(Vector2 position)
     {
-
         StartCoroutine(GenerateResonanceRipple_Coroutine(position));
-
     }
     
 
