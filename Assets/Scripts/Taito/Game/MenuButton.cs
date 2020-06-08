@@ -6,6 +6,7 @@ public class MenuButton : MonoBehaviour
 {
     [SerializeField]
     GameD gameD;
+
     // Start is called before the first frame update
     void Start()
     {
