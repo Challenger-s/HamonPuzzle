@@ -14,7 +14,7 @@ public class GameDirector : MonoBehaviour
     [SerializeField] float clearStopTime = 0.5f;
     [SerializeField] float pauseRainVolume = 0.5f;
 
-    AudioSource[] audioSource; //オーディオソース使用（３つ
+    AudioSource[] audioSource; //オーディオソース使用（4つ
 
     bool whiteCircleFlag = true;
     bool restartRippleDelete = false;
@@ -136,6 +136,8 @@ public class GameDirector : MonoBehaviour
     //　右クリック時
     void RightMouseClick()
     {
+        audioSource[3].Play(); //音鳴らす
+
         m_phase = Phase.Restart;
     }
 

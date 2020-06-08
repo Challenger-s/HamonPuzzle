@@ -18,10 +18,12 @@ public class GameD : MonoBehaviour
 
     bool poseDisplay = false;
 
+    AudioSource[] audioSource; //オーディオソース使用
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        audioSource = GetComponents<AudioSource>(); //オーディオソース取得
     }
 
     // Update is called once per frame
@@ -31,10 +33,12 @@ public class GameD : MonoBehaviour
         {
             Menu();
         }
-        else if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Escape)) && (gameDirector.m_phase == GameDirector.Phase.Play || gameDirector.m_phase == GameDirector.Phase.Pause))
-        {            
+        else if ((Input.GetMouseButtonDown(2) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Escape)) && (gameDirector.m_phase == GameDirector.Phase.Play || gameDirector.m_phase == GameDirector.Phase.Pause))
+        {
             if (! poseDisplay)
             {
+                audioSource[0].Play(); //音
+
                 poseDisplay = true;
                 this.rippleGenerator.ChangePoseFlag(poseDisplay);
                 gameDirector.EnterPause();                          //　Phase を Pause に変更
