@@ -6,15 +6,6 @@ public class MenuButton : MonoBehaviour
 {
     [SerializeField]
     GameD gameD;
-<<<<<<< HEAD
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-=======
->>>>>>> Prog_Jin
 
     AudioSource[] audioSource; //オーディオソース使用
 
