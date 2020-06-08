@@ -104,12 +104,17 @@ public class RippleController : MonoBehaviour
     //　波紋を消す関数
     virtual protected void DestroyRipple()
     {
-        //　プレイヤーが起こした波紋なら回数を復活させる
+        //　プレイヤーが起こした波紋なら
         if (this.gameObject.transform.parent.tag == "Ripple")
         {
-            rippleGenerator.IncreaseRemainRippleCount();
+            rippleGenerator.IncreaseRemainRippleCount();                //　回数を復活させる
+            rippleList.RemoveRipple(GetComponent<RippleController>());  //　リップルリストから取り除く
         }
-        rippleList.RemoveRipple(GetComponent<RippleController>());  //　リップルリストから取り除く
+        //　共鳴が起こした波紋なら
+        else if (this.gameObject.transform.parent.tag == "ResonanceRipple")
+        {
+            resonanceRippleList.RemoveRipple(GetComponent<RippleController>());  //　共鳴のリップルリストから取り除く
+        }
         Destroy(gameObject.transform.parent.gameObject);            // 波紋を消す処理
     }
 
