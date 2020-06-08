@@ -10,6 +10,8 @@ public class GameD : MonoBehaviour
     [SerializeField] Image forwardImage;
     [SerializeField] RippleGenerator rippleGenerator;
     [SerializeField] GameDirector gameDirector;
+    [SerializeField] PoseButton pose_ContinueButton;
+    [SerializeField] PoseButton pose_ToMenuButton;
     [SerializeField] float fadeSpeed = 0.5f;
 
     public bool menu = false;
@@ -45,6 +47,8 @@ public class GameD : MonoBehaviour
             else
             {
                 poseDisplay = false;
+                pose_ContinueButton.SizeReset();                    //　サイズをリセット
+                pose_ToMenuButton.SizeReset();                      //　サイズをリセット
                 this.rippleGenerator.ChangePoseFlag(poseDisplay);
                 gameDirector.ExitPause();                           //　Phase を Play に変更
                 Continue();

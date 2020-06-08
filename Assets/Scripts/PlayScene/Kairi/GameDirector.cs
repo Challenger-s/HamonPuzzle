@@ -7,20 +7,24 @@ public class GameDirector : MonoBehaviour
 {
     [SerializeField] FitzoneController[] m_fitzoneArray;
     [SerializeField] UI_RippleCount ui_RippleCount;
+    [SerializeField] RippleGenerator rippleGenerator;
     [SerializeField] Image fadeImage;
-    [SerializeField] float fadeInSpeed = 0.5f;
+    [SerializeField] float startFadeInSpeed = 0.5f;
+    [SerializeField] float restartFadeSpeed = 0.5f;
     [SerializeField] float clearStopTime = 0.5f;
     [SerializeField] float pauseRainVolume = 0.5f;
 
     AudioSource[] audioSource; //オーディオソース使用（３つ
 
     bool whiteCircleFlag = true;
+    bool restartRippleDelete = false;
 
     public enum Phase
     {
         PreStart,
         Play,
         Pause,
+        Restart,
         BeforeClear,
         Clear,
     }
@@ -40,7 +44,7 @@ public class GameDirector : MonoBehaviour
         {
             case Phase.PreStart:
                 ui_RippleCount.UI_IN();
-                if (FadeIn(fadeImage))
+                if (FadeIn(fadeImage, startFadeInSpeed))
                 {
                     m_phase = Phase.Play;
                 }
@@ -55,12 +59,17 @@ public class GameDirector : MonoBehaviour
 
                 if (Input.GetMouseButtonDown(1))
                 {
-                    Restart();
+                    RightMouseClick();
                 }
                 break;
 
             case Phase.Pause:                
                 break;
+
+            case Phase.Restart:
+                Restart();
+                break;
+
 
             case Phase.BeforeClear:
                 clearStopTime -= Time.deltaTime;
@@ -81,10 +90,55 @@ public class GameDirector : MonoBehaviour
         }
     }
 
+    //　リスタート演出
     void Restart()
     {
+        if (restartRippleDelete)
+        {
+            if (FadeIn(fadeImage, restartFadeSpeed))
+            {
+                restartRippleDelete = false;
+                m_phase = Phase.Play;
+            }
+        }
+        else if (FadeOut(fadeImage, restartFadeSpeed))
+        {
+            //　プレイヤーの起こした波紋が消える
+            GameObject[] ripple = GameObject.FindGameObjectsWithTag("Ripple");
+            RippleController[] rippleControllers = new RippleController[ripple.Length];
+            for (int i = ripple.Length - 1; i >= 0; i--)
+            {
+                rippleControllers[i] = ripple[i].GetComponentInChildren<RippleController>();
+                rippleControllers[i].Restart();
+            }
+            //　共鳴の波紋が消える
+            GameObject[] resonanceRipple = GameObject.FindGameObjectsWithTag("ResonanceRipple");
+            RippleController[] resonanceRippleControllers = new RippleController[resonanceRipple.Length];
+            for (int i = resonanceRipple.Length - 1; i >= 0; i--)
+            {
+                resonanceRippleControllers[i] = resonanceRipple[i].GetComponentInChildren<RippleController>();
+                resonanceRippleControllers[i].Restart();
+            }
+            rippleGenerator.Restart();      //　波紋の数をリセット
 
+            //　フィットゾーンのクリアカウントをリセット
+            GameObject[] fitzones = GameObject.FindGameObjectsWithTag("FitZone");
+            FitzoneController[] fitzoneControllers = new FitzoneController[fitzones.Length];
+            for(int i = 0; i < fitzones.Length; i++)
+            {
+                fitzoneControllers[i] = fitzones[i].GetComponent<FitzoneController>();
+                fitzoneControllers[i].Restart();
+            }
+            restartRippleDelete = true;     //　波紋を消したフラグを立てる
+        }
     }
+
+    //　右クリック時
+    void RightMouseClick()
+    {
+        m_phase = Phase.Restart;
+    }
+
 
     bool ClearCheck()
     {
@@ -116,9 +170,9 @@ public class GameDirector : MonoBehaviour
         audioSource[0].Play(); //0番目の音を鳴らす
     }
 
-    bool FadeIn(Image image)
+    bool FadeIn(Image image, float fadeSpeed)
     {
-        image.color = new Color(255, 255, 255, image.color.a - (fadeInSpeed * Time.deltaTime));
+        image.color = new Color(255, 255, 255, image.color.a - (fadeSpeed * Time.deltaTime));
 
         if (image.color.a < 0)
         {
@@ -129,6 +183,22 @@ public class GameDirector : MonoBehaviour
             return false;
         }
     }
+
+    bool FadeOut(Image image, float fadeSpeed)
+    {
+        image.color = new Color(255, 255, 255, image.color.a + (fadeSpeed * Time.deltaTime));
+
+        if (image.color.a > 1)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+
 
     //　Phaseを返す
     public bool ReturnPhase()

@@ -23,6 +23,8 @@ public class RippleController : MonoBehaviour
     private float m_scale = 0;
 
     RippleGenerator rippleGenerator;
+    RippleList rippleList;
+    RippleList resonanceRippleList;
 
     Vector2 targetPoint;                    //　波紋がこの地点を通過したら消える
 
@@ -32,6 +34,8 @@ public class RippleController : MonoBehaviour
     {
         InitLineRenderer();
         m_gameDirector = GameObject.Find("GameDirector").GetComponent<GameDirector>();
+        rippleList = GameObject.Find("RippleGenerator ").GetComponent<RippleList>();
+        resonanceRippleList = GameObject.Find("ResonanceRippleList").GetComponent<RippleList>();
     }
 
 
@@ -105,8 +109,24 @@ public class RippleController : MonoBehaviour
         {
             rippleGenerator.IncreaseRemainRippleCount();
         }
+        rippleList.RemoveRipple(GetComponent<RippleController>());  //　リップルリストから取り除く
+        Destroy(gameObject.transform.parent.gameObject);            // 波紋を消す処理
+    }
 
-        Destroy(gameObject);    // 波紋を消す処理
+    //　右クリック時に呼ばれる
+    public void Restart()
+    {
+        //　プレイヤーが起こした波紋なら
+        if (this.gameObject.transform.parent.tag == "Ripple")
+        {
+            rippleList.RemoveRipple(GetComponent<RippleController>());  //　リップルリストから取り除く
+        }
+        //　共鳴が起こした波紋なら
+        else if (this.gameObject.transform.parent.tag == "ResonanceRipple")
+        {
+            resonanceRippleList.RemoveRipple(GetComponent<RippleController>());  //　共鳴のリップルリストから取り除く
+        }
+        Destroy(gameObject.transform.parent.gameObject);            // 波紋を消す処理
     }
 
 

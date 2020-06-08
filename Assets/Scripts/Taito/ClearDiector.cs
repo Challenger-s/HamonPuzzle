@@ -106,10 +106,10 @@ public class ClearDiector : MonoBehaviour
 
             if (Forward.GetComponent<Renderer>().material.color.a >= 0.9f)
             {
-                for (int i = 0; i < fitZones.Length; ++i)
-                {
-                    Destroy(fitZones[i]);
-                }
+                //for (int i = 0; i < fitZones.Length; ++i)
+                //{
+                //    Destroy(fitZones[i]);
+                //}
                 a = true;
             }
         }

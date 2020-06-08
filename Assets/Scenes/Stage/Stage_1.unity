@@ -183,8 +183,10 @@ MonoBehaviour:
   - {fileID: 249314859}
   - {fileID: 736021662}
   ui_RippleCount: {fileID: 406296760}
+  rippleGenerator: {fileID: 728341108}
   fadeImage: {fileID: 588491928}
-  fadeInSpeed: 1
+  startFadeInSpeed: 0.7
+  restartFadeSpeed: 1
   clearStopTime: 1.5
   pauseRainVolume: 0.5
   m_phase: 0
@@ -1976,6 +1978,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'RippleGenerator '
       objectReference: {fileID: 0}
+    - target: {fileID: 6075037348733455975, guid: 89be0d4f1eb685a488c2666aeec2ac00,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89be0d4f1eb685a488c2666aeec2ac00, type: 3}
 --- !u!1 &914428382 stripped
@@ -2581,6 +2588,8 @@ MonoBehaviour:
   forwardImage: {fileID: 1820511822}
   rippleGenerator: {fileID: 728341108}
   gameDirector: {fileID: 63021660}
+  pose_ContinueButton: {fileID: 760142100}
+  pose_ToMenuButton: {fileID: 453659489}
   fadeSpeed: 1
   menu: 0
 --- !u!4 &1292679578
