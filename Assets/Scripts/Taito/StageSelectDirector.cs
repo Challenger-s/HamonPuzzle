@@ -250,8 +250,8 @@ public class StageSelectDirector : MonoBehaviour
 
     void StageAddition()
     {
-        float a = (stageButtons[stageClearNumber].transform.position.x + (stageButtonsSp[stageClearNumber].bounds.size.x / 2f));
-        float b = (stageButtons[stageClearNumber - 1].transform.position.x - (stageButtonsSp[stageClearNumber - 1].bounds.size.x / 2f));
+        float a = (stageButtons[stageClearNumber].transform.GetChild(1).transform.position.x + (stageButtonsSp[stageClearNumber].bounds.size.x / 2f));
+        float b = (stageButtons[stageClearNumber - 1].transform.GetChild(1).transform.position.x - (stageButtonsSp[stageClearNumber - 1].bounds.size.x / 2f));
         float c = ((a - b) / 2f) + b;
 
         if (clearButtonColor.transform.position.x + (ac.bounds.size.x / 2f) < c) 
@@ -266,6 +266,7 @@ public class StageSelectDirector : MonoBehaviour
           parentClearButtonColor.transform.localScale.y,
           0);
             BackGroundColor();
+            stageButtons[stageClearNumber].transform.GetChild(0).gameObject.layer = -2;
             newStage = true;
             button = Button.large;
         }
@@ -274,7 +275,7 @@ public class StageSelectDirector : MonoBehaviour
 
     void NewStage()
     {
-        if (unClearButtonColor.transform.position.x + (unClearColor.bounds.size.x / 2f) < stageButtons[stageClearNumber].transform.position.x + (stageBuuttonSizse.bounds.size.x / 2f))
+        if (unClearButtonColor.transform.position.x + (unClearColor.bounds.size.x / 2f) < stageButtons[stageClearNumber].transform.GetChild(1).transform.position.x + (stageBuuttonSizse.bounds.size.x / 2f))
         {
             parentUnClearButtonColor.transform.localScale = new Vector3(parentUnClearButtonColor.transform.localScale.x + 1.15f * Time.deltaTime, parentUnClearButtonColor.transform.localScale.y, 0);
         }
@@ -323,12 +324,12 @@ public class StageSelectDirector : MonoBehaviour
 
     public void ButtonFalling(int buttonNumber)
     {
-        stageButtons[buttonNumber].transform.localScale = new Vector3(0.2f , 0.2f, 0);
+        stageButtons[buttonNumber].transform.GetChild(1).transform.localScale = new Vector3(0.3f , 0.3f, 0);
     }
 
     public void NotButtonFalling(int buttonNumber)
     {
-        stageButtons[buttonNumber].transform.localScale = new Vector3(0.17f, 0.17f, 0);
+        stageButtons[buttonNumber].transform.GetChild(1).transform.localScale = new Vector3(0.27f, 0.27f, 0);
     }
 
     public void SceneTransition()
@@ -436,8 +437,8 @@ public class StageSelectDirector : MonoBehaviour
 
     void Restoration()
     {
-        float a = (stageButtons[stageClearNumber].transform.position.x + (stageButtonsSp[stageClearNumber].bounds.size.x / 2f));
-        float b = (stageButtons[stageClearNumber - 1].transform.position.x - (stageButtonsSp[stageClearNumber - 1].bounds.size.x / 2f));
+        float a = (stageButtons[stageClearNumber].transform.GetChild(1).transform.position.x + (stageButtonsSp[stageClearNumber].bounds.size.x / 2f));
+        float b = (stageButtons[stageClearNumber - 1].transform.GetChild(1).transform.position.x - (stageButtonsSp[stageClearNumber - 1].bounds.size.x / 2f));
         float c = ((a - b) / 2f) + b;
 
         bool clear = true;
@@ -459,7 +460,7 @@ public class StageSelectDirector : MonoBehaviour
             if (clear == false)
             {
 
-                if (unClearButtonColor.transform.position.x + (unClearColor.bounds.size.x / 2f) < stageButtons[stageClearNumber].transform.position.x + (stageBuuttonSizse.bounds.size.x / 2f))
+                if (unClearButtonColor.transform.position.x + (unClearColor.bounds.size.x / 2f) < stageButtons[stageClearNumber].transform.GetChild(1).transform.position.x + (stageBuuttonSizse.bounds.size.x / 2f))
                 {
                     parentUnClearButtonColor.transform.localScale = new Vector3(parentUnClearButtonColor.transform.localScale.x + 1.15f * Time.deltaTime, parentUnClearButtonColor.transform.localScale.y, 0);
                 }
