@@ -113,31 +113,16 @@ public class StageSelectDirector : MonoBehaviour
 
     Button button = Button.normal;
 
-
     // Start is called before the first frame update
     void Start()
     {
-        Restoration();
 
-        GameObject[][] buttonsALL = { buttons1, buttons2 };
-        sctollButton[0].SetActive(false);
-        sctollButton[1].SetActive(false);
-        for (int i = 0; i < buttonsALL.Length; i++)
-        {
-            for (int j = 0; j < buttonsALL[i].Length; j++)
-            {
-                buttonsALL[i][j].SetActive(false);
-            }
-        }
+        stageClearNumber = currentStage = PlayerPrefs.GetInt("CurrentStage",0);
 
+        stageClearNumber = PlayerPrefs.GetInt("StageClear",0) + 4;
+
+        ButtonOff(false);
         ButtonOff(true);
-
-
-        stageClearNumber = PlayerPrefs.GetInt("StageClear");
-        
-
-        currentStage = PlayerPrefs.GetInt("CurrentStage");
-      
 
         screenSizeX = ScreenSizeX();
         screenPos = mainCamera.transform.position;
@@ -147,9 +132,9 @@ public class StageSelectDirector : MonoBehaviour
         BackGround[0].color = Color.Lerp(startColor, endColor, t);
 
         forwardImage.color = new Color(1, 1, 1, 1);
-        fadeIN = true;
+        fadeIN = true;     
 
-       
+         Restoration();
     }
 
     // Update is called once per frame
@@ -159,13 +144,14 @@ public class StageSelectDirector : MonoBehaviour
         {
             if (FadeIn(forwardImage))
             {
+               
                 fadeIN = false;
             }
         }
 
         if (stageClearNumber > currentStage)
         {
-          
+            stageButtons[stageClearNumber-1].transform.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder = 0;
             if (newStage)
             {
                 NewStage();
@@ -266,7 +252,7 @@ public class StageSelectDirector : MonoBehaviour
           parentClearButtonColor.transform.localScale.y,
           0);
             BackGroundColor();
-            stageButtons[stageClearNumber].transform.GetChild(0).gameObject.layer = -2;
+            stageButtons[stageClearNumber].transform.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder = -2;
             newStage = true;
             button = Button.large;
         }
@@ -291,7 +277,7 @@ public class StageSelectDirector : MonoBehaviour
 
     private void BackGroundColor()
     {       
-        BackGround[backGuroundNumber].color = Color.Lerp(startColor, endColor, t += 1f / 5f);
+        BackGround[backGuroundNumber].color = Color.Lerp(startColor, endColor, t += 1f / 6f);
     }
 
     public void Sctoll(bool left)
@@ -437,15 +423,21 @@ public class StageSelectDirector : MonoBehaviour
 
     void Restoration()
     {
-        float a = (stageButtons[stageClearNumber].transform.GetChild(1).transform.position.x + (stageButtonsSp[stageClearNumber].bounds.size.x / 2f));
-        float b = (stageButtons[stageClearNumber - 1].transform.GetChild(1).transform.position.x - (stageButtonsSp[stageClearNumber - 1].bounds.size.x / 2f));
-        float c = ((a - b) / 2f) + b;
+        Debug.Log(currentStage);
+        float c = 0;
+        if (currentStage > 0)
+        {
+            float a = (stageButtons[currentStage].transform.GetChild(1).transform.position.x + (stageButtonsSp[currentStage].bounds.size.x / 2f));
+            float b = (stageButtons[currentStage - 1].transform.GetChild(1).transform.position.x - (stageButtonsSp[currentStage - 1].bounds.size.x / 2f));
+            c = ((a - b) / 2f) + b;
+        }       
+        
 
         bool clear = true;
         bool unClear = true;
 
         while (clear || unClear) {
-            if (clearButtonColor.transform.position.x + (ac.bounds.size.x / 2f) < c)
+            if (clearButtonColor.transform.position.x + (ac.bounds.size.x / 2f) < c && currentStage > 0)
             {
                 parentClearButtonColor.transform.localScale = new Vector3(parentClearButtonColor.transform.localScale.x + 1.15f * Time.deltaTime,
                     parentClearButtonColor.transform.localScale.y,
@@ -453,14 +445,12 @@ public class StageSelectDirector : MonoBehaviour
             }
             else
             {
- 
+                stageButtons[currentStage].transform.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder = -2;
                 clear = false;
             }
 
-            if (clear == false)
-            {
 
-                if (unClearButtonColor.transform.position.x + (unClearColor.bounds.size.x / 2f) < stageButtons[stageClearNumber].transform.GetChild(1).transform.position.x + (stageBuuttonSizse.bounds.size.x / 2f))
+                if (unClearButtonColor.transform.position.x + (unClearColor.bounds.size.x / 2f) < stageButtons[currentStage].transform.GetChild(1).transform.position.x + (stageBuuttonSizse.bounds.size.x / 2f))
                 {
                     parentUnClearButtonColor.transform.localScale = new Vector3(parentUnClearButtonColor.transform.localScale.x + 1.15f * Time.deltaTime, parentUnClearButtonColor.transform.localScale.y, 0);
                 }
@@ -468,7 +458,7 @@ public class StageSelectDirector : MonoBehaviour
                 {
                     unClear = false;
                 }
-            }
+            
         }
     }
 

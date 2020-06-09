@@ -3884,7 +3884,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backGroundMoveSpeed: 1
-  stageClearNumber: 0
+  stageClearNumber: 4
   canvas: {fileID: 378014537}
   BackGround:
   - {fileID: 801223154}
@@ -4749,7 +4749,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1035623390
 MonoBehaviour:
   m_ObjectHideFlags: 0
