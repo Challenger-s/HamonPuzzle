@@ -221,7 +221,9 @@ MonoBehaviour:
   rippleList: {fileID: 0}
   resonanceRippleList: {fileID: 0}
   m_gameDirector: {fileID: 0}
+  musicDirector: {fileID: 0}
   ui_RippleCount: {fileID: 0}
+  interval: 1
   m_resonanceDelay: 0
   resonancePointList: {fileID: 0}
 --- !u!114 &5766449820591143994
