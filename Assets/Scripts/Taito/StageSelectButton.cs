@@ -34,6 +34,7 @@ public class StageSelectButton : MonoBehaviour, IPointerEnterHandler, IPointerEx
     // 
     public void OnPointerExit(PointerEventData eventData)
     {
-        selectDirector.NotButtonFalling(stageNumber - 2);
+        selectDirector.buttonNumber = stageNumber - 2;
+        selectDirector.ButtonEnumChange(false);
     }
 }

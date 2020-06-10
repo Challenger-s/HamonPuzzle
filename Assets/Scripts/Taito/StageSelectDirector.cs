@@ -111,7 +111,7 @@ public class StageSelectDirector : MonoBehaviour
 
     Vector3 screenPos;
 
-    public enum Button
+    enum Button
     {
         large,
         smaller,
@@ -119,6 +119,8 @@ public class StageSelectDirector : MonoBehaviour
         normal,
     }
     Button button = Button.normal;
+
+    Button touchedButton = Button.normal;
 
     enum AddStage
     {
@@ -136,7 +138,7 @@ public class StageSelectDirector : MonoBehaviour
         defoultSizeX = stageButtons[0].transform.GetChild(1).transform.localScale.x;
         defoultSizeY = stageButtons[0].transform.GetChild(1).transform.localScale.y;
             
-        stageClearNumber = currentStage = 7;//PlayerPrefs.GetInt("CurrentStage",0);
+        stageClearNumber = currentStage = 1;//PlayerPrefs.GetInt("CurrentStage",0);
         
         if (currentStage > stageButtons.Length - 1)
         {
@@ -159,7 +161,7 @@ public class StageSelectDirector : MonoBehaviour
 
          Restoration();
 
-        stageClearNumber = 8; //PlayerPrefs.GetInt("StageClear", 0);
+        stageClearNumber = 2; //PlayerPrefs.GetInt("StageClear", 0);
         stageButtons[stageClearNumber - 1].transform.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder = 0;
 
         if (stageClearNumber > stageButtons.Length - 1)
@@ -247,7 +249,6 @@ public class StageSelectDirector : MonoBehaviour
                 //stageButtons[currentStage - 1].transform.localScale = new Vector3(stageButtons[currentStage - 1].transform.localScale.x + 0.01f + Time.deltaTime, stageButtons[currentStage - 1].transform.localScale.y + 0.01f + Time.deltaTime, 0);
                 if(ButtonFalling(buttonNumber))
                 {
-                    Debug.Log("c");
                     button = Button.smaller;
                 }                
                 break;
@@ -259,6 +260,17 @@ public class StageSelectDirector : MonoBehaviour
                 button = Button.normal;           
                 break;
        }
+
+        switch (touchedButton)
+        {
+            case Button.large:
+                ButtonFalling(buttonNumber);
+                break;
+
+            case Button.smaller:
+                NotButtonFalling(buttonNumber);
+                break;
+        }
 
         if (sceneTransition)
         {
@@ -395,19 +407,36 @@ public class StageSelectDirector : MonoBehaviour
 
     public void NotButtonFalling(int buttonNumber)
     {
-        stageButtons[buttonNumber].transform.GetChild(1).transform.localScale = new Vector3(defoultSizeX, defoultSizeY, 1);
         
         if (buttonNumber == stageClearNumber)
         {
             stageButtons[buttonNumber].transform.GetChild(1).Find("ButtonBack").GetComponent<Renderer>().material = unClearButtonColorMterial;
         }
+
+        var size = stageButtons[buttonNumber].transform.GetChild(1).transform.localScale;
+        if (size.x > defoultSizeX)
+        {
+            size.x = size.x - size.x * 1 / changeSizeTime * largeSize * Time.unscaledDeltaTime;
+            size.y = size.y - size.y * 1 / changeSizeTime * largeSize * Time.unscaledDeltaTime;
+
+            if (size.x < defoultSizeX)
+            {
+                size.x = defoultSizeX;
+                size.y = defoultSizeY;
+            }
+        }
+        stageButtons[buttonNumber].transform.GetChild(1).transform.localScale = size;
     }
 
 
     public void ButtonEnumChange(bool enumButton)
     {
         if (enumButton) {
-            button = Button.large;
+            touchedButton = Button.large;
+        }
+        else
+        {
+            touchedButton = Button.smaller;
         }
     }
 
