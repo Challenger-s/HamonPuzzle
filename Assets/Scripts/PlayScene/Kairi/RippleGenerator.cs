@@ -5,13 +5,15 @@ using UnityEngine.UI;
 
 public class RippleGenerator : MonoBehaviour
 {
-    [SerializeField] int maxRippleCount;        // 同時に存在できる波紋の数
-    [SerializeField] GameObject ripplePrefab;   // 波紋のPrefab
-    [SerializeField] GameObject resonanceRipplePrefab;   // 共鳴の波紋のPrefab
-    [SerializeField] RippleList rippleList;     // 波紋のList
-    [SerializeField] RippleList resonanceRippleList; // 共鳴から発生した波紋のList
+    [SerializeField] int maxRippleCount;                // 同時に存在できる波紋の数
+    [SerializeField] GameObject ripplePrefab;           // 波紋のPrefab
+    [SerializeField] GameObject resonanceRipplePrefab;  // 共鳴の波紋のPrefab
+    [SerializeField] RippleList rippleList;             // 波紋のList
+    [SerializeField] RippleList resonanceRippleList;    // 共鳴から発生した波紋のList
     [SerializeField] GameDirector m_gameDirector;
+    [SerializeField] PlayScene_MusicDIrector musicDirector;
     [SerializeField] UI_RippleCount ui_RippleCount;
+    [SerializeField] float interval = 1f;               //　波紋を出す間隔
     Text m_remainRippleCountText;
 
     [SerializeField] float m_resonanceDelay;
@@ -21,6 +23,7 @@ public class RippleGenerator : MonoBehaviour
     int remainRippleCount;      // 波紋を生成できる残りの数
     bool overObject = false;    //　カーソルがオブジェクトに重なっているかのフラグ
     bool poseFlag = false;      //　ポーズ画面が開いているかのフラグ
+    float defoultInterval = 0f;
 
     //　画面遷移時に実行
     void Start()
@@ -32,6 +35,8 @@ public class RippleGenerator : MonoBehaviour
                 gameObject.GetComponent<Text>();                        // 子オブジェクト(テキスト)の取得
 
         RemainRippleCountTextUpdate();
+        defoultInterval = interval;
+        interval = 0f;
 
         //m_gameDirector = GameObject.Find("GameDirector").GetComponent<GameDirector>();
     }
@@ -41,9 +46,17 @@ public class RippleGenerator : MonoBehaviour
     {
         if (m_gameDirector.m_phase == GameDirector.Phase.Play)
         {
-            if (Input.GetMouseButtonDown(0) && remainRippleCount > 0 && !overObject && !poseFlag)
+            if (Input.GetMouseButtonDown(0) && remainRippleCount > 0 && !overObject && !poseFlag && interval <= 0)
             {
                 GenerateRipple();
+            }
+            else if (interval >= 0)
+            {
+                interval -= Time.deltaTime;
+                if (interval < 0)
+                {
+                    interval = 0f;
+                }
             }
         }
     }
@@ -66,8 +79,10 @@ public class RippleGenerator : MonoBehaviour
         remainRippleCount--;
         RemainRippleCountTextUpdate();
 
-        ripple.tag = "Ripple";
+        musicDirector.RippleSE();           //　波紋の音を鳴らす
 
+        ripple.tag = "Ripple";
+        interval = defoultInterval;         //　インターバルの値を設定
         ui_RippleCount.GenerateUIRipple();  //　UIの波紋が出てくる
     }
     
@@ -137,5 +152,17 @@ public class RippleGenerator : MonoBehaviour
     public int GetRippleCount()
     {
         return remainRippleCount;
+    }
+
+    //　インターバルを返す
+    public float ReturnInterval()
+    {
+        return interval;
+    }
+
+    //　インターバルの初期値を返す
+    public float ReturnDefoultInterval()
+    {
+        return defoultInterval;
     }
 }
