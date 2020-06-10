@@ -94,7 +94,6 @@ public class StageSelectDirector : MonoBehaviour
 
     float screenSizeX = 0;
 
-
     float delta = 0;
     float span = 0.2f;
 
@@ -102,6 +101,10 @@ public class StageSelectDirector : MonoBehaviour
     Vector3 result2 = Vector3.zero;
 
     Vector3 screenPos;
+
+    AudioSource[] audioSource; //オーディオソース使用
+    bool stageAddStartFlag = false; //ステージ追加を開始したか判定
+    bool sceneChangeStartFlag = false; //シーン遷移を開始したか判定
 
     enum Button
     {
@@ -116,6 +119,7 @@ public class StageSelectDirector : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponents<AudioSource>(); //オーディオソース取得
 
         stageClearNumber = currentStage = PlayerPrefs.GetInt("CurrentStage",0);
 
@@ -151,6 +155,13 @@ public class StageSelectDirector : MonoBehaviour
 
         if (stageClearNumber > currentStage)
         {
+            if (this.stageAddStartFlag == false) //フラグがオフだったら
+            {
+                audioSource[0].Play(); //音を鳴らす（ステージ追加演出音）
+                Debug.Log("ステージ追加演出");
+                this.stageAddStartFlag = true; //フラグをオン
+            }
+
             stageButtons[stageClearNumber-1].transform.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder = 0;
             if (newStage)
             {
@@ -205,7 +216,7 @@ public class StageSelectDirector : MonoBehaviour
        switch (button)
        {
             case Button.large:
-
+                
                 //stageButtons[currentStage - 1].transform.localScale = new Vector3(stageButtons[currentStage - 1].transform.localScale.x + 0.01f + Time.deltaTime, stageButtons[currentStage - 1].transform.localScale.y + 0.01f + Time.deltaTime, 0);
                 ButtonFalling(stageClearNumber - 1);
 
@@ -214,17 +225,20 @@ public class StageSelectDirector : MonoBehaviour
                 {
                     delta = 0;
                     button = Button.smaller;
-                }              
+                }    
+                
                 break;
-
+                
             case Button.smaller:
 
+                
                 //stageButtons[currentStage - 1].transform.localScale = new Vector3(stageButtons[currentStage - 1].transform.localScale.x - 0.01f + Time.deltaTime, stageButtons[currentStage - 1].transform.localScale.y - 0.01f + Time.deltaTime, 0);
                 NotButtonFalling(stageClearNumber - 1);
    
-                button = Button.normal;              
+                button = Button.normal;     
+                
                 break;
-       }
+        }
 
 
         if (sceneTransition)
@@ -267,6 +281,9 @@ public class StageSelectDirector : MonoBehaviour
         }
         else
         {
+            audioSource[1].Play(); //音を鳴らす（ステージ追加演出終了音）
+            Debug.Log("追加演出終了");
+
             currentStage = stageClearNumber;
             SaveCurrent();
             ButtonOff(true);
@@ -320,6 +337,12 @@ public class StageSelectDirector : MonoBehaviour
 
     public void SceneTransition()
     {
+        if (this.sceneChangeStartFlag == false) //フラグがオフだったら
+        {
+            audioSource[2].Play(); //音を鳴らす（シーン遷移開始音）
+            Debug.Log("シーン遷移開始");
+            this.sceneChangeStartFlag = true; //フラグオン
+        }
 
         if (number > 0)
         {
