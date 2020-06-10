@@ -44,7 +44,7 @@ public class PoseButton : MonoBehaviour
     //　サイズを段々大きくする
     void Large()
     {
-        var size = GetComponent<RectTransform>().sizeDelta;        
+        var size = GetComponent<RectTransform>().sizeDelta;
         if(size.x < defoultSizeX * largeSize)
         {
             size.x = size.x + size.x * 1 / changeSizeTime * largeSize * Time.unscaledDeltaTime;
