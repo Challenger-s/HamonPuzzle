@@ -29,7 +29,7 @@ Transform:
   m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_Children: []
   m_Father: {fileID: 5285184960953453172}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8913526263408908120
 SpriteRenderer:
@@ -110,7 +110,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5285184960953453172}
-  m_RootOrder: 4
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5928078236679820134
 SpriteRenderer:
@@ -193,7 +193,7 @@ Transform:
   - {fileID: 5285184960656608530}
   - {fileID: 139188965147772585}
   m_Father: {fileID: 5285184961527013461}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5285184959803267669
 SpriteRenderer:
@@ -355,12 +355,12 @@ Transform:
   m_LocalScale: {x: 0.27, y: 0.27, z: 1}
   m_Children:
   - {fileID: 5285184961104706428}
+  - {fileID: 169600309763285318}
   - {fileID: 5345622862172506401}
   - {fileID: 5346700078525314432}
   - {fileID: 2269765177544186500}
-  - {fileID: 169600309763285318}
   m_Father: {fileID: 5285184961527013461}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5285184960953453173
 SpriteRenderer:
@@ -520,8 +520,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 5285184960953453172}
   - {fileID: 5285184959803267668}
+  - {fileID: 5285184960953453172}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -635,7 +635,7 @@ Transform:
   m_LocalScale: {x: 1.2592592, y: 1.2592592, z: 1}
   m_Children: []
   m_Father: {fileID: 5285184960953453172}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7282043600525045583
 SpriteRenderer:
@@ -716,7 +716,7 @@ Transform:
   m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_Children: []
   m_Father: {fileID: 5285184960953453172}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6538536211715538266
 SpriteRenderer:
