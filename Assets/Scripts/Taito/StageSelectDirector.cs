@@ -102,31 +102,22 @@ public class StageSelectDirector : MonoBehaviour
 
     public int number = 0;
 
-<<<<<<< HEAD
     float screenSizeX = 0;
 
     float delta = 0;
     float span = 0.2f;
-=======
     public int buttonNumber;
-
-    float screenSizeX = 0;
->>>>>>> NewMaster
 
     float defoultSizeX = 0;
     float defoultSizeY = 0;
 
     Vector3 screenPos;
 
-<<<<<<< HEAD
     AudioSource[] audioSource; //オーディオソース使用
     bool stageAddStartFlag = false; //ステージ追加を開始したか判定
     bool sceneChangeStartFlag = false; //シーン遷移を開始したか判定
 
-    enum Button
-=======
     public enum Button
->>>>>>> NewMaster
     {
         large,
         smaller,
@@ -148,9 +139,8 @@ public class StageSelectDirector : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-<<<<<<< HEAD
         audioSource = GetComponents<AudioSource>(); //オーディオソース取得
-=======
+
         defoultSizeX = stageButtons[0].transform.GetChild(1).transform.localScale.x;
         defoultSizeY = stageButtons[0].transform.GetChild(1).transform.localScale.y;
             
@@ -160,7 +150,6 @@ public class StageSelectDirector : MonoBehaviour
         {
             stageClearNumber = currentStage = stageButtons.Length - 1;
         }
->>>>>>> NewMaster
 
 
         ButtonOff(false);
@@ -200,7 +189,7 @@ public class StageSelectDirector : MonoBehaviour
         if (fadeIN)
         {
             if (FadeIn(forwardImage))
-            {              
+            {
 
                 Debug.Log(stageClearNumber);
                 Debug.Log(currentStage);
@@ -211,26 +200,18 @@ public class StageSelectDirector : MonoBehaviour
 
         switch (addStage)
         {
-<<<<<<< HEAD
-            if (this.stageAddStartFlag == false) //フラグがオフだったら
-            {
-                audioSource[0].Play(); //音を鳴らす（ステージ追加演出音）
-                Debug.Log("ステージ追加演出");
-                this.stageAddStartFlag = true; //フラグをオン
-            }
-
-            stageButtons[stageClearNumber-1].transform.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder = 0;
-            if (newStage)
-            {
-                NewStage();
-            }
-            else
-            {
-=======
             case AddStage.clearStage:
->>>>>>> NewMaster
+
+                if (this.stageAddStartFlag == false) //フラグがオフだったら
+                {
+                    audioSource[0].Play(); //音を鳴らす（ステージ追加演出音）
+                    Debug.Log("ステージ追加演出");
+                    this.stageAddStartFlag = true; //フラグをオン
+                }
                 StageAddition();
+
                 break;
+
 
             case AddStage.newStage:
                 NewStage();
@@ -257,7 +238,7 @@ public class StageSelectDirector : MonoBehaviour
         }
 
 
-        if (sctollR )
+        if (sctollR)
         {
             if (mainCamera.transform.position.x < screenPos.x + screenSizeX)
             {
@@ -268,7 +249,7 @@ public class StageSelectDirector : MonoBehaviour
             else
             {
                 mainCamera.transform.position = new Vector3(screenPos.x + screenSizeX,
-                    mainCamera.transform.position.y, 
+                    mainCamera.transform.position.y,
                     mainCamera.transform.position.z);
                 sctollR = false;
                 backGuroundNumber++;
@@ -276,42 +257,25 @@ public class StageSelectDirector : MonoBehaviour
             }
         }
 
-    
-       switch (button)
-       {
+
+        switch (button)
+        {
             case Button.large:
-<<<<<<< HEAD
-                
-=======
->>>>>>> NewMaster
                 //stageButtons[currentStage - 1].transform.localScale = new Vector3(stageButtons[currentStage - 1].transform.localScale.x + 0.01f + Time.deltaTime, stageButtons[currentStage - 1].transform.localScale.y + 0.01f + Time.deltaTime, 0);
-                if(ButtonFalling(buttonNumber))
+                if (ButtonFalling(buttonNumber))
                 {
                     Debug.Log("c");
                     button = Button.smaller;
-<<<<<<< HEAD
-                }    
-                
-=======
-                }                
->>>>>>> NewMaster
+                }
                 break;
-                
-            case Button.smaller:
-<<<<<<< HEAD
 
-                
-                //stageButtons[currentStage - 1].transform.localScale = new Vector3(stageButtons[currentStage - 1].transform.localScale.x - 0.01f + Time.deltaTime, stageButtons[currentStage - 1].transform.localScale.y - 0.01f + Time.deltaTime, 0);
-                NotButtonFalling(stageClearNumber - 1);
-   
-                button = Button.normal;     
-                
-=======
+            case Button.smaller:
+
+
                 //stageButtons[currentStage - 1].transform.localScale = new Vector3(stageButtons[currentStage - 1].transform.localScale.x - 0.01f + Time.deltaTime, stageButtons[currentStage - 1].transform.localScale.y - 0.01f + Time.deltaTime, 0);
                 NotButtonFalling(buttonNumber);
-                
-                button = Button.normal;           
->>>>>>> NewMaster
+
+                button = Button.normal;
                 break;
         }
 
@@ -319,7 +283,7 @@ public class StageSelectDirector : MonoBehaviour
         {
             SceneTransition();
         }
-   
+
     }
 
     void StageAddition()
@@ -375,13 +339,9 @@ public class StageSelectDirector : MonoBehaviour
         }
         else
         {
-<<<<<<< HEAD
             audioSource[1].Play(); //音を鳴らす（ステージ追加演出終了音）
             Debug.Log("追加演出終了");
 
-=======
-        
->>>>>>> NewMaster
             currentStage = stageClearNumber;
             SaveCurrent();
             if (!(sctollL || sctollR))
