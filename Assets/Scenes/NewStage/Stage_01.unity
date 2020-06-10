@@ -3007,5 +3007,10 @@ PrefabInstance:
       propertyPath: rippleGenerator
       value: 
       objectReference: {fileID: 914995349}
+    - target: {fileID: 5948921573374064855, guid: 1b7d49c917f113a48b93523f4ba45557,
+        type: 3}
+      propertyPath: gameDirector
+      value: 
+      objectReference: {fileID: 136426548}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b7d49c917f113a48b93523f4ba45557, type: 3}
