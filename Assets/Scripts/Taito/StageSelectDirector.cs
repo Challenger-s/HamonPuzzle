@@ -113,15 +113,11 @@ public class StageSelectDirector : MonoBehaviour
 
     Vector3 screenPos;
 
-<<<<<<< HEAD
-    enum Button
-=======
     AudioSource[] audioSource; //オーディオソース使用
     bool stageAddStartFlag = false; //ステージ追加を開始したか判定
     bool sceneChangeStartFlag = false; //シーン遷移を開始したか判定
 
     public enum Button
->>>>>>> Prog_Jin
     {
         large,
         smaller,

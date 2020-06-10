@@ -3887,11 +3887,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backGroundMoveSpeed: 1
-<<<<<<< HEAD
-  stageClearNumber: 1
-=======
   stageClearNumber: 0
->>>>>>> NewMaster
   canvas: {fileID: 378014537}
   BackGround:
   - {fileID: 801223154}
@@ -3999,7 +3995,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 007de1aab9f102c4f98623c1efdc02e7, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 388180593afc4d64098c1b26570e6817, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -4095,7 +4091,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: b852782a7f2146140ab162bd9b551689, type: 3}
+  m_audioClip: {fileID: 8300000, guid: c365eb8cdda338b4881d6ffd42b164aa, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -4191,7 +4187,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ef4f9e55df4db3f4195bd9e658f4716a, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 072b7762cbb797b4492f3fb31ad52e76, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
