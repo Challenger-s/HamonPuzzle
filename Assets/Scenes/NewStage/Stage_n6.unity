@@ -2311,6 +2311,11 @@ PrefabInstance:
       propertyPath: rippleGenerator
       value: 
       objectReference: {fileID: 278002270}
+    - target: {fileID: 8767748954998365478, guid: deca3ed0a4729da4aa475bc87cbe0284,
+        type: 3}
+      propertyPath: m_clearCount
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8767748954998365479, guid: deca3ed0a4729da4aa475bc87cbe0284,
         type: 3}
       propertyPath: m_LocalPosition.x
