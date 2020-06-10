@@ -18,12 +18,46 @@ EditorBuildSettings:
     path: Assets/Scenes/TitleScene.unity
     guid: 3583d8d2f95784d4582762efb3406b20
   - enabled: 1
+    path: Assets/Scenes/NewStage/Stage_01.unity
+    guid: 3fb1262cb2e4ef143b05ba7da0d56d35
+  - enabled: 1
+    path: Assets/Scenes/NewStage/Stage_n1.unity
+    guid: 5fe44781bd857a244a0e2b1b001abb78
+  - enabled: 0
+    path: Assets/Scenes/NewStage/Stage_n1_2.unity
+    guid: 8bb97b5b874e49d47827b4a69752f9ce
+  - enabled: 0
+    path: Assets/Scenes/NewStage/Stage_n1_3.unity
+    guid: 4025a0076a827e14ab1dec419b08f497
+  - enabled: 1
+    path: Assets/Scenes/NewStage/Stage_n1_4.unity
+    guid: 0544383399ab7df469cb10d13a6be173
+  - enabled: 1
+    path: Assets/Scenes/NewStage/Stage_n2.unity
+    guid: 28841d9a1990b1048ba50cbf9326ab79
+  - enabled: 1
+    path: Assets/Scenes/NewStage/Stage_n3.unity
+    guid: e37a3051cf40e494f870a1c7b90940bf
+  - enabled: 1
+    path: Assets/Scenes/NewStage/Stage_n4.unity
+    guid: 16cd83c945fad294893f99e2610cfa01
+  - enabled: 0
+    path: Assets/Scenes/NewStage/Stage_n5.unity
+    guid: 8ff04726c40a63f4da59015efbd98345
+  - enabled: 1
     path: Assets/Scenes/NewStage/Stage_n6.unity
     guid: 0f89127aceb95154e855efe00400faf6
   - enabled: 1
     path: Assets/Scenes/NewStage/Stage_n7.unity
     guid: e890f4c78470ceb40a8a1f06e738f5bb
+<<<<<<< HEAD
+  - enabled: 1
+=======
   - enabled: 0
+    path: Assets/Scenes/NewStage/Stage_n8.unity
+    guid: 7712286f7c45947449ecd7957b7fa2f6
+  - enabled: 0
+>>>>>>> NewShibata
     path: Assets/Scenes/Stage/Stage_1.unity
     guid: 4a9de9128fdda1d4cab08b1f9b51322b
   - enabled: 0
@@ -44,7 +78,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Stage/Stage_11.unity
     guid: 694b7fdbd88d0884caa06a99beb3a123
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Taito/StageSerelect.unity
     guid: dc033a88aacbbab49acb2305239e38d9
   m_configObjects: {}

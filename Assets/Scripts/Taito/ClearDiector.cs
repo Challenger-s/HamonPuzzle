@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ClearDiector : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class ClearDiector : MonoBehaviour
     [SerializeField] Image MostForwardImage;
     [SerializeField] Camera mainCamera;
     [SerializeField] Material RippleTexture;
+    [SerializeField] int stageNumber;
     
 
     [SerializeField] float fadeInTime = 1.5f;
@@ -58,13 +60,25 @@ public class ClearDiector : MonoBehaviour
 
     void clearProduction()
     {
+        Debug.Log("a");
         if (c)
         {
-            //Debug.Log("c");
+            
             MostForwardImage.color = new Color(255, 255, 255, MostForwardImage.color.a + (1 / fadeInTime2 * Time.deltaTime));
-            if(MostForwardImage.color.a < 0)
+            Debug.Log("b" + MostForwardImage.color.a);
+            if (MostForwardImage.color.a >= 1)
             {
+                Debug.Log("c");
+                if (PlayerPrefs.GetInt("StageClear", 0) < this.stageNumber)
+                {
+                    PlayerPrefs.SetInt("StageClear", this.stageNumber);
+                    PlayerPrefs.Save();
+                    Debug.Log(PlayerPrefs.GetInt("StageClear"));
+                }
+                
+                SceneManager.LoadScene(4);
                 clear = false;
+                
             }
         }
 

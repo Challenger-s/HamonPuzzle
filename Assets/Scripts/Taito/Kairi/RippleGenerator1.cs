@@ -29,10 +29,7 @@ public class RippleGenerator1 : MonoBehaviour
     {
         remainRippleCount = maxRippleCount;
 
-        topLeft = getScreenTopLeft();
-        bomttomLeft = getScreenBottomLeft();
-        topRight = getSceenTopRight();
-        bomttomRight = getScreenBottomRight();
+       
     }
 
     // Update is called once per frame
@@ -50,6 +47,11 @@ public class RippleGenerator1 : MonoBehaviour
     // 波紋の生成関数
     void GenerateRipple()
     {
+        topLeft = getScreenTopLeft();
+        bomttomLeft = getScreenBottomLeft();
+        topRight = getSceenTopRight();
+        bomttomRight = getScreenBottomRight();
+
         span = Random.Range(shortSpan, longSpan);
         float x = Random.Range(topRight.x - 0.5f, topLeft.x + 0.5f);
         float y = Random.Range(topRight.y - 0.5f, bomttomLeft.y + 0.5f);

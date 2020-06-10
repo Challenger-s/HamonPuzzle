@@ -25,8 +25,9 @@ public class StageSelectButton : MonoBehaviour, IPointerEnterHandler, IPointerEx
     // this method called by mouse-pointer enter the object.
     public void OnPointerEnter(PointerEventData eventData)
     {
-        selectDirector.ButtonFalling(stageNumber - 2);
-        Debug.Log("a");
+        selectDirector.buttonNumber = stageNumber - 2;
+        selectDirector.ButtonEnumChange(true);
+        //Debug.Log("a");
     }
 
     // オブジェクトの範囲内からマウスポインタが出た際に呼び出されます。
