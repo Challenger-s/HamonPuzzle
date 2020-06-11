@@ -89,6 +89,7 @@ public class RippleGenerator : MonoBehaviour
     //　右クリック時に呼ばれる
     public void Restart()
     {
+        interval = 0f;
         remainRippleCount = maxRippleCount;     //　カウントを復活
         RemainRippleCountTextUpdate();          //　テキストを更新
     }
