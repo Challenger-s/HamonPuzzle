@@ -271,10 +271,11 @@ public class StageSelectDirector : MonoBehaviour
                 {
                     button = Button.smaller;
                 }
-                Debug.Log(button);
+              
                 break;
 
             case Button.smaller:
+                Debug.Log(button);
                 //stageButtons[currentStage - 1].transform.localScale = new Vector3(stageButtons[currentStage - 1].transform.localScale.x - 0.01f + Time.deltaTime, stageButtons[currentStage - 1].transform.localScale.y - 0.01f + Time.deltaTime, 0);
                 if (NotButtonFalling(stageClearNumber - 1))
                 {
@@ -439,8 +440,9 @@ public class StageSelectDirector : MonoBehaviour
             {
                 stageButtons[buttonNumber].transform.GetChild(1).Find("ButtonBack").GetComponent<Renderer>().material = unClearButtonColorMterial;
 
-                return true;
+                
             }
+            return true;
         }
         return false;
     }
