@@ -368,6 +368,9 @@ public class StageSelectDirector : MonoBehaviour
         {
             if (backGuroundNumber > 0)
             {
+                audioSource[3].Play(); //音を鳴らす（スクロール音）
+                Debug.Log("左スクロール");
+
                 screenSizeX = ScreenSizeX();
                 screenPos = mainCamera.transform.position;
                 ButtonOff(false);
@@ -378,6 +381,9 @@ public class StageSelectDirector : MonoBehaviour
         {
             if (backGuroundNumber < BackGround.Length)
             {
+                audioSource[3].Play(); //音を鳴らす（スクロール音）
+                Debug.Log("右スクロール");
+
                 screenSizeX = ScreenSizeX();
                 screenPos = mainCamera.transform.position;
                 ButtonOff(false);
