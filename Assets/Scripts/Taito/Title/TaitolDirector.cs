@@ -140,9 +140,9 @@ public class TaitolDirector : MonoBehaviour
         if (FadeOut(forwardImage))
         {
             // 現在のScene名を取得する
-            Scene loadScene = SceneManager.GetActiveScene();
+           // Scene loadScene = SceneManager.GetActiveScene();
             // Sceneの読み直し
-            SceneManager.LoadScene(loadScene.name);
+//SceneManager.LoadScene(loadScene.name);
         }
     }
 
