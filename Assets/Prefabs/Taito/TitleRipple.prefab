@@ -147,9 +147,11 @@ MonoBehaviour:
   minRndSize: 5
   m_lineWidth: 0.5
   m_colliderWidth: 0.35
-  m_speed: 1
+  maxRndSpeed: 1
+  minRndSpeed: 1
   rippleParent: {fileID: 5857793319786711656}
   m_elapedTime: 0.03
+  SE_OFF: 1
 --- !u!1 &5857793319786711656
 GameObject:
   m_ObjectHideFlags: 0
