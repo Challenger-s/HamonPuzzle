@@ -22,6 +22,12 @@ public class FitzoneChange : MonoBehaviour
     [SerializeField] GameDirector gameDirector;
 
     [SerializeField]
+    Color[] innerColor; //波紋の内側(ライン）の色
+
+    [SerializeField]
+    Color[] outerColor; //波紋の外側＆中心の色
+
+    [SerializeField]
     float GrowingSpeed = 0.3f;
 
     [SerializeField]
@@ -57,6 +63,7 @@ public class FitzoneChange : MonoBehaviour
 
         clearCont = fitzoneController.GetCount();
         lastCont = fitzoneController.GetCount();
+        NotEnough();
     }
 
     // Update is called once per frame
@@ -118,29 +125,35 @@ public class FitzoneChange : MonoBehaviour
                     break;
             }
 
-            if (!(lastCont == fitzoneController.GetCount()))
+        if (!(lastCont == fitzoneController.GetCount()))
+        {
+            lastCont = fitzoneController.GetCount();
+            if (fitzoneController.GetCount() == 0)
             {
-                lastCont = fitzoneController.GetCount();
-                if (fitzoneController.GetCount() == 0)
-                {
-
-                    Complete();
-                }
-                else if (fitzoneController.GetCount() < 0)
-                {
-                    Burst();
-                }
-                else if (fitzoneController.GetCount() > 0)
-                {
-
-                    NotEnough();
-                }
+                //０の色にする
+                Complete();
             }
-        //}
+            else if (fitzoneController.GetCount() < 0)
+            {
+                //－１以下の色にする
+                Burst();
+            }
+            else if (fitzoneController.GetCount() > 0)
+            {
+                //１の色にする
+                NotEnough();
+            }
+        }
     }
 
     void NotEnough()
     {
+       int Cont = fitzoneController.GetCount() - 1;
+
+        notEnough.transform.GetChild(1).GetComponent<SpriteRenderer>().color = this.outerColor[Cont];
+        notEnough.transform.GetChild(0).GetComponent<SpriteRenderer>().color = this.innerColor[Cont];     
+        notEnough.GetComponent<SpriteRenderer>().color = this.outerColor[Cont];
+
         complete.SetActive(false);
         burst.SetActive(false);
         notEnough.SetActive(true);

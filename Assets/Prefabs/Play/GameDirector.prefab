@@ -55,7 +55,7 @@ MonoBehaviour:
   rippleGenerator: {fileID: 0}
   fadeImage: {fileID: 0}
   startFadeInSpeed: 0.7
-  restartFadeSpeed: 1
+  restartFadeSpeed: 2
   clearStopTime: 1.5
   pauseRainVolume: 0.5
   m_phase: 0
