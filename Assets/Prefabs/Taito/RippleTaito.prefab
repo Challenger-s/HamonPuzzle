@@ -50,7 +50,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 0a61af619b9b9f44c806fdeedb8b3801, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -70,7 +70,7 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Positions:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 1}
@@ -141,13 +141,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffe00094d2f59b244951d8100fff068f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_lineRenderer: {fileID: 0}
-  m_radius: 0
-  m_lineWidth: 0
-  m_colliderWidth: 0
-  m_speed: 0
-  rippleParent: {fileID: 0}
+  m_lineRenderer: {fileID: 761406432907108424}
+  m_radius: 1.2
+  maxRndSize: 5
+  minRndSize: 3
+  m_lineWidth: 0.15
+  m_colliderWidth: 0.35
+  maxRndSpeed: 1
+  minRndSpeed: 2
+  rippleParent: {fileID: 5857793319786711656}
   m_elapedTime: 0
+  SE_OFF: 1
+  rippleFadeOutTime: 0.5
 --- !u!1 &5857793319786711656
 GameObject:
   m_ObjectHideFlags: 0
