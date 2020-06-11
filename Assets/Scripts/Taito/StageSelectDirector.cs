@@ -10,7 +10,7 @@ public class StageSelectDirector : MonoBehaviour
     float backGroundMoveSpeed = 1;
 
     [SerializeField]
-    int stageClearNumber = 1;
+    public int stageClearNumber = 1;
 
 
     [SerializeField]
@@ -50,13 +50,13 @@ public class StageSelectDirector : MonoBehaviour
     GameObject parentUnClearButtonColor;
 
     [SerializeField]
-    Material unClearButtonColorMterial;
+    public Material unClearButtonColorMterial;
 
     [SerializeField]
-    Material SubUnClearButtonColorMterial;
+    public Material SubUnClearButtonColorMterial;
 
     [SerializeField]
-    GameObject[] stageButtons;
+    public GameObject[] stageButtons;
 
     [SerializeField]
     SpriteRenderer[] stageButtonsSp;
@@ -79,8 +79,7 @@ public class StageSelectDirector : MonoBehaviour
     [SerializeField]
     SpriteRenderer stageBuuttonSizse;
 
-    [SerializeField] float largeSize = 1.3f;
-    [SerializeField] float changeSizeTime = 0.2f;
+
 
     float unclearImageWidth = 0;
 
@@ -107,9 +106,13 @@ public class StageSelectDirector : MonoBehaviour
     float delta = 0;
     float span = 0.2f;
     public int buttonNumber;
+    int endButtonNumber;
 
+    float largeSize = 1.2f;
+    float changeSizeTime = 1f;
     float defoultSizeX = 0;
     float defoultSizeY = 0;
+
 
     Vector3 screenPos;
 
@@ -264,30 +267,19 @@ public class StageSelectDirector : MonoBehaviour
         {
             case Button.large:
                 //stageButtons[currentStage - 1].transform.localScale = new Vector3(stageButtons[currentStage - 1].transform.localScale.x + 0.01f + Time.deltaTime, stageButtons[currentStage - 1].transform.localScale.y + 0.01f + Time.deltaTime, 0);
-                if (ButtonFalling(buttonNumber))
+                if (ButtonFalling(stageClearNumber - 1))
                 {
                     button = Button.smaller;
                 }
+                Debug.Log(button);
                 break;
 
             case Button.smaller:
-
-
                 //stageButtons[currentStage - 1].transform.localScale = new Vector3(stageButtons[currentStage - 1].transform.localScale.x - 0.01f + Time.deltaTime, stageButtons[currentStage - 1].transform.localScale.y - 0.01f + Time.deltaTime, 0);
-                NotButtonFalling(buttonNumber);
-
-                button = Button.normal;
-                break;
-        }
-
-        switch (touchedButton)
-        {
-            case Button.large:
-                ButtonFalling(buttonNumber);
-                break;
-
-            case Button.smaller:
-                NotButtonFalling(buttonNumber);
+                if (NotButtonFalling(stageClearNumber - 1))
+                {
+                    button = Button.normal;
+                }
                 break;
         }
 
@@ -333,7 +325,6 @@ public class StageSelectDirector : MonoBehaviour
                     0);
                     stageButtons[stageClearNumber].transform.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder = -2;
                     addStage = AddStage.newStage;
-                    buttonNumber = stageClearNumber - 1;
                     button = Button.large;
                 }
             }
@@ -404,11 +395,8 @@ public class StageSelectDirector : MonoBehaviour
         {
             stageButtons[buttonNumber].transform.GetChild(1).Find("ButtonBack").GetComponent<Renderer>().material = SubUnClearButtonColorMterial;
         }
-        Debug.Log("a");
+       
         Vector3 size = stageButtons[buttonNumber].transform.GetChild(1).transform.localScale;
-
-        Debug.Log(size.x);
-        Debug.Log(defoultSizeX * largeSize);
         if (size.x < defoultSizeX * largeSize)
         {
            
@@ -418,6 +406,7 @@ public class StageSelectDirector : MonoBehaviour
         }
         else if(size.x > defoultSizeX * largeSize)
         {
+            Debug.Log("a");
             size.x = defoultSizeX * largeSize;
             size.y = defoultSizeY * largeSize;
             stageButtons[buttonNumber].transform.GetChild(1).transform.localScale = size;
@@ -426,33 +415,35 @@ public class StageSelectDirector : MonoBehaviour
         return false;
     }
 
-    public void NotButtonFalling(int buttonNumber)
+    public bool NotButtonFalling(int buttonNumber)
     {
         
-        if (buttonNumber == stageClearNumber)
-        {
-            stageButtons[buttonNumber].transform.GetChild(1).Find("ButtonBack").GetComponent<Renderer>().material = unClearButtonColorMterial;
-        }
-
         var size = stageButtons[buttonNumber].transform.GetChild(1).transform.localScale;
         if (size.x > defoultSizeX)
         {
             size.x = size.x - size.x * 1 / changeSizeTime * largeSize * Time.unscaledDeltaTime;
             size.y = size.y - size.y * 1 / changeSizeTime * largeSize * Time.unscaledDeltaTime;
-
-            if (size.x < defoultSizeX)
+            stageButtons[buttonNumber].transform.GetChild(1).transform.localScale = size;
+        }
+        else if (size.x < defoultSizeX)
+        {
+            size.x = defoultSizeX;
+            size.y = defoultSizeY;
+            if (buttonNumber == stageClearNumber)
             {
-                size.x = defoultSizeX;
-                size.y = defoultSizeY;
+                stageButtons[buttonNumber].transform.GetChild(1).Find("ButtonBack").GetComponent<Renderer>().material = unClearButtonColorMterial;
+
+                return true;
             }
         }
-        stageButtons[buttonNumber].transform.GetChild(1).transform.localScale = size;
+        return false;
     }
 
 
     public void ButtonEnumChange(bool enumButton)
     {
-        if (enumButton) {
+        if (enumButton)
+        {
             touchedButton = Button.large;
         }
         else
@@ -466,6 +457,7 @@ public class StageSelectDirector : MonoBehaviour
     {
         if (this.sceneChangeStartFlag == false) //フラグがオフだったら
         {
+            ButtonOff(false);
             audioSource[2].Play(); //音を鳴らす（シーン遷移開始音）
             Debug.Log("シーン遷移開始");
             this.sceneChangeStartFlag = true; //フラグオン
@@ -473,6 +465,7 @@ public class StageSelectDirector : MonoBehaviour
 
         if (number > 0)
         {
+            
             if (FadeOut(forwardImage))
             {
                 SceneManager.LoadScene(number);
