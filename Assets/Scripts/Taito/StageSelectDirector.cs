@@ -71,6 +71,9 @@ public class StageSelectDirector : MonoBehaviour
     GameObject[] sctollButton;
 
     [SerializeField]
+    GameObject[] sctollButtonImage;
+
+    [SerializeField]
     SpriteRenderer ac;
 
     [SerializeField]
@@ -78,8 +81,6 @@ public class StageSelectDirector : MonoBehaviour
 
     [SerializeField]
     SpriteRenderer stageBuuttonSizse;
-
-
 
     float unclearImageWidth = 0;
 
@@ -156,9 +157,8 @@ public class StageSelectDirector : MonoBehaviour
             stageClearNumber = currentStage = stageButtons.Length - 1;
         }
 
-
         ButtonOff(false);
-        ButtonOff(true);
+        SctollBUtton();
 
         screenSizeX = ScreenSizeX();
         screenPos = mainCamera.transform.position;
@@ -198,6 +198,8 @@ public class StageSelectDirector : MonoBehaviour
 
                 Debug.Log(stageClearNumber);
                 Debug.Log(currentStage);
+                
+                ButtonOff(true);
                 fadeIN = false;
             }
         }
@@ -267,17 +269,16 @@ public class StageSelectDirector : MonoBehaviour
         {
             case Button.large:
                 //stageButtons[currentStage - 1].transform.localScale = new Vector3(stageButtons[currentStage - 1].transform.localScale.x + 0.01f + Time.deltaTime, stageButtons[currentStage - 1].transform.localScale.y + 0.01f + Time.deltaTime, 0);
-                if (ButtonFalling(stageClearNumber - 1))
+                if (ButtonFalling(stageClearNumber))
                 {
                     button = Button.smaller;
-                }
-              
+                }             
                 break;
 
             case Button.smaller:
                 Debug.Log(button);
                 //stageButtons[currentStage - 1].transform.localScale = new Vector3(stageButtons[currentStage - 1].transform.localScale.x - 0.01f + Time.deltaTime, stageButtons[currentStage - 1].transform.localScale.y - 0.01f + Time.deltaTime, 0);
-                if (NotButtonFalling(stageClearNumber - 1))
+                if (NotButtonFalling(stageClearNumber))
                 {
                     button = Button.normal;
                 }
@@ -380,7 +381,7 @@ public class StageSelectDirector : MonoBehaviour
         }
         else
         {
-            if (backGuroundNumber < BackGround.Length)
+            if (backGuroundNumber < BackGround.Length - 1)
             {
                 audioSource[3].Play(); //音を鳴らす（スクロール音）
                 Debug.Log("右スクロール");
@@ -438,26 +439,12 @@ public class StageSelectDirector : MonoBehaviour
             size.y = defoultSizeY;
             if (buttonNumber == stageClearNumber)
             {
-                stageButtons[buttonNumber].transform.GetChild(1).Find("ButtonBack").GetComponent<Renderer>().material = unClearButtonColorMterial;
-
-                
+                stageButtons[buttonNumber].transform.GetChild(1).Find("ButtonBack").GetComponent<Renderer>().material = unClearButtonColorMterial;                
             }
+            stageButtons[buttonNumber].transform.GetChild(1).transform.localScale = size;
             return true;
         }
         return false;
-    }
-
-
-    public void ButtonEnumChange(bool enumButton)
-    {
-        if (enumButton)
-        {
-            touchedButton = Button.large;
-        }
-        else
-        {
-            touchedButton = Button.smaller;
-        }
     }
 
 
@@ -499,7 +486,7 @@ public class StageSelectDirector : MonoBehaviour
 
     bool FadeIn(Image image)
     {
-        image.color = new Color(255, 255, 255, image.color.a - (0.3f * Time.deltaTime));
+        image.color = new Color(255, 255, 255, image.color.a - (0.5f * Time.deltaTime));
 
         if (image.color.a < 0)
         {
@@ -529,11 +516,8 @@ public class StageSelectDirector : MonoBehaviour
         GameObject[][] buttonsALL = { buttons1, buttons2 };
         if (off)
         {
-
-            sctollButton[0].SetActive(true);
-            sctollButton[1].SetActive(true);
             int c = 0;
-            
+            SctollBUtton();
             if (backGuroundNumber == 0)
             {
                 c = stageClearNumber + 1;
@@ -560,6 +544,7 @@ public class StageSelectDirector : MonoBehaviour
         }
         else
         {
+          
             sctollButton[0].SetActive(false);
             sctollButton[1].SetActive(false);
             for (int i = 0; i < buttonsALL.Length; i++)
@@ -569,6 +554,31 @@ public class StageSelectDirector : MonoBehaviour
                     buttonsALL[i][j].SetActive(false);
                 }
             }
+        }
+    }
+
+    void SctollBUtton()
+    {
+        if (backGuroundNumber < 1)
+        {
+            sctollButton[0].SetActive(false);
+            sctollButtonImage[0].SetActive(false);
+            sctollButtonImage[1].SetActive(true);
+            sctollButton[1].SetActive(true);
+        }
+        else if (backGuroundNumber > BackGround.Length - 2)
+        {
+            sctollButton[1].SetActive(false);
+            sctollButtonImage[1].SetActive(false);
+            sctollButtonImage[0].SetActive(true);
+            sctollButton[0].SetActive(true);
+        }
+        else
+        {
+            sctollButton[0].SetActive(true);
+            sctollButton[1].SetActive(true);
+            sctollButtonImage[1].SetActive(true);
+            sctollButtonImage[0].SetActive(true);
         }
     }
 
@@ -601,19 +611,17 @@ public class StageSelectDirector : MonoBehaviour
                 clear = false;
             }
 
-
-                if (unClearButtonColor.transform.position.x + (unClearColor.bounds.size.x / 2f) < stageButtons[currentStage].transform.GetChild(1).transform.position.x + (stageBuuttonSizse.bounds.size.x / 2f))
-                {
-                    parentUnClearButtonColor.transform.localScale = new Vector3(parentUnClearButtonColor.transform.localScale.x + 1.15f * Time.deltaTime, parentUnClearButtonColor.transform.localScale.y, 0);
+            if (unClearButtonColor.transform.position.x + (unClearColor.bounds.size.x / 2f) < stageButtons[currentStage].transform.GetChild(1).transform.position.x + (stageBuuttonSizse.bounds.size.x / 2f))
+            {
+                parentUnClearButtonColor.transform.localScale = new Vector3(parentUnClearButtonColor.transform.localScale.x + 1.15f * Time.deltaTime, parentUnClearButtonColor.transform.localScale.y, 0);
+            }
+            else
+            {
+                for (int i = 0; i < currentStage; i++) {
+                BackGroundColor();
                 }
-                else
-                {
-                    for (int i = 0; i < currentStage; i++) {
-                    BackGroundColor();
-                    }
-                    unClear = false;
-                }
-            
+                unClear = false;
+            }          
         }
     }
 

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class TaitolDirector : MonoBehaviour
 {
@@ -59,7 +58,7 @@ public class TaitolDirector : MonoBehaviour
         {
             buttons[i].SetActive(false);
         }
-;
+        
     }
 
     // Update is called once per frame
@@ -174,4 +173,6 @@ public class TaitolDirector : MonoBehaviour
             return false;
         }
     }
+
+    //void 
 }

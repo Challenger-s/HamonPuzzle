@@ -31,6 +31,7 @@ public class TitleScene_MusicDirector : MonoBehaviour
             }
 
             audioSource[1].volume = audioSource[1].volume - 0.3f * Time.deltaTime;
+            audioSource[2].volume = audioSource[1].volume - 0.3f * Time.deltaTime;
         }
     }
 }

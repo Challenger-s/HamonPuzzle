@@ -12,7 +12,6 @@ public class StageSelectButton : MonoBehaviour, IPointerEnterHandler, IPointerEx
     [SerializeField]
     StageSelectDirector selectDirector;
 
-
     float largeSize = 1.2f;
     float changeSizeTime = 0.2f;
     float defoultSizeX = 0;
@@ -52,7 +51,11 @@ public class StageSelectButton : MonoBehaviour, IPointerEnterHandler, IPointerEx
                 break;
 
             case Button.smaller:
-                NotButtonFalling(stageNumber - 2);
+                if(NotButtonFalling(stageNumber - 2))
+                {
+                    touchedButton = Button.smaller;
+               
+                }
                 break;
         }
     }
@@ -105,10 +108,11 @@ public class StageSelectButton : MonoBehaviour, IPointerEnterHandler, IPointerEx
             size.y = defoultSizeY;
             if (buttonNumber == selectDirector.stageClearNumber)
             {
-                selectDirector.stageButtons[buttonNumber].transform.GetChild(1).Find("ButtonBack").GetComponent<Renderer>().material = selectDirector.unClearButtonColorMterial;
-
-                return true;
+                selectDirector.stageButtons[buttonNumber].transform.GetChild(1).Find("ButtonBack").GetComponent<Renderer>().material = selectDirector.unClearButtonColorMterial;                
             }
+            selectDirector.stageButtons[buttonNumber].transform.GetChild(1).transform.localScale = size;
+
+            return true;
         }
         return false;
     }

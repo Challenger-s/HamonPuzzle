@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TitleTransparentSpher : MonoBehaviour
 {
@@ -42,8 +43,10 @@ public class TitleTransparentSpher : MonoBehaviour
             expansion(bomttomRight))
         {
             transform.localScale = new Vector3(sphereScale.x += (expansionSpeed * Time.deltaTime), sphereScale.y += (expansionSpeed * Time.deltaTime), 0);
+        }else
+        {
+            SceneManager.LoadScene("StageSerelect");
         }
-
     }
 
     private bool expansion(Vector3 cameraPos)

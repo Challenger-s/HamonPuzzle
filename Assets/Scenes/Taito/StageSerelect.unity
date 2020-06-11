@@ -3870,6 +3870,9 @@ MonoBehaviour:
   sctollButton:
   - {fileID: 1190863150}
   - {fileID: 1927973479}
+  sctollButtonImage:
+  - {fileID: 1567741575}
+  - {fileID: 292000971}
   ac: {fileID: 607998456}
   unClearColor: {fileID: 488913420}
   stageBuuttonSizse: {fileID: 220261632}
@@ -4470,7 +4473,7 @@ Transform:
   m_GameObject: {fileID: 886123839}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -8.93, y: 0.80163574, z: -5}
-  m_LocalScale: {x: 8.38, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 1, z: 1}
   m_Children:
   - {fileID: 488913418}
   - {fileID: 1500614250}
