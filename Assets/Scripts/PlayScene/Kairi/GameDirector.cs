@@ -86,6 +86,7 @@ public class GameDirector : MonoBehaviour
                     audioSource[1].Play(); //1番目の音を鳴らす
                     whiteCircleFlag = false;
                 }
+                audioSource[2].volume = audioSource[2].volume - 0.15f * Time.deltaTime; //「雨音」の音量を下げる
                 break;
         }
     }
