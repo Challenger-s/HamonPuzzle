@@ -34,9 +34,7 @@ public class StageSelectButton : MonoBehaviour, IPointerEnterHandler, IPointerEx
     }
 
     public void OnClick()
-    {
-
-       
+    {      
         selectDirector.number = stageNumber;
         selectDirector.sceneTransition = true;
   
@@ -47,14 +45,14 @@ public class StageSelectButton : MonoBehaviour, IPointerEnterHandler, IPointerEx
         switch (touchedButton)
         {
             case Button.large:
+               
                 ButtonFalling(stageNumber - 2);              
                 break;
 
             case Button.smaller:
                 if(NotButtonFalling(stageNumber - 2))
                 {
-                    touchedButton = Button.smaller;
-               
+                    touchedButton = Button.smaller;              
                 }
                 break;
         }

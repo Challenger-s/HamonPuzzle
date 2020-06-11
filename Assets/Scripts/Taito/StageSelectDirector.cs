@@ -214,9 +214,6 @@ public class StageSelectDirector : MonoBehaviour
         {
             if (FadeIn(forwardImage))
             {
-
-                Debug.Log(stageClearNumber);
-                Debug.Log(currentStage);
                 
                 ButtonOff(true);
                 fadeIN = false;
@@ -346,7 +343,6 @@ public class StageSelectDirector : MonoBehaviour
                     0);
                     stageButtons[stageClearNumber].transform.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder = -2;
                     addStage = AddStage.newStage;
-                    button = Button.large;
                 }
             }
             
@@ -372,6 +368,7 @@ public class StageSelectDirector : MonoBehaviour
             {
                 ButtonOff(true);
             }
+                           button = Button.large;
             addStage = AddStage.normal;
         }
     }
@@ -546,12 +543,12 @@ public class StageSelectDirector : MonoBehaviour
             SctollBUtton();
             if (backGuroundNumber == 0)
             {
-                c = stageClearNumber + 1;
+                c = currentStage + 1;
             }
             else if (backGuroundNumber == 1)
             {
                 Debug.Log(backGuroundNumber);
-                c = stageClearNumber - buttons2.Length + 1;
+                c = currentStage - buttons2.Length + 1;
             }
             else
             {
