@@ -143,6 +143,14 @@ MonoBehaviour:
   complete: {fileID: 2737164327874943026}
   burst: {fileID: 2175130969393538816}
   gameDirector: {fileID: 0}
+  innerColor:
+  - {r: 0.6392157, g: 0.86666673, b: 1, a: 1}
+  - {r: 0.62352943, g: 0.7725491, b: 0.909804, a: 1}
+  - {r: 0.85098046, g: 0.8235295, b: 0.91372555, a: 1}
+  outerColor:
+  - {r: 0.427451, g: 0.61960787, b: 0.9215687, a: 1}
+  - {r: 0.2392157, g: 0.52156866, b: 0.77647066, a: 1}
+  - {r: 0.5568628, g: 0.48627454, b: 0.76470596, a: 1}
   GrowingSpeed: 1
   SmallerSpeed: 0.3
 --- !u!1 &8767748955623982786
@@ -344,6 +352,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: NotEnough
+      objectReference: {fileID: 0}
+    - target: {fileID: 2981793467238276067, guid: 3c84977a0eba39d47a26278037d516f7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6307216210453877930, guid: 3c84977a0eba39d47a26278037d516f7,
         type: 3}

@@ -137,6 +137,7 @@ public class TaitolDirector : MonoBehaviour
 
     public void SceneReload()
     {
+        /*
         if (FadeOut(forwardImage))
         {
             // 現在のScene名を取得する
@@ -144,6 +145,7 @@ public class TaitolDirector : MonoBehaviour
             // Sceneの読み直し
 //SceneManager.LoadScene(loadScene.name);
         }
+        */
     }
 
     bool FadeOut(Image image)

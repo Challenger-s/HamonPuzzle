@@ -114,6 +114,7 @@ public class StageSelectDirector : MonoBehaviour
     float defoultSizeX = 0;
     float defoultSizeY = 0;
 
+    int randomBgm = 0; //Bgmをランダムに選ぶ変数
 
     Vector3 screenPos;
 
@@ -146,6 +147,24 @@ public class StageSelectDirector : MonoBehaviour
     void Start()
     {
         audioSource = GetComponents<AudioSource>(); //オーディオソース取得
+        //ランダム抽選
+        this.randomBgm = Random.Range(0, 3);
+        //０だったら
+        if(this.randomBgm == 0)
+        {
+            audioSource[5].Play();
+        }
+        //１だったら
+        else if(this.randomBgm == 1)
+        {
+            audioSource[6].Play();
+        }
+        //２だったら
+        else if(this.randomBgm == 2)
+        {
+            audioSource[7].Play();
+        }
+
 
         defoultSizeX = stageButtons[0].transform.GetChild(1).transform.localScale.x;
         defoultSizeY = stageButtons[0].transform.GetChild(1).transform.localScale.y;
@@ -458,6 +477,13 @@ public class StageSelectDirector : MonoBehaviour
             this.sceneChangeStartFlag = true; //フラグオン
         }
 
+        //音量ダウン
+        audioSource[2].volume = audioSource[2].volume - 0.6f * Time.deltaTime;
+        audioSource[4].volume = audioSource[4].volume - 0.6f * Time.deltaTime;
+        audioSource[5].volume = audioSource[5].volume - 0.4f * Time.deltaTime;
+        audioSource[6].volume = audioSource[6].volume - 0.4f * Time.deltaTime;
+        audioSource[7].volume = audioSource[7].volume - 0.4f * Time.deltaTime;
+
         if (number > 0)
         {
             
@@ -472,7 +498,7 @@ public class StageSelectDirector : MonoBehaviour
 
     bool FadeOut(Image image)
     {
-        image.color = new Color(255, 255, 255, image.color.a + (0.3f * Time.deltaTime));
+        image.color = new Color(255, 255, 255, image.color.a + (0.5f * Time.deltaTime));
 
         if (image.color.a > 1)
         {

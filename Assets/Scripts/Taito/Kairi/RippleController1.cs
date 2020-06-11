@@ -33,7 +33,8 @@ public sealed class RippleController1 : MonoBehaviour
     float maxSize = 0;
     float m_speed = 0;
 
-    
+    [SerializeField]
+    float rippleFadeOutTime = 1f;
 
     private void Reset()
     {
@@ -78,7 +79,7 @@ public sealed class RippleController1 : MonoBehaviour
             GetComponent<Renderer>().material.color = new Color(GetComponent<Renderer>().material.color.r,
                                                                GetComponent<Renderer>().material.color.g,
                                                                GetComponent<Renderer>().material.color.b, 
-                                                               GetComponent<Renderer>().material.color.a - (1f * Time.deltaTime));
+                                                               GetComponent<Renderer>().material.color.a - (this.rippleFadeOutTime * Time.deltaTime));
         }
         
     }
