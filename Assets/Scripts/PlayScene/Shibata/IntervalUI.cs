@@ -47,8 +47,14 @@ public class IntervalUI : MonoBehaviour
     //　インターバルUI
     void Interval()
     {
-        image.fillAmount = rippleGenerator.ReturnInterval() / rippleGenerator.ReturnDefoultInterval();
-        Debug.Log(image.fillAmount);
+        if (this.gameDirector.m_phase == GameDirector.Phase.Restart)
+        {
+            image.fillAmount = 0f;
+        }
+        else if(this.rippleGenerator.GetRippleCount() != 0)
+        {
+            image.fillAmount = rippleGenerator.ReturnInterval() / rippleGenerator.ReturnDefoultInterval();
+        }
     }
 
     //　画面に表示
