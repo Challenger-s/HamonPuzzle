@@ -60,6 +60,12 @@ public class NewBehaviourScript : MonoBehaviour
         {
             SceneManager.LoadScene(0);
         }
+
+        if (Input.GetKey(KeyCode.D))
+        {
+            PlayerPrefs.DeleteKey("StageClear");
+            PlayerPrefs.DeleteKey("CurrentStage");
+        }
     }
 
 }

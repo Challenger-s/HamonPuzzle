@@ -149,7 +149,7 @@ public class StageSelectDirector : MonoBehaviour
         defoultSizeX = stageButtons[0].transform.GetChild(1).transform.localScale.x;
         defoultSizeY = stageButtons[0].transform.GetChild(1).transform.localScale.y;
             
-        stageClearNumber = currentStage = 1;//PlayerPrefs.GetInt("CurrentStage",0);
+        stageClearNumber = currentStage = PlayerPrefs.GetInt("CurrentStage",0);
         
         if (currentStage > stageButtons.Length - 1)
         {
@@ -172,7 +172,7 @@ public class StageSelectDirector : MonoBehaviour
 
          Restoration();
 
-        stageClearNumber = 2; //PlayerPrefs.GetInt("StageClear", 0);
+        stageClearNumber = PlayerPrefs.GetInt("StageClear", 0);
         stageButtons[stageClearNumber - 1].transform.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder = 0;
 
         if (stageClearNumber > stageButtons.Length - 1)

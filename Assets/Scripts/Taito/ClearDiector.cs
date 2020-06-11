@@ -76,7 +76,7 @@ public class ClearDiector : MonoBehaviour
                     Debug.Log(PlayerPrefs.GetInt("StageClear"));
                 }
                 
-                SceneManager.LoadScene(4);
+                SceneManager.LoadScene(1);
                 clear = false;
                 
             }
