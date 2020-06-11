@@ -2053,7 +2053,7 @@ PrefabInstance:
     - target: {fileID: 8767748954998365478, guid: deca3ed0a4729da4aa475bc87cbe0284,
         type: 3}
       propertyPath: m_clearCount
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8767748954998365479, guid: deca3ed0a4729da4aa475bc87cbe0284,
         type: 3}
@@ -2562,7 +2562,7 @@ PrefabInstance:
     - target: {fileID: 6075037348733455972, guid: 89be0d4f1eb685a488c2666aeec2ac00,
         type: 3}
       propertyPath: maxRippleCount
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6075037348733455972, guid: 89be0d4f1eb685a488c2666aeec2ac00,
         type: 3}
