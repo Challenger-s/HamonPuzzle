@@ -148,19 +148,21 @@ public class StageSelectDirector : MonoBehaviour
     {
         audioSource = GetComponents<AudioSource>(); //オーディオソース取得
         //ランダム抽選
-        this.randomBgm = Random.Range(0, 3);
+        this.randomBgm = Random.Range(0, 2);
         //０だったら
         if(this.randomBgm == 0)
         {
             audioSource[5].Play();
         }
+        /*
         //１だったら
         else if(this.randomBgm == 1)
         {
             audioSource[6].Play();
         }
-        //２だったら
-        else if(this.randomBgm == 2)
+        */
+        //1だったら
+        else if(this.randomBgm == 1)
         {
             audioSource[7].Play();
         }

@@ -77,7 +77,7 @@ public class GameD : MonoBehaviour
     {
         if (FadeOut(forwardImage))
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene("StageSerelect"); //シーン呼び出し、切り替え
             menu = false;
         }
     }
