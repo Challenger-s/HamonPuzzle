@@ -172,7 +172,7 @@ public class StageSelectDirector : MonoBehaviour
         defoultSizeX = stageButtons[0].transform.GetChild(1).transform.localScale.x;
         defoultSizeY = stageButtons[0].transform.GetChild(1).transform.localScale.y;
 
-        stageClearNumber = currentStage = PlayerPrefs.GetInt("CurrentStage",0);
+        stageClearNumber = currentStage = 13;//PlayerPrefs.GetInt("CurrentStage",0);
         
         if (currentStage > stageButtons.Length - 1)
         {
@@ -194,7 +194,7 @@ public class StageSelectDirector : MonoBehaviour
 
         Restoration();
 
-        stageClearNumber = PlayerPrefs.GetInt("StageClear", 0);
+        stageClearNumber = 14;//PlayerPrefs.GetInt("StageClear", 0);
 
         stageButtons[stageClearNumber - 1].transform.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder = 0;
 
@@ -570,7 +570,7 @@ public class StageSelectDirector : MonoBehaviour
                 {
                     Debug.Log(currentStage);
                     Debug.Log(buttons2.Length + buttons3.Length + 1);
-                    c = buttons2.Length + buttons3.Length  - currentStage + 1;
+                    c = (currentStage + 1) - (buttons2.Length + buttons3.Length);
                 }
                 
             }
@@ -636,13 +636,17 @@ public class StageSelectDirector : MonoBehaviour
             float a = (stageButtons[currentStage].transform.GetChild(1).transform.position.x + (stageButtonsSp[currentStage].bounds.size.x / 2f));
             float b = (stageButtons[currentStage - 1].transform.GetChild(1).transform.position.x - (stageButtonsSp[currentStage - 1].bounds.size.x / 2f));
             c = ((a - b) / 2f) + b;
-        }       
+
+        }
+        
+        
         
 
         bool clear = true;
         bool unClear = true;
 
         while (clear || unClear) {
+
             if (clearButtonColor.transform.position.x + (ac.bounds.size.x / 2f) < c && currentStage > 0)
             {
                 parentClearButtonColor.transform.localScale = new Vector3(parentClearButtonColor.transform.localScale.x + 1.15f * Time.deltaTime,
@@ -654,6 +658,7 @@ public class StageSelectDirector : MonoBehaviour
                 stageButtons[currentStage].transform.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder = -2;
                 clear = false;
             }
+
 
             if (unClearButtonColor.transform.position.x + (unClearColor.bounds.size.x / 2f) < stageButtons[currentStage].transform.GetChild(1).transform.position.x + (stageBuuttonSizse.bounds.size.x / 2f))
             {
