@@ -23,9 +23,6 @@ public class StageSelectDirector : MonoBehaviour
     [SerializeField]
     Color endColor;
 
-    [Range(0f, 1f)]
-    public float t;
-
     [SerializeField]
     Image forwardImage;
 
@@ -206,7 +203,22 @@ public class StageSelectDirector : MonoBehaviour
 
         camera.orthographicSize = 5f;
 
-        BackGround[backGuroundNumber].color = Color.Lerp(startColor, endColor, t);
+        //　背景の色調整
+        if (stageClearNumber <= 5)
+        {
+            BackGround[0].color = Color.Lerp(startColor, endColor, stageClearNumber / 5f);
+        }
+        else if (stageClearNumber <= 10)
+        {
+            BackGround[0].color = Color.Lerp(startColor, endColor, 1f);
+            BackGround[1].color = Color.Lerp(startColor, endColor, (stageClearNumber - 5) / 5f);
+        }
+        else if (stageClearNumber <= 15)
+        {
+            BackGround[0].color = Color.Lerp(startColor, endColor, 1f);
+            BackGround[1].color = Color.Lerp(startColor, endColor, 1f);
+            BackGround[2].color = Color.Lerp(startColor, endColor, (stageClearNumber - 10) / 5f);
+        }
 
         forwardImage.color = new Color(1, 1, 1, 1);
         fadeIN = true;     
@@ -214,6 +226,8 @@ public class StageSelectDirector : MonoBehaviour
         Restoration();
 
         stageClearNumber = PlayerPrefs.GetInt("StageClear", 0);
+
+        Debug.Log(stageClearNumber);
 
         stageButtons[stageClearNumber - 1].transform.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder = 0;
 
@@ -243,7 +257,7 @@ public class StageSelectDirector : MonoBehaviour
             }
         }
 
-        Debug.Log(backGuroundNumber);
+        //Debug.Log(backGuroundNumber);
 
 
         switch (addStage)
@@ -400,8 +414,23 @@ public class StageSelectDirector : MonoBehaviour
 
 
     private void BackGroundColor()
-    {       
-        BackGround[backGuroundNumber].color = Color.Lerp(startColor, endColor, t += 1f / 6f);
+    {
+        if (stageClearNumber < 5)
+        {
+            BackGround[0].color = Color.Lerp(startColor, endColor, (stageClearNumber + 1) / 5f);
+        }
+        else if (stageClearNumber < 10)
+        {
+            BackGround[0].color = Color.Lerp(startColor, endColor, 1f);
+            BackGround[1].color = Color.Lerp(startColor, endColor, ((stageClearNumber + 1) - 5) / 5f);
+        }
+        else
+        {
+            BackGround[0].color = Color.Lerp(startColor, endColor, 1f);
+            BackGround[1].color = Color.Lerp(startColor, endColor, 1f);
+            BackGround[2].color = Color.Lerp(startColor, endColor, ((stageClearNumber + 1) - 10) / 5f);
+        }
+        
     }
 
     public void Sctoll(bool left)

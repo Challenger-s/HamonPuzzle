@@ -68,11 +68,11 @@ public class StageSelectButton : MonoBehaviour, IPointerEnterHandler, IPointerEx
         {
              selectDirector.stageButtons[buttonNumber].transform.GetChild(1).Find("ButtonBack").GetComponent<Renderer>().material = selectDirector.SubUnClearButtonColorMterial;
         }
-        Debug.Log("a");
+        //Debug.Log("a");
         Vector3 size = selectDirector.stageButtons[buttonNumber].transform.GetChild(1).transform.localScale;
 
-        Debug.Log(size.x);
-        Debug.Log(defoultSizeX * largeSize);
+        //Debug.Log(size.x);
+        //Debug.Log(defoultSizeX * largeSize);
         if (size.x < defoultSizeX * largeSize)
         {
             size.x = size.x + size.x * 1 / changeSizeTime * largeSize * Time.unscaledDeltaTime;
