@@ -60,12 +60,12 @@ public class ClearDiector : MonoBehaviour
 
     void clearProduction()
     {
-        Debug.Log("a");
+        //Debug.Log("a");
         if (c)
         {
             
             MostForwardImage.color = new Color(255, 255, 255, MostForwardImage.color.a + (1 / fadeInTime2 * Time.deltaTime));
-            Debug.Log("b" + MostForwardImage.color.a);
+            //Debug.Log("b" + MostForwardImage.color.a);
             if (MostForwardImage.color.a >= 1)
             {
                 Debug.Log("c");

@@ -331,7 +331,7 @@ public class StageSelectDirector : MonoBehaviour
                 break;
 
             case Buttons.smaller:
-                Debug.Log(button);
+                //Debug.Log(button);
                 //stageButtons[currentStage - 1].transform.localScale = new Vector3(stageButtons[currentStage - 1].transform.localScale.x - 0.01f + Time.deltaTime, stageButtons[currentStage - 1].transform.localScale.y - 0.01f + Time.deltaTime, 0);
                 if (NotButtonFalling(stageClearNumber))
                 {
@@ -415,20 +415,20 @@ public class StageSelectDirector : MonoBehaviour
 
     private void BackGroundColor()
     {
-        if (stageClearNumber < 5)
+        if (stageClearNumber <= 5)
         {
-            BackGround[0].color = Color.Lerp(startColor, endColor, (stageClearNumber + 1) / 5f);
+            BackGround[0].color = Color.Lerp(startColor, endColor, stageClearNumber / 5f);
         }
-        else if (stageClearNumber < 10)
+        else if (stageClearNumber <= 10)
         {
             BackGround[0].color = Color.Lerp(startColor, endColor, 1f);
-            BackGround[1].color = Color.Lerp(startColor, endColor, ((stageClearNumber + 1) - 5) / 5f);
+            BackGround[1].color = Color.Lerp(startColor, endColor, (stageClearNumber - 5) / 5f);
         }
-        else
+        else if (stageClearNumber <= 15)
         {
             BackGround[0].color = Color.Lerp(startColor, endColor, 1f);
             BackGround[1].color = Color.Lerp(startColor, endColor, 1f);
-            BackGround[2].color = Color.Lerp(startColor, endColor, ((stageClearNumber + 1) - 10) / 5f);
+            BackGround[2].color = Color.Lerp(startColor, endColor, (stageClearNumber - 10) / 5f);
         }
         
     }
@@ -614,15 +614,15 @@ public class StageSelectDirector : MonoBehaviour
             }
             else if (backGuroundNumber == 2)
             {
-                Debug.Log(currentStage);
+                //Debug.Log(currentStage);
                 if(currentStage < buttons2.Length + buttons3.Length)
                 {
                     c = 0;
                 }
                 else
                 {
-                    Debug.Log(currentStage);
-                    Debug.Log(buttons2.Length + buttons3.Length + 1);
+                    //Debug.Log(currentStage);
+                    //Debug.Log(buttons2.Length + buttons3.Length + 1);
                     c = (currentStage + 1) - (buttons2.Length + buttons3.Length);
                 }
                 
