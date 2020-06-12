@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 3529648684219769093}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 3213647665346453789}
   m_RootOrder: 0
@@ -70,7 +70,7 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: -4
   m_Positions:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 1}
@@ -143,13 +143,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_lineRenderer: {fileID: 761406432907108424}
   m_radius: 0.5
-  maxRndSize: 3
-  minRndSize: 3
+  maxRndSize: 4
+  minRndSize: 4
   m_lineWidth: 0.1
   m_colliderWidth: 0.35
-  maxRndSpeed: 5
-  minRndSpeed: 5
-  startFadeOutPoint: 6
+  maxRndSpeed: 3
+  minRndSpeed: 3
+  startFadeOutPoint: 2.5
   rippleParent: {fileID: 5857793319786711656}
   m_elapedTime: 0
   SE_OFF: 1
