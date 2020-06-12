@@ -9,7 +9,6 @@ public class StageSelectDirector : MonoBehaviour
     [SerializeField]
     float backGroundMoveSpeed = 1;
 
-    [SerializeField]
     public int stageClearNumber = 1;
 
 
@@ -191,7 +190,7 @@ public class StageSelectDirector : MonoBehaviour
         forwardImage.color = new Color(1, 1, 1, 1);
         fadeIN = true;     
 
-         Restoration();
+        Restoration();
 
         stageClearNumber = PlayerPrefs.GetInt("StageClear", 0);
         stageButtons[stageClearNumber - 1].transform.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder = 0;

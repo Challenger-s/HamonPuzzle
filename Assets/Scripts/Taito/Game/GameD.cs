@@ -17,6 +17,8 @@ public class GameD : MonoBehaviour
     public bool menu = false;
 
     bool poseDisplay = false;
+    bool transitionFinish = false;
+
 
     AudioSource[] audioSource; //オーディオソース使用
 
@@ -29,7 +31,11 @@ public class GameD : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (menu)
+        if (transitionFinish)
+        {
+
+        }
+        else if (menu)
         {
             Menu();
         }
@@ -73,12 +79,13 @@ public class GameD : MonoBehaviour
         }
     }
 
-    public void Menu()
+    void Menu()
     {
         if (FadeOut(forwardImage))
         {
-            SceneManager.LoadScene("StageSerelect"); //シーン呼び出し、切り替え
-            menu = false;
+            Time.timeScale = 1f;
+            SceneManager.LoadScene(1); //シーン呼び出し、切り替え
+            transitionFinish = true;
         }
     }
 
