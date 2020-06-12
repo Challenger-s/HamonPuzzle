@@ -979,11 +979,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxRippleCount: 2147483647
-  ripplePrefab: {fileID: 5857793319786711656, guid: df53e04fff3e37c48b890edb88f113cb,
+  ripplePrefab: {fileID: 5857793319786711656, guid: adab9808a4492634c8b36208df817a0e,
     type: 3}
   rippleList: {fileID: 635962108}
   shortSpan: 0.1
-  longSpan: 0.3
+  longSpan: 0.2
   mainCamera: {fileID: 1362408980}
 --- !u!114 &635962108 stripped
 MonoBehaviour:

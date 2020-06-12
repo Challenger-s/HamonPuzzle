@@ -14,6 +14,7 @@ public sealed class RippleController1 : MonoBehaviour
     [SerializeField] private float m_colliderWidth = 0;    // 円の当たり判定のの太さ
     [SerializeField] private float maxRndSpeed = 1.2f;  // 波紋の速度
     [SerializeField] private float minRndSpeed = 0.8f;  // 波紋の速度
+    [SerializeField] float startFadeOutPoint = 1f;
 
     [SerializeField]
     GameObject rippleParent;
@@ -74,7 +75,7 @@ public sealed class RippleController1 : MonoBehaviour
             Destroy(rippleParent);
 
         }
-        else if(GetRippleSize() > maxSize - 2)
+        else if(GetRippleSize() > maxSize - startFadeOutPoint)
         {
             GetComponent<Renderer>().material.color = new Color(GetComponent<Renderer>().material.color.r,
                                                                GetComponent<Renderer>().material.color.g,

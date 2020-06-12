@@ -381,7 +381,6 @@ public class StageSelectDirector : MonoBehaviour
 
     public void Sctoll(bool left)
     {
-       
         if (left)
         {
             if (backGuroundNumber > 0)
@@ -408,7 +407,6 @@ public class StageSelectDirector : MonoBehaviour
                 sctollR = true;
             }
         }
-        
     }
 
 

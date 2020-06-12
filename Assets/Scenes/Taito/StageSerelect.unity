@@ -3811,7 +3811,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backGroundMoveSpeed: 1
-  stageClearNumber: -143
+  stageClearNumber: 6
   canvas: {fileID: 378014537}
   BackGround:
   - {fileID: 801223154}
