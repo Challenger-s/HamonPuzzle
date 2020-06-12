@@ -777,7 +777,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: 
 --- !u!222 &142456161
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -860,7 +860,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: 
 --- !u!222 &176844199
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1880,7 +1880,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: 
 --- !u!222 &271213080
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2276,7 +2276,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: 
 --- !u!222 &311602461
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3044,7 +3044,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: 
 --- !u!222 &413812664
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3530,7 +3530,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: 
 --- !u!222 &505033166
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4259,7 +4259,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: 
 --- !u!222 &684343697
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6000,7 +6000,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: 
 --- !u!222 &856506764
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6383,7 +6383,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: 
 --- !u!222 &885504050
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6680,7 +6680,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: 
 --- !u!222 &980569872
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7355,7 +7355,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: 
 --- !u!222 &1037926362
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7939,7 +7939,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: 
 --- !u!222 &1184517267
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9053,7 +9053,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: 
 --- !u!222 &1255914447
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9130,7 +9130,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: 
 --- !u!222 &1277238418
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9480,7 +9480,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: 
 --- !u!222 &1402605791
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9878,7 +9878,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: 
 --- !u!222 &1460376399
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10906,7 +10906,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: 
 --- !u!222 &1846083720
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11155,6 +11155,86 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1906718499}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1916487521
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4478483924811463369, guid: 190850eca3ff3504291447bc64ad81dd,
+        type: 3}
+      propertyPath: maxRippleCount
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4478483924811463369, guid: 190850eca3ff3504291447bc64ad81dd,
+        type: 3}
+      propertyPath: ripplePrefab
+      value: 
+      objectReference: {fileID: 5857793319786711656, guid: ddd990f04176063459c79dab3af383b3,
+        type: 3}
+    - target: {fileID: 6075037348733455973, guid: 190850eca3ff3504291447bc64ad81dd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075037348733455973, guid: 190850eca3ff3504291447bc64ad81dd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075037348733455973, guid: 190850eca3ff3504291447bc64ad81dd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075037348733455973, guid: 190850eca3ff3504291447bc64ad81dd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075037348733455973, guid: 190850eca3ff3504291447bc64ad81dd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075037348733455973, guid: 190850eca3ff3504291447bc64ad81dd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075037348733455973, guid: 190850eca3ff3504291447bc64ad81dd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075037348733455973, guid: 190850eca3ff3504291447bc64ad81dd,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075037348733455973, guid: 190850eca3ff3504291447bc64ad81dd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075037348733455973, guid: 190850eca3ff3504291447bc64ad81dd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075037348733455973, guid: 190850eca3ff3504291447bc64ad81dd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075037348733455975, guid: 190850eca3ff3504291447bc64ad81dd,
+        type: 3}
+      propertyPath: m_Name
+      value: RippleGeneratorStageSerelect
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 190850eca3ff3504291447bc64ad81dd, type: 3}
 --- !u!1 &1927973479
 GameObject:
   m_ObjectHideFlags: 0
@@ -11217,7 +11297,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1927973479}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
