@@ -66,7 +66,14 @@ public class StageSelectDirector : MonoBehaviour
     GameObject[] buttons2;
 
     [SerializeField]
+<<<<<<< HEAD
     Button[] sctollButton;
+=======
+    GameObject[] buttons3;
+
+    [SerializeField]
+    GameObject[] sctollButton;
+>>>>>>> Prog_Jin
 
     [SerializeField]
     public GameObject[] sctollButtonImage;
@@ -534,7 +541,7 @@ public class StageSelectDirector : MonoBehaviour
 
     void ButtonOff(bool off)
     {
-        GameObject[][] buttonsALL = { buttons1, buttons2 };
+        GameObject[][] buttonsALL = { buttons1, buttons2 ,buttons3};
         if (off)
         {
             int c = 0;
@@ -547,6 +554,10 @@ public class StageSelectDirector : MonoBehaviour
             {
                 Debug.Log(backGuroundNumber);
                 c = currentStage - buttons2.Length + 1;
+            }
+            else if(backGuroundNumber == 2)
+            {
+                c = currentStage - buttons3.Length + 1;
             }
             else
             {
