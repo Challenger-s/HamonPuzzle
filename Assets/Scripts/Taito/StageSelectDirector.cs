@@ -171,7 +171,7 @@ public class StageSelectDirector : MonoBehaviour
 
         defoultSizeX = stageButtons[0].transform.GetChild(1).transform.localScale.x;
         defoultSizeY = stageButtons[0].transform.GetChild(1).transform.localScale.y;
-            
+
         stageClearNumber = currentStage = PlayerPrefs.GetInt("CurrentStage",0);
         
         if (currentStage > stageButtons.Length - 1)
@@ -545,25 +545,41 @@ public class StageSelectDirector : MonoBehaviour
             if (backGuroundNumber == 0)
             {
                 c = currentStage + 1;
+                if (c > buttons1.Length)
+                {
+                    c = buttons1.Length;
+                }
             }
             else if (backGuroundNumber == 1)
             {
-                Debug.Log(backGuroundNumber);
+                Debug.Log(currentStage - buttons2.Length + 1);
                 c = currentStage - buttons2.Length + 1;
+                if (c > buttons1.Length + buttons2.Length)
+                {
+                    c = buttons2.Length;
+                }
             }
-            else if(backGuroundNumber == 2)
+            else if (backGuroundNumber == 2)
             {
-                c = currentStage - buttons3.Length + 1;
+                Debug.Log(currentStage);
+                if(currentStage < buttons2.Length + buttons3.Length)
+                {
+                    c = 0;
+                }
+                else
+                {
+                    Debug.Log(currentStage);
+                    Debug.Log(buttons2.Length + buttons3.Length + 1);
+                    c = buttons2.Length + buttons3.Length  - currentStage + 1;
+                }
+                
             }
             else
             {
                 c = 0;
             }
 
-            if (c > 5)
-            {
-                c = 5;
-            }
+         
 
             for (int i = 0; i < c; i++)
             {

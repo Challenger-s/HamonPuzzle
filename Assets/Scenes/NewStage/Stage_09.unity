@@ -3842,6 +3842,11 @@ PrefabInstance:
       propertyPath: displayTime
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5858402157940654478, guid: 8d5189887d67a4944956eaaa9ac78ce3,
+        type: 3}
+      propertyPath: stageNumber
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d5189887d67a4944956eaaa9ac78ce3, type: 3}
 --- !u!1 &2024428537
