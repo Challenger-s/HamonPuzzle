@@ -243,6 +243,8 @@ public class StageSelectDirector : MonoBehaviour
             }
         }
 
+        Debug.Log(backGuroundNumber);
+
 
         switch (addStage)
         {
@@ -279,7 +281,7 @@ public class StageSelectDirector : MonoBehaviour
                     mainCamera.transform.position.z);
                 sctollL = false;
                 backGuroundNumber--;
-                //ButtonOff(true);
+                ButtonOff(true);
             }
         }
 
