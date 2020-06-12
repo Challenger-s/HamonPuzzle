@@ -74,6 +74,7 @@ public class TaitolDirector : MonoBehaviour
             SceneReload();
         }
 
+        FadeIn(forwardImage);
         if (click)
         {
             if (Input.GetMouseButtonDown(0))
@@ -87,7 +88,6 @@ public class TaitolDirector : MonoBehaviour
                 click = false;
             }
         }
-
     }
 
     void Delete()

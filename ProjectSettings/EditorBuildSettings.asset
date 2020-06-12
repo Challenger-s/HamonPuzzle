@@ -36,30 +36,30 @@ EditorBuildSettings:
     path: Assets/Scenes/NewStage/Stage_08.unity
     guid: 73eced61548d54740a5851069aaa1888
   - enabled: 1
-    path: Assets/Scenes/NewStage/Stage_09.unity
+    path: Assets/Scenes/NewStage/Stage_010.unity
     guid: 4fedcf15ae65a7746bd181052626045f
   - enabled: 1
-    path: Assets/Scenes/NewStage/Stage_010.unity
+    path: Assets/Scenes/NewStage/Stage_011.unity
     guid: 16cd83c945fad294893f99e2610cfa01
   - enabled: 1
-    path: Assets/Scenes/NewStage/Stage_011.unity
+    path: Assets/Scenes/NewStage/Stage_012.unity
     guid: 7712286f7c45947449ecd7957b7fa2f6
   - enabled: 1
-    path: Assets/Scenes/NewStage/Stage_012.unity
-    guid: 6762ac060b2f88846a5ba36ef4be8959
-  - enabled: 1
     path: Assets/Scenes/NewStage/Stage_013.unity
-    guid: 49da2b319a021c44c9948ed4dd97c6f7
+    guid: 6762ac060b2f88846a5ba36ef4be8959
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/NewStage/Stage_014.unity
     guid: bb4ad2b6ba4684f469e4e19e5932493a
   - enabled: 1
     path: Assets/Scenes/NewStage/Stage_015.unity
     guid: e54844b11cc2b6d4fb6a489377abdec6
-  - enabled: 1
-    path: Assets/Scenes/NewStage/Stage_016.unity
-    guid: ba143b5898ce2f94ba6eb3027a314993
-  - enabled: 1
-    path: Assets/Scenes/NewStage/Stage_017.unity
-    guid: 42d96f18b4d58cb42b0539e84333d5e1
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}
