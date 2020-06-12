@@ -172,11 +172,7 @@ public class StageSelectDirector : MonoBehaviour
         defoultSizeX = stageButtons[0].transform.GetChild(1).transform.localScale.x;
         defoultSizeY = stageButtons[0].transform.GetChild(1).transform.localScale.y;
 
-<<<<<<< HEAD
-        stageClearNumber = currentStage = 15;//PlayerPrefs.GetInt("CurrentStage",0);
-=======
         stageClearNumber = currentStage = PlayerPrefs.GetInt("CurrentStage",0);
->>>>>>> Prog_Jin
         
         if (currentStage > stageButtons.Length - 1)
         {
@@ -217,11 +213,7 @@ public class StageSelectDirector : MonoBehaviour
 
         Restoration();
 
-<<<<<<< HEAD
-        stageClearNumber = 15;//PlayerPrefs.GetInt("StageClear", 0);
-=======
         stageClearNumber = PlayerPrefs.GetInt("StageClear", 0);
->>>>>>> Prog_Jin
 
         stageButtons[stageClearNumber - 1].transform.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder = 0;
 
@@ -674,9 +666,6 @@ public class StageSelectDirector : MonoBehaviour
             c = ((a - b) / 2f) + b;
 
         }
-<<<<<<< HEAD
-        
-=======
 
         if (this.backGuroundNumber == 0)
         {
@@ -695,7 +684,6 @@ public class StageSelectDirector : MonoBehaviour
                     mainCamera.transform.position.z);
         }
 
->>>>>>> Prog_Jin
         bool clear = true;
         bool unClear = true;
 
