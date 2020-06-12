@@ -598,15 +598,12 @@ public class StageSelectDirector : MonoBehaviour
             {
                 c = 0;
             }
-
-<<<<<<< HEAD
-         
-=======
+            
             if (c > 5)
             {
                 c = 5;
             }
->>>>>>> NewShibata
+
 
             for (int i = 0; i < c; i++)
             {
