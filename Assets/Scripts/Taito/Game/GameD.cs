@@ -83,14 +83,9 @@ public class GameD : MonoBehaviour
     {
         if (FadeOut(forwardImage))
         {
-<<<<<<< HEAD
-            SceneManager.LoadScene(1); //シーン呼び出し、切り替え
-            menu = false;
-=======
             Time.timeScale = 1f;
             SceneManager.LoadScene(1); //シーン呼び出し、切り替え
             transitionFinish = true;
->>>>>>> NewShibata
         }
     }
 

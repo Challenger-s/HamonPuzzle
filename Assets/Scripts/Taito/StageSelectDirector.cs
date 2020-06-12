@@ -190,11 +190,7 @@ public class StageSelectDirector : MonoBehaviour
         forwardImage.color = new Color(1, 1, 1, 1);
         fadeIN = true;     
 
-<<<<<<< HEAD
-        //Restoration();
-=======
         Restoration();
->>>>>>> NewShibata
 
         stageClearNumber = PlayerPrefs.GetInt("StageClear", 0);
 
