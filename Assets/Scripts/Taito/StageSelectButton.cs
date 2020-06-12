@@ -13,7 +13,7 @@ public class StageSelectButton : MonoBehaviour, IPointerEnterHandler, IPointerEx
     StageSelectDirector selectDirector;
 
     float largeSize = 1.2f;
-    float changeSizeTime = 0.2f;
+    float changeSizeTime = 0.5f;
     float defoultSizeX = 0;
     float defoultSizeY = 0;
 
