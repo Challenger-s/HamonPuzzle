@@ -66,14 +66,10 @@ public class StageSelectDirector : MonoBehaviour
     GameObject[] buttons2;
 
     [SerializeField]
-<<<<<<< HEAD
     Button[] sctollButton;
-=======
-    GameObject[] buttons3;
 
     [SerializeField]
-    GameObject[] sctollButton;
->>>>>>> Prog_Jin
+    GameObject[] buttons3;
 
     [SerializeField]
     public GameObject[] sctollButtonImage;
@@ -564,9 +560,9 @@ public class StageSelectDirector : MonoBehaviour
                 c = 0;
             }
 
-            if (c > 6)
+            if (c > 5)
             {
-                c = 6;
+                c = 5;
             }
 
             for (int i = 0; i < c; i++)

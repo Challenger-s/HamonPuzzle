@@ -535,88 +535,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
-<<<<<<< HEAD
---- !u!1001 &114924942
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4478483924811463369, guid: 190850eca3ff3504291447bc64ad81dd,
-        type: 3}
-      propertyPath: maxRippleCount
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 4478483924811463369, guid: 190850eca3ff3504291447bc64ad81dd,
-        type: 3}
-      propertyPath: ripplePrefab
-      value: 
-      objectReference: {fileID: 5857793319786711656, guid: ddd990f04176063459c79dab3af383b3,
-        type: 3}
-    - target: {fileID: 6075037348733455973, guid: 190850eca3ff3504291447bc64ad81dd,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075037348733455973, guid: 190850eca3ff3504291447bc64ad81dd,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075037348733455973, guid: 190850eca3ff3504291447bc64ad81dd,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075037348733455973, guid: 190850eca3ff3504291447bc64ad81dd,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075037348733455973, guid: 190850eca3ff3504291447bc64ad81dd,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075037348733455973, guid: 190850eca3ff3504291447bc64ad81dd,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075037348733455973, guid: 190850eca3ff3504291447bc64ad81dd,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075037348733455973, guid: 190850eca3ff3504291447bc64ad81dd,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075037348733455973, guid: 190850eca3ff3504291447bc64ad81dd,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075037348733455973, guid: 190850eca3ff3504291447bc64ad81dd,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075037348733455973, guid: 190850eca3ff3504291447bc64ad81dd,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075037348733455975, guid: 190850eca3ff3504291447bc64ad81dd,
-        type: 3}
-      propertyPath: m_Name
-      value: RippleGeneratorStageSerelect
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 190850eca3ff3504291447bc64ad81dd, type: 3}
-=======
 --- !u!1 &108709311
 GameObject:
   m_ObjectHideFlags: 0
@@ -698,7 +616,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
->>>>>>> Prog_Jin
 --- !u!4 &129875112 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5285184961527013461, guid: 545cd0310657d8645b4dfb9159906251,
@@ -981,7 +898,7 @@ Transform:
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 364882690}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &177646311
 SpriteRenderer:
@@ -2728,7 +2645,7 @@ PrefabInstance:
     - target: {fileID: 5285184961527013461, guid: 545cd0310657d8645b4dfb9159906251,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5285184961527013461, guid: 545cd0310657d8645b4dfb9159906251,
         type: 3}
@@ -5007,88 +4924,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9065582f8035f3640969dbd250acdca9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
-  backGroundMoveSpeed: 1
-  stageClearNumber: 0
-  canvas: {fileID: 378014537}
-  BackGround:
-  - {fileID: 801223154}
-  - {fileID: 583672153}
-  - {fileID: 440384098}
-  startColor: {r: 0.7411765, g: 0.8117648, b: 0.87843144, a: 1}
-  endColor: {r: 0.86274517, g: 0.98823535, b: 1, a: 1}
-  t: 0
-  forwardImage: {fileID: 2001852617}
-  camera: {fileID: 986787442}
-  mainCamera: {fileID: 986787440}
-  clearButtonColor: {fileID: 607998455}
-  parentClearButtonColor: {fileID: 2110601834}
-  unClearButtonColor: {fileID: 488913417}
-  parentUnClearButtonColor: {fileID: 886123839}
-  unClearButtonColorMterial: {fileID: 2100000, guid: ab568eab86d84f04181af0df846aff76,
-    type: 2}
-  SubUnClearButtonColorMterial: {fileID: 2100000, guid: 844f4455bdebd0b4cb69c7a8db34645f,
-    type: 2}
-  stageButtons:
-  - {fileID: 1799975323}
-  - {fileID: 395374363}
-  - {fileID: 599288135}
-  - {fileID: 512007987}
-  - {fileID: 316153152}
-  - {fileID: 1709423361}
-  - {fileID: 823149943}
-  - {fileID: 1125799631}
-  - {fileID: 1249532668}
-  - {fileID: 383391792}
-  - {fileID: 233000697}
-  - {fileID: 1496063824}
-  stageButtonsSp:
-  - {fileID: 573374759}
-  - {fileID: 897112517}
-  - {fileID: 1249610488}
-  - {fileID: 1339455380}
-  - {fileID: 907673887}
-  - {fileID: 86477701}
-  - {fileID: 1724769055}
-  - {fileID: 1325592885}
-  - {fileID: 618552602}
-  - {fileID: 2071100364}
-  - {fileID: 703801902}
-  - {fileID: 1783219119}
-  buttons1:
-  - {fileID: 288645360}
-  - {fileID: 564443939}
-  - {fileID: 1072612687}
-  - {fileID: 2140591762}
-  - {fileID: 811112430}
-  - {fileID: 707017947}
-  buttons2:
-  - {fileID: 4315479}
-  - {fileID: 383561350}
-  - {fileID: 199838501}
-  - {fileID: 1408676800}
-  - {fileID: 1127681598}
-  - {fileID: 798532575}
-  sctollButton:
-  - {fileID: 1190863152}
-  - {fileID: 1927973482}
-  sctollButtonImage:
-  - {fileID: 1567741575}
-  - {fileID: 292000971}
-  ac: {fileID: 607998456}
-  unClearColor: {fileID: 488913420}
-  stageBuuttonSizse: {fileID: 220261632}
-  sceneTransition: 0
-  number: 0
-  buttonNumber: 0
---- !u!4 &851602578
-Transform:
-=======
   stageNumber: 13
   selectDirector: {fileID: 851602577}
 --- !u!114 &834961002
 MonoBehaviour:
->>>>>>> Prog_Jin
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -5280,15 +5119,15 @@ MonoBehaviour:
   - {fileID: 383561350}
   - {fileID: 199838501}
   - {fileID: 1408676800}
+  sctollButton:
+  - {fileID: 1190863152}
+  - {fileID: 1927973482}
   buttons3:
   - {fileID: 1127681598}
   - {fileID: 798532575}
   - {fileID: 1225953817}
   - {fileID: 834960999}
   - {fileID: 873924965}
-  sctollButton:
-  - {fileID: 1190863150}
-  - {fileID: 1927973479}
   sctollButtonImage:
   - {fileID: 1567741575}
   - {fileID: 292000971}
@@ -5319,7 +5158,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 851602576}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b45a1be2c5ac858449e1ad35d3c60ff6, type: 3}
   m_Name: 
@@ -7187,7 +7026,7 @@ PrefabInstance:
     - target: {fileID: 5285184961527013461, guid: 545cd0310657d8645b4dfb9159906251,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5285184961527013461, guid: 545cd0310657d8645b4dfb9159906251,
         type: 3}
@@ -7931,8 +7770,8 @@ Transform:
   - {fileID: 1186597329}
   - {fileID: 129875112}
   - {fileID: 61294247}
-  - {fileID: 134146822}
   - {fileID: 1693697177}
+  - {fileID: 134146822}
   - {fileID: 1177835084}
   - {fileID: 1761727928}
   - {fileID: 2130486949}
@@ -8847,7 +8686,7 @@ PrefabInstance:
     - target: {fileID: 5285184961527013461, guid: 545cd0310657d8645b4dfb9159906251,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5285184961527013461, guid: 545cd0310657d8645b4dfb9159906251,
         type: 3}
@@ -10507,7 +10346,7 @@ Transform:
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 364882690}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1701901317
 SpriteRenderer:
@@ -10931,7 +10770,7 @@ PrefabInstance:
     - target: {fileID: 5285184961527013461, guid: 545cd0310657d8645b4dfb9159906251,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5285184961527013461, guid: 545cd0310657d8645b4dfb9159906251,
         type: 3}
@@ -11249,7 +11088,7 @@ PrefabInstance:
     - target: {fileID: 5285184961527013461, guid: 545cd0310657d8645b4dfb9159906251,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5285184961527013461, guid: 545cd0310657d8645b4dfb9159906251,
         type: 3}
@@ -11679,7 +11518,7 @@ PrefabInstance:
     - target: {fileID: 5285184961527013461, guid: 545cd0310657d8645b4dfb9159906251,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5285184961527013461, guid: 545cd0310657d8645b4dfb9159906251,
         type: 3}
@@ -12476,7 +12315,7 @@ PrefabInstance:
     - target: {fileID: 5285184961527013461, guid: 545cd0310657d8645b4dfb9159906251,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5285184961527013461, guid: 545cd0310657d8645b4dfb9159906251,
         type: 3}
