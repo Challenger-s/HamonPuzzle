@@ -18,87 +18,92 @@ public class NewBehaviourScript : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Alpha1))
         {
-            SceneManager.LoadScene(1);
+            PlayerPrefs.SetInt("StageClear", 1);
+            PlayerPrefs.SetInt("CurrentStage", 1);
         }
 
         if (Input.GetKey(KeyCode.Alpha2))
         {
-            SceneManager.LoadScene(2);
+            PlayerPrefs.SetInt("StageClear", 2);
+            PlayerPrefs.SetInt("CurrentStage", 2);
         }
 
         if (Input.GetKey(KeyCode.Alpha3))
         {
-            SceneManager.LoadScene(3);
+            PlayerPrefs.SetInt("StageClear", 3);
+            PlayerPrefs.SetInt("CurrentStage", 3);
         }
 
         if (Input.GetKey(KeyCode.Alpha4))
         {
-            SceneManager.LoadScene(4);
+            PlayerPrefs.SetInt("StageClear", 4);
+            PlayerPrefs.SetInt("CurrentStage", 4);
         }
 
         if (Input.GetKey(KeyCode.Alpha5))
         {
-            SceneManager.LoadScene(5);
+            PlayerPrefs.SetInt("StageClear", 5);
+            PlayerPrefs.SetInt("CurrentStage", 5);
         }
 
         if (Input.GetKey(KeyCode.Alpha6))
         {
-            SceneManager.LoadScene(6);
+            PlayerPrefs.SetInt("StageClear", 6);
+            PlayerPrefs.SetInt("CurrentStage", 6);
         }
 
         if (Input.GetKey(KeyCode.Alpha7))
         {
-            SceneManager.LoadScene(7);
+            PlayerPrefs.SetInt("StageClear", 7);
+            PlayerPrefs.SetInt("CurrentStage", 7);
         }
 
         if (Input.GetKey(KeyCode.Alpha8))
         {
-            SceneManager.LoadScene(8);
+            PlayerPrefs.SetInt("StageClear", 8);
+            PlayerPrefs.SetInt("CurrentStage", 8);
+        }
+
+        if (Input.GetKey(KeyCode.Alpha9))
+        {
+            PlayerPrefs.SetInt("StageClear", 9);
+            PlayerPrefs.SetInt("CurrentStage", 9);
         }
 
         if (Input.GetKey(KeyCode.Alpha0))
         {
-            SceneManager.LoadScene(0);
+            PlayerPrefs.SetInt("StageClear", 10);
+            PlayerPrefs.SetInt("CurrentStage", 10);
         }
 
         if (Input.GetKey(KeyCode.Q))
         {
-            SceneManager.LoadScene(9);
+            PlayerPrefs.SetInt("StageClear", 11);
+            PlayerPrefs.SetInt("CurrentStage", 11);
         }
 
         if (Input.GetKey(KeyCode.W))
         {
-            SceneManager.LoadScene(10);
+            PlayerPrefs.SetInt("StageClear", 12);
+            PlayerPrefs.SetInt("CurrentStage", 12);
         }
 
         if (Input.GetKey(KeyCode.E))
         {
-            SceneManager.LoadScene(11);
+            PlayerPrefs.SetInt("StageClear", 13);
+            PlayerPrefs.SetInt("CurrentStage", 13);
         }
 
         if (Input.GetKey(KeyCode.R))
         {
-            SceneManager.LoadScene(12);
+            PlayerPrefs.SetInt("StageClear", 14);
+            PlayerPrefs.SetInt("CurrentStage", 14);
         }
 
         if (Input.GetKey(KeyCode.T))
         {
-            SceneManager.LoadScene(13);
-        }
-
-        if (Input.GetKey(KeyCode.Y))
-        {
-            SceneManager.LoadScene(14);
-        }
-
-        if (Input.GetKey(KeyCode.U))
-        {
-            SceneManager.LoadScene(15);
-        }
-
-        if (Input.GetKey(KeyCode.I))
-        {
-            SceneManager.LoadScene(16);
+            PlayerPrefs.SetInt("StageClear", 15);
+            PlayerPrefs.SetInt("CurrentStage", 15);
         }
 
         if (Input.GetKey(KeyCode.D))
@@ -107,6 +112,8 @@ public class NewBehaviourScript : MonoBehaviour
             PlayerPrefs.DeleteKey("backGuroundNumber");
             PlayerPrefs.DeleteKey("CurrentStage");
         }
+
+        
     }
 
 }
