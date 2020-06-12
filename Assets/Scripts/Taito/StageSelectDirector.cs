@@ -9,7 +9,6 @@ public class StageSelectDirector : MonoBehaviour
     [SerializeField]
     float backGroundMoveSpeed = 1;
 
-    [SerializeField]
     public int stageClearNumber = 1;
 
 
@@ -191,7 +190,11 @@ public class StageSelectDirector : MonoBehaviour
         forwardImage.color = new Color(1, 1, 1, 1);
         fadeIN = true;     
 
+<<<<<<< HEAD
         //Restoration();
+=======
+        Restoration();
+>>>>>>> NewShibata
 
         stageClearNumber = PlayerPrefs.GetInt("StageClear", 0);
 
