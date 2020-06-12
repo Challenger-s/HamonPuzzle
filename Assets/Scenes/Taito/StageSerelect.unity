@@ -449,6 +449,86 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &114924942
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4478483924811463369, guid: 190850eca3ff3504291447bc64ad81dd,
+        type: 3}
+      propertyPath: maxRippleCount
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4478483924811463369, guid: 190850eca3ff3504291447bc64ad81dd,
+        type: 3}
+      propertyPath: ripplePrefab
+      value: 
+      objectReference: {fileID: 5857793319786711656, guid: ddd990f04176063459c79dab3af383b3,
+        type: 3}
+    - target: {fileID: 6075037348733455973, guid: 190850eca3ff3504291447bc64ad81dd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075037348733455973, guid: 190850eca3ff3504291447bc64ad81dd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075037348733455973, guid: 190850eca3ff3504291447bc64ad81dd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075037348733455973, guid: 190850eca3ff3504291447bc64ad81dd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075037348733455973, guid: 190850eca3ff3504291447bc64ad81dd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075037348733455973, guid: 190850eca3ff3504291447bc64ad81dd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075037348733455973, guid: 190850eca3ff3504291447bc64ad81dd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075037348733455973, guid: 190850eca3ff3504291447bc64ad81dd,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075037348733455973, guid: 190850eca3ff3504291447bc64ad81dd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075037348733455973, guid: 190850eca3ff3504291447bc64ad81dd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075037348733455973, guid: 190850eca3ff3504291447bc64ad81dd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075037348733455975, guid: 190850eca3ff3504291447bc64ad81dd,
+        type: 3}
+      propertyPath: m_Name
+      value: RippleGeneratorStageSerelect
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 190850eca3ff3504291447bc64ad81dd, type: 3}
 --- !u!4 &129875112 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5285184961527013461, guid: 545cd0310657d8645b4dfb9159906251,
@@ -3872,8 +3952,8 @@ MonoBehaviour:
   - {fileID: 1127681598}
   - {fileID: 798532575}
   sctollButton:
-  - {fileID: 1190863150}
-  - {fileID: 1927973479}
+  - {fileID: 1190863152}
+  - {fileID: 1927973482}
   sctollButtonImage:
   - {fileID: 1567741575}
   - {fileID: 292000971}
