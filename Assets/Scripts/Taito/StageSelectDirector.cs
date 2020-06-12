@@ -243,6 +243,8 @@ public class StageSelectDirector : MonoBehaviour
             }
         }
 
+        Debug.Log(backGuroundNumber);
+
 
         switch (addStage)
         {
