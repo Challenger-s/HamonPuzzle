@@ -104,6 +104,7 @@ public class NewBehaviourScript : MonoBehaviour
         if (Input.GetKey(KeyCode.D))
         {
             PlayerPrefs.DeleteKey("StageClear");
+            PlayerPrefs.DeleteKey("backGuroundNumber");
             PlayerPrefs.DeleteKey("CurrentStage");
         }
     }
