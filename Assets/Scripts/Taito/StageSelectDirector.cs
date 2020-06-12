@@ -23,7 +23,7 @@ public class StageSelectDirector : MonoBehaviour
     [SerializeField]
     Color endColor;
 
-   [Range(0f, 1f)]
+    [Range(0f, 1f)]
     public float t;
 
     [SerializeField]
@@ -180,14 +180,33 @@ public class StageSelectDirector : MonoBehaviour
         }
 
         ButtonOff(false);
-        SctollBUtton();
+
+        backGuroundNumber = PlayerPrefs.GetInt("backGuroundNumber", 0);
+        if (backGuroundNumber == 0)
+        {
+            sctollButton[0].interactable = false;
+            sctollButtonImage[0].SetActive(false);
+            sctollButton[1].interactable = false;
+        }
+        else if (backGuroundNumber == 2)
+        {
+            sctollButton[1].interactable = false;
+            sctollButtonImage[1].SetActive(false);
+            sctollButton[0].interactable = false;
+        }
+        else
+        {
+            sctollButton[0].interactable = false;
+            sctollButton[1].interactable = false;
+        }
+        
 
         screenSizeX = ScreenSizeX();
         screenPos = mainCamera.transform.position;
 
         camera.orthographicSize = 5f;
 
-        BackGround[0].color = Color.Lerp(startColor, endColor, t);
+        BackGround[backGuroundNumber].color = Color.Lerp(startColor, endColor, t);
 
         forwardImage.color = new Color(1, 1, 1, 1);
         fadeIN = true;     
@@ -219,6 +238,7 @@ public class StageSelectDirector : MonoBehaviour
             if (FadeIn(forwardImage))
             {             
                 ButtonOff(true);
+                SctollBUtton();
                 fadeIN = false;
             }
         }
@@ -259,7 +279,7 @@ public class StageSelectDirector : MonoBehaviour
                     mainCamera.transform.position.z);
                 sctollL = false;
                 backGuroundNumber--;
-                ButtonOff(true);
+                //ButtonOff(true);
             }
         }
 
@@ -578,13 +598,17 @@ public class StageSelectDirector : MonoBehaviour
             {
                 c = 0;
             }
+            
+            if (c > 5)
+            {
+                c = 5;
+            }
 
-         
 
             for (int i = 0; i < c; i++)
             {
                 buttonsALL[backGuroundNumber][i].SetActive(off);
-            }            
+            }
         }
         else
         {
@@ -677,6 +701,7 @@ public class StageSelectDirector : MonoBehaviour
     void SaveCurrent()
     {       
         PlayerPrefs.SetInt("CurrentStage", currentStage);
+        PlayerPrefs.SetInt("backGuroundNumber", backGuroundNumber);
         PlayerPrefs.Save();
         if (PlayerPrefs.HasKey("CurrentStage"))
         {
