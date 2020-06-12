@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class ScrollRutton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
@@ -14,13 +15,15 @@ public class ScrollRutton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     [SerializeField]
     int buttonNumber;
 
+    Button a;
+
 
     float largeSize = 1.2f;
     float changeSizeTime = 0.2f;
     float defoultSizeX = 0;
     float defoultSizeY = 0;
 
-    public enum Button
+    public enum Buttons
     {
         large,
         smaller,
@@ -28,7 +31,7 @@ public class ScrollRutton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         normal,
     }
 
-    Button touchedButton = Button.normal;
+    Buttons touchedButton = Buttons.normal;
 
     private void Start()
     {
@@ -41,18 +44,18 @@ public class ScrollRutton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     {
         switch (touchedButton)
         {
-            case Button.large:
+            case Buttons.large:
 
                 if (ButtonFalling())
                 {
-                    touchedButton = Button.normal;
+                    touchedButton = Buttons.normal;
                 }
                 break;
 
-            case Button.smaller:
+            case Buttons.smaller:
                 if (NotButtonFalling())
                 {
-                    touchedButton = Button.normal;
+                    touchedButton = Buttons.normal;
                 }
                 break;
         }
@@ -109,7 +112,7 @@ public class ScrollRutton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     // this method called by mouse-pointer enter the object.
     public void OnPointerEnter(PointerEventData eventData)
     {
-        touchedButton = Button.large;
+        touchedButton = Buttons.large;
         //Debug.Log("a");
     }
 
@@ -117,6 +120,6 @@ public class ScrollRutton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     // 
     public void OnPointerExit(PointerEventData eventData)
     {
-        touchedButton = Button.smaller;
+        touchedButton = Buttons.smaller;
     }
 }

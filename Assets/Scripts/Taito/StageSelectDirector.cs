@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -67,7 +66,7 @@ public class StageSelectDirector : MonoBehaviour
     GameObject[] buttons2;
 
     [SerializeField]
-    GameObject[] sctollButton;
+    Button[] sctollButton;
 
     [SerializeField]
     public GameObject[] sctollButtonImage;
@@ -121,16 +120,16 @@ public class StageSelectDirector : MonoBehaviour
     bool stageAddStartFlag = false; //ステージ追加を開始したか判定
     bool sceneChangeStartFlag = false; //シーン遷移を開始したか判定
 
-    public enum Button
+    public enum Buttons
     {
         large,
         smaller,
 
         normal,
     }
-    Button button = Button.normal;
+    Buttons button = Buttons.normal;
 
-    Button touchedButton = Button.normal;
+    Buttons touchedButton = Buttons.normal;
 
     enum AddStage
     {
@@ -284,20 +283,20 @@ public class StageSelectDirector : MonoBehaviour
 
         switch (button)
         {
-            case Button.large:
+            case Buttons.large:
                 //stageButtons[currentStage - 1].transform.localScale = new Vector3(stageButtons[currentStage - 1].transform.localScale.x + 0.01f + Time.deltaTime, stageButtons[currentStage - 1].transform.localScale.y + 0.01f + Time.deltaTime, 0);
                 if (ButtonFalling(stageClearNumber))
                 {
-                    button = Button.smaller;
+                    button = Buttons.smaller;
                 }             
                 break;
 
-            case Button.smaller:
+            case Buttons.smaller:
                 Debug.Log(button);
                 //stageButtons[currentStage - 1].transform.localScale = new Vector3(stageButtons[currentStage - 1].transform.localScale.x - 0.01f + Time.deltaTime, stageButtons[currentStage - 1].transform.localScale.y - 0.01f + Time.deltaTime, 0);
                 if (NotButtonFalling(stageClearNumber))
                 {
-                    button = Button.normal;
+                    button = Buttons.normal;
                 }
                 break;
         }
@@ -369,7 +368,7 @@ public class StageSelectDirector : MonoBehaviour
             {
                 ButtonOff(true);
             }
-              button = Button.large;
+              button = Buttons.large;
             addStage = AddStage.normal;
         }
     }
@@ -567,8 +566,8 @@ public class StageSelectDirector : MonoBehaviour
         else
         {
           
-            sctollButton[0].SetActive(false);
-            sctollButton[1].SetActive(false);
+            sctollButton[0].interactable = false;
+            sctollButton[1].interactable = false;
             for (int i = 0; i < buttonsALL.Length; i++)
             {
                 for (int j = 0; j < buttonsALL[i].Length; j++)
@@ -583,22 +582,22 @@ public class StageSelectDirector : MonoBehaviour
     {
         if (backGuroundNumber < 1)
         {
-            //sctollButton[0].GetComponent<Button>().interactable = true;
+            sctollButton[0].interactable = false;
             sctollButtonImage[0].SetActive(false);
             sctollButtonImage[1].SetActive(true);
-            sctollButton[1].SetActive(true);
+            sctollButton[1].interactable = true;
         }
         else if (backGuroundNumber > BackGround.Length - 2)
         {
-            sctollButton[1].SetActive(false);
+            sctollButton[1].interactable = false;
             sctollButtonImage[1].SetActive(false);
             sctollButtonImage[0].SetActive(true);
-            sctollButton[0].SetActive(true);
+            sctollButton[0].interactable = true;
         }
         else
         {
-            sctollButton[0].SetActive(true);
-            sctollButton[1].SetActive(true);
+            sctollButton[0].interactable = true;
+            sctollButton[1].interactable = true;
             sctollButtonImage[1].SetActive(true);
             sctollButtonImage[0].SetActive(true);
         }
