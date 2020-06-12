@@ -71,7 +71,7 @@ public class StageSelectDirector : MonoBehaviour
     GameObject[] sctollButton;
 
     [SerializeField]
-    GameObject[] sctollButtonImage;
+    public GameObject[] sctollButtonImage;
 
     [SerializeField]
     SpriteRenderer ac;
@@ -191,9 +191,10 @@ public class StageSelectDirector : MonoBehaviour
         forwardImage.color = new Color(1, 1, 1, 1);
         fadeIN = true;     
 
-         Restoration();
+        //Restoration();
 
         stageClearNumber = PlayerPrefs.GetInt("StageClear", 0);
+
         stageButtons[stageClearNumber - 1].transform.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder = 0;
 
         if (stageClearNumber > stageButtons.Length - 1)
@@ -215,8 +216,7 @@ public class StageSelectDirector : MonoBehaviour
         if (fadeIN)
         {
             if (FadeIn(forwardImage))
-            {
-                
+            {             
                 ButtonOff(true);
                 fadeIN = false;
             }
@@ -370,7 +370,7 @@ public class StageSelectDirector : MonoBehaviour
             {
                 ButtonOff(true);
             }
-                           button = Button.large;
+              button = Button.large;
             addStage = AddStage.normal;
         }
     }
@@ -584,7 +584,7 @@ public class StageSelectDirector : MonoBehaviour
     {
         if (backGuroundNumber < 1)
         {
-            sctollButton[0].SetActive(false);
+            //sctollButton[0].GetComponent<Button>().interactable = true;
             sctollButtonImage[0].SetActive(false);
             sctollButtonImage[1].SetActive(true);
             sctollButton[1].SetActive(true);
@@ -655,13 +655,6 @@ public class StageSelectDirector : MonoBehaviour
         if (PlayerPrefs.HasKey("CurrentStage"))
         {
             Debug.Log(currentStage);
-        }
-        
-    }
-
-    public void NextGame(int stageClearNumber)
-    {
-        PlayerPrefs.SetInt("StageClear", stageClearNumber);
-        PlayerPrefs.Save();
+        }       
     }
 }

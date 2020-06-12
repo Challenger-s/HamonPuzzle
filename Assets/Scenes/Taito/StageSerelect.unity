@@ -6114,6 +6114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectDirector: {fileID: 851602577}
   left: 1
+  buttonNumber: 0
 --- !u!1 &1207033019
 GameObject:
   m_ObjectHideFlags: 0
@@ -7950,6 +7951,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectDirector: {fileID: 851602577}
   left: 0
+  buttonNumber: 1
 --- !u!114 &1927973482
 MonoBehaviour:
   m_ObjectHideFlags: 0

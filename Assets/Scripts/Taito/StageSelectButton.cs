@@ -36,8 +36,7 @@ public class StageSelectButton : MonoBehaviour, IPointerEnterHandler, IPointerEx
     public void OnClick()
     {      
         selectDirector.number = stageNumber;
-        selectDirector.sceneTransition = true;
-  
+        selectDirector.sceneTransition = true; 
     }
 
     public void Update()
@@ -46,13 +45,16 @@ public class StageSelectButton : MonoBehaviour, IPointerEnterHandler, IPointerEx
         {
             case Button.large:
                
-                ButtonFalling(stageNumber - 2);              
+                if(ButtonFalling(stageNumber - 2))
+                {
+                    touchedButton = Button.normal;
+                }              
                 break;
 
             case Button.smaller:
                 if(NotButtonFalling(stageNumber - 2))
                 {
-                    touchedButton = Button.smaller;              
+                    touchedButton = Button.normal;              
                 }
                 break;
         }
@@ -73,7 +75,6 @@ public class StageSelectButton : MonoBehaviour, IPointerEnterHandler, IPointerEx
         Debug.Log(defoultSizeX * largeSize);
         if (size.x < defoultSizeX * largeSize)
         {
-
             size.x = size.x + size.x * 1 / changeSizeTime * largeSize * Time.unscaledDeltaTime;
             size.y = size.y + size.y * 1 / changeSizeTime * largeSize * Time.unscaledDeltaTime;
             selectDirector.stageButtons[buttonNumber].transform.GetChild(1).transform.localScale = size;
@@ -92,7 +93,6 @@ public class StageSelectButton : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
     public bool NotButtonFalling(int buttonNumber)
     {
-
         var size = selectDirector.stageButtons[buttonNumber].transform.GetChild(1).transform.localScale;
         if (size.x > defoultSizeX)
         {
@@ -123,7 +123,6 @@ public class StageSelectButton : MonoBehaviour, IPointerEnterHandler, IPointerEx
         touchedButton = Button.large;
         //Debug.Log("a");
     }
-
     // オブジェクトの範囲内からマウスポインタが出た際に呼び出されます。
     // 
     public void OnPointerExit(PointerEventData eventData)
