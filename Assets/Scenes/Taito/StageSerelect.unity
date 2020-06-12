@@ -4559,7 +4559,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -179.2, y: 6.5}
+  m_AnchoredPosition: {x: -163.5, y: 6.5}
   m_SizeDelta: {x: 225, y: 230}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &801223152
@@ -4909,7 +4909,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 147.2, y: 6.5}
+  m_AnchoredPosition: {x: 163.4, y: 6.5}
   m_SizeDelta: {x: 225, y: 230}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &834961001
@@ -4924,7 +4924,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9065582f8035f3640969dbd250acdca9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stageNumber: 13
+  stageNumber: 15
   selectDirector: {fileID: 851602577}
 --- !u!114 &834961002
 MonoBehaviour:
@@ -6208,7 +6208,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 310.5, y: 6.5}
+  m_AnchoredPosition: {x: 324.8, y: 6.5}
   m_SizeDelta: {x: 225, y: 230}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &873924967
@@ -6223,7 +6223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9065582f8035f3640969dbd250acdca9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stageNumber: 13
+  stageNumber: 16
   selectDirector: {fileID: 851602577}
 --- !u!114 &873924968
 MonoBehaviour:
@@ -7632,7 +7632,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -342.8, y: 6.5}
+  m_AnchoredPosition: {x: -324.9, y: 6.5}
   m_SizeDelta: {x: 225, y: 230}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1127681600
@@ -8785,7 +8785,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -14.2, y: 6.5}
+  m_AnchoredPosition: {x: -0.8, y: 6.5}
   m_SizeDelta: {x: 225, y: 230}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1225953819
@@ -8800,7 +8800,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9065582f8035f3640969dbd250acdca9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stageNumber: 13
+  stageNumber: 14
   selectDirector: {fileID: 851602577}
 --- !u!114 &1225953820
 MonoBehaviour:

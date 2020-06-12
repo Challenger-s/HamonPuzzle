@@ -259,7 +259,7 @@ public class StageSelectDirector : MonoBehaviour
                     mainCamera.transform.position.z);
                 sctollL = false;
                 backGuroundNumber--;
-                ButtonOff(true);
+                //ButtonOff(true);
             }
         }
 
