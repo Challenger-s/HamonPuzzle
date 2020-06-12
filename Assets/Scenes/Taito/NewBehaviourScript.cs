@@ -61,6 +61,46 @@ public class NewBehaviourScript : MonoBehaviour
             SceneManager.LoadScene(0);
         }
 
+        if (Input.GetKey(KeyCode.Q))
+        {
+            SceneManager.LoadScene(9);
+        }
+
+        if (Input.GetKey(KeyCode.W))
+        {
+            SceneManager.LoadScene(10);
+        }
+
+        if (Input.GetKey(KeyCode.E))
+        {
+            SceneManager.LoadScene(11);
+        }
+
+        if (Input.GetKey(KeyCode.R))
+        {
+            SceneManager.LoadScene(12);
+        }
+
+        if (Input.GetKey(KeyCode.T))
+        {
+            SceneManager.LoadScene(13);
+        }
+
+        if (Input.GetKey(KeyCode.Y))
+        {
+            SceneManager.LoadScene(14);
+        }
+
+        if (Input.GetKey(KeyCode.U))
+        {
+            SceneManager.LoadScene(15);
+        }
+
+        if (Input.GetKey(KeyCode.I))
+        {
+            SceneManager.LoadScene(16);
+        }
+
         if (Input.GetKey(KeyCode.D))
         {
             PlayerPrefs.DeleteKey("StageClear");
