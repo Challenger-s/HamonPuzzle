@@ -40,12 +40,9 @@ EditorBuildSettings:
     guid: cb395d8a157d2fd428ad366f8def25d6
   - enabled: 1
     path: Assets/Scenes/NewStage/Stage_010.unity
-    guid: 4fedcf15ae65a7746bd181052626045f
-  - enabled: 1
-    path: Assets/Scenes/NewStage/Stage_011.unity
     guid: 16cd83c945fad294893f99e2610cfa01
   - enabled: 1
-    path: Assets/Scenes/NewStage/Stage_012.unity
+    path: Assets/Scenes/NewStage/Stage_011.unity
     guid: 7712286f7c45947449ecd7957b7fa2f6
   - enabled: 1
     path: Assets/Scenes/NewStage/Stage_013.unity
