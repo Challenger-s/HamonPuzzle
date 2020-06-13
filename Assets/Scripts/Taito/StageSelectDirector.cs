@@ -356,6 +356,8 @@ public class StageSelectDirector : MonoBehaviour
             }
             else
             {
+                currentStage = stageClearNumber;
+                SaveCurrent();
                 addStage = AddStage.normal;
                 
             }  
@@ -724,12 +726,13 @@ public class StageSelectDirector : MonoBehaviour
         Debug.Log(currentStage);
         float c = 0;
 
-        if (currentStage > 0)
+        if (currentStage > 0 && currentStage < stageButtons.Length)
         {
             float a = (stageButtons[currentStage].transform.GetChild(1).transform.position.x + (stageButtonsSp[currentStage].bounds.size.x / 2f));
             float b = (stageButtons[currentStage - 1].transform.GetChild(1).transform.position.x - (stageButtonsSp[currentStage - 1].bounds.size.x / 2f));
             c = ((a - b) / 2f) + b;
         }
+
 
         if (this.backGuroundNumber == 0)
         {
@@ -759,6 +762,10 @@ public class StageSelectDirector : MonoBehaviour
                     parentClearButtonColor.transform.localScale.y,
                     0);
             }
+            else if (clearButtonColor.transform.position.x + (ac.bounds.size.x / 2f) < stageButtons[stageClearNumber - 1].transform.GetChild(1).transform.position.x + (stageBuuttonSizse.bounds.size.x / 2f) + 2 && currentStage >= stageButtons.Length)
+            {
+                parentClearButtonColor.transform.localScale = new Vector3(parentClearButtonColor.transform.localScale.x + 1.15f * Time.deltaTime, parentClearButtonColor.transform.localScale.y, 0);
+            }
             else
             {
                 stageButtons[currentStage].transform.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder = -2;
@@ -766,17 +773,21 @@ public class StageSelectDirector : MonoBehaviour
             }
 
 
-            if (unClearButtonColor.transform.position.x + (unClearColor.bounds.size.x / 2f) < stageButtons[currentStage].transform.GetChild(1).transform.position.x + (stageBuuttonSizse.bounds.size.x / 2f))
+            if (currentStage > 0 && currentStage < stageButtons.Length)
             {
-                parentUnClearButtonColor.transform.localScale = new Vector3(parentUnClearButtonColor.transform.localScale.x + 1.15f * Time.deltaTime, parentUnClearButtonColor.transform.localScale.y, 0);
-            }
-            else
-            {
-                for (int i = 0; i < currentStage; i++) {
-                BackGroundColor();
+                if (unClearButtonColor.transform.position.x + (unClearColor.bounds.size.x / 2f) < stageButtons[currentStage].transform.GetChild(1).transform.position.x + (stageBuuttonSizse.bounds.size.x / 2f))
+                {
+                    parentUnClearButtonColor.transform.localScale = new Vector3(parentUnClearButtonColor.transform.localScale.x + 1.15f * Time.deltaTime, parentUnClearButtonColor.transform.localScale.y, 0);
                 }
-                unClear = false;
-            }          
+                else
+                {
+                    for (int i = 0; i < currentStage; i++)
+                    {
+                        BackGroundColor();
+                    }
+                    unClear = false;
+                }
+            }
         }
     }
 
