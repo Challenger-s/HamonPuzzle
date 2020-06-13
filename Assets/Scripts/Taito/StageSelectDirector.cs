@@ -171,7 +171,7 @@ public class StageSelectDirector : MonoBehaviour
 
         stageClearNumber = currentStage = PlayerPrefs.GetInt("CurrentStage",0);
         
-        if (currentStage > stageButtons.Length - 1)
+        if (currentStage > stageButtons.Length)
         {
             stageClearNumber = currentStage = stageButtons.Length - 1;
         }
@@ -233,11 +233,10 @@ public class StageSelectDirector : MonoBehaviour
 
         if (stageClearNumber == stageButtons.Length)
         {
-            stageClearNumber = stageButtons.Length - 1;
+            stageClearNumber = stageButtons.Length;
             addStage = AddStage.clearStage;
         }
-
-        if (stageClearNumber > currentStage)
+        else if (stageClearNumber > currentStage)
         {
             BackGroundColor();
             addStage = AddStage.clearStage;
@@ -351,25 +350,27 @@ public class StageSelectDirector : MonoBehaviour
     {
         if(stageClearNumber == stageButtons.Length)
         {
-            if (clearButtonColor.transform.position.x + (ac.bounds.size.x / 2f) < stageButtons[stageClearNumber].transform.GetChild(1).transform.position.x + (stageBuuttonSizse.bounds.size.x / 2f))
+            if (clearButtonColor.transform.position.x + (ac.bounds.size.x / 2f) < stageButtons[stageClearNumber - 1].transform.GetChild(1).transform.position.x + (stageBuuttonSizse.bounds.size.x / 2f) + 2)
             {
                 parentClearButtonColor.transform.localScale = new Vector3(parentClearButtonColor.transform.localScale.x + 1.15f * Time.deltaTime, parentClearButtonColor.transform.localScale.y, 0);
             }
             else
             {
                 addStage = AddStage.normal;
+                
             }  
         }
         else
         {
-            if (stageClearNumber < stageButtons.Length - 1)
+            
+            if (stageClearNumber < stageButtons.Length)
             {
                 float a = (stageButtons[stageClearNumber].transform.GetChild(1).transform.position.x + (stageButtonsSp[stageClearNumber].bounds.size.x / 2f));
                 float b = (stageButtons[stageClearNumber - 1].transform.GetChild(1).transform.position.x - (stageButtonsSp[stageClearNumber - 1].bounds.size.x / 2f));
                 float c = ((a - b) / 2f) + b;
+                Debug.Log("14");
 
-
-                if (clearButtonColor.transform.position.x + (ac.bounds.size.x / 2f) < c && stageClearNumber < stageButtons.Length - 1)
+                if (clearButtonColor.transform.position.x + (ac.bounds.size.x / 2f) < c && stageClearNumber < stageButtons.Length)
                 {
                     parentClearButtonColor.transform.localScale = new Vector3(parentClearButtonColor.transform.localScale.x + 1.15f * Time.deltaTime,
                     parentClearButtonColor.transform.localScale.y,
@@ -385,9 +386,7 @@ public class StageSelectDirector : MonoBehaviour
                 }
             }
             
-        }
-
-        
+        }     
     }
 
     void NewStage()
@@ -730,7 +729,6 @@ public class StageSelectDirector : MonoBehaviour
             float a = (stageButtons[currentStage].transform.GetChild(1).transform.position.x + (stageButtonsSp[currentStage].bounds.size.x / 2f));
             float b = (stageButtons[currentStage - 1].transform.GetChild(1).transform.position.x - (stageButtonsSp[currentStage - 1].bounds.size.x / 2f));
             c = ((a - b) / 2f) + b;
-
         }
 
         if (this.backGuroundNumber == 0)
