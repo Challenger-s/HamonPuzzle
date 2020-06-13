@@ -5062,7 +5062,7 @@ MonoBehaviour:
   - {fileID: 583672153}
   - {fileID: 440384098}
   startColor: {r: 0.7411765, g: 0.8117648, b: 0.87843144, a: 1}
-  endColor: {r: 0.86274517, g: 0.98823535, b: 1, a: 1}
+  endColor: {r: 0.80989677, g: 0.96645474, b: 0.9811321, a: 1}
   forwardImage: {fileID: 2001852617}
   camera: {fileID: 986787442}
   mainCamera: {fileID: 986787440}
@@ -8209,6 +8209,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1190863155}
+        m_MethodName: Click
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1190863153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11164,7 +11175,7 @@ PrefabInstance:
     - target: {fileID: 4478483924811463369, guid: 190850eca3ff3504291447bc64ad81dd,
         type: 3}
       propertyPath: maxRippleCount
-      value: 100
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 4478483924811463369, guid: 190850eca3ff3504291447bc64ad81dd,
         type: 3}
@@ -11334,6 +11345,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1927973481}
         m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1927973481}
+        m_MethodName: Click
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

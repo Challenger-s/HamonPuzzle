@@ -63,10 +63,10 @@ public class StageSelectDirector : MonoBehaviour
     GameObject[] buttons2;
 
     [SerializeField]
-    Button[] sctollButton;
+    GameObject[] buttons3;
 
     [SerializeField]
-    GameObject[] buttons3;
+    Button[] sctollButton;
 
     [SerializeField]
     public GameObject[] sctollButtonImage;
@@ -471,11 +471,10 @@ public class StageSelectDirector : MonoBehaviour
         {
             stageButtons[buttonNumber].transform.GetChild(1).Find("ButtonBack").GetComponent<Renderer>().material = SubUnClearButtonColorMterial;
         }
-       
+        
         Vector3 size = stageButtons[buttonNumber].transform.GetChild(1).transform.localScale;
         if (size.x < defoultSizeX * largeSize)
         {
-           
             size.x = size.x + size.x * 1 / changeSizeTime * largeSize * Time.unscaledDeltaTime;
             size.y = size.y + size.y * 1 / changeSizeTime * largeSize * Time.unscaledDeltaTime;
             stageButtons[buttonNumber].transform.GetChild(1).transform.localScale = size;
@@ -521,6 +520,7 @@ public class StageSelectDirector : MonoBehaviour
         if (this.sceneChangeStartFlag == false) //フラグがオフだったら
         {
             ButtonOff(false);
+            ClickStageButtonON();
             audioSource[2].Play(); //音を鳴らす（シーン遷移開始音）
             Debug.Log("シーン遷移開始");
             this.sceneChangeStartFlag = true; //フラグオン
@@ -644,18 +644,55 @@ public class StageSelectDirector : MonoBehaviour
             }
         }
         else
-        {
-          
+        { 
             sctollButton[0].interactable = false;
             sctollButton[1].interactable = false;
             for (int i = 0; i < buttonsALL.Length; i++)
             {
                 for (int j = 0; j < buttonsALL[i].Length; j++)
                 {
-                    buttonsALL[i][j].SetActive(false);
+                    if (i == number - 2)
+                    {
+                        if (i < 5)
+                        {
+                            Button clickButton = buttonsALL[0][i].GetComponent<Button>();
+                            clickButton.interactable = false;
+                        }
+                        else if (i < 10)
+                        {
+                            Button clickButton = buttonsALL[1][i].GetComponent<Button>();
+                            clickButton.interactable = false;
+                        }
+                        else if (i < 15)
+                        {
+                            Button clickButton = buttonsALL[2][i].GetComponent<Button>();
+                            clickButton.interactable = false;
+                        }
+                    }
+                    else
+                    {
+                        buttonsALL[i][j].SetActive(false);
+                    }
                 }
             }
         }
+    }
+
+    void ClickStageButtonON()
+    {
+        if(number - 2 < 5)
+        {
+            buttons1[number - 2].SetActive(true);
+        }
+        else if(number - 2 < 10)
+        {
+            buttons2[number - 7].SetActive(true);
+        }
+        else if (number - 2 < 15)
+        {
+            buttons3[number - 12].SetActive(true);
+        }
+        
     }
 
     void SctollBUtton()

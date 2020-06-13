@@ -17,14 +17,19 @@ public class ScrollRutton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
     Button a;
 
+    bool clickSmallFinish = false;
+    bool clickAsBeforeFinish = false;
+    float clickSmallSize = 0.9f;
+    float clickSmallTime = 0.2f;
 
-    float largeSize = 1.2f;
+    float largeSize = 1.1f;
     float changeSizeTime = 0.2f;
     float defoultSizeX = 0;
     float defoultSizeY = 0;
 
     public enum Buttons
     {
+        click,
         large,
         smaller,
 
@@ -44,6 +49,13 @@ public class ScrollRutton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     {
         switch (touchedButton)
         {
+            case Buttons.click:
+                if (ClickProduction())
+                {
+                    touchedButton = Buttons.normal;
+                }
+                break;
+
             case Buttons.large:
 
                 if (ButtonFalling())
@@ -68,7 +80,6 @@ public class ScrollRutton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
     bool ButtonFalling()
     {
-
         Vector3 size = selectDirector.sctollButtonImage[buttonNumber].transform.localScale;
         if (size.x < defoultSizeX * largeSize)
         {
@@ -108,6 +119,51 @@ public class ScrollRutton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         return false;
     }
 
+    public bool ClickProduction()
+    {
+        var size = selectDirector.sctollButtonImage[buttonNumber].transform.localScale;
+        if (!clickSmallFinish)
+        {
+            if (size.x > defoultSizeX * clickSmallSize)
+            {
+                size.x = size.x - size.x * 1 / clickSmallTime * clickSmallSize * Time.unscaledDeltaTime;
+                size.y = size.y - size.y * 1 / clickSmallTime * clickSmallSize * Time.unscaledDeltaTime;
+                selectDirector.sctollButtonImage[buttonNumber].transform.localScale = size;
+            }
+            else if (size.x < defoultSizeX * clickSmallSize)
+            {
+                size.x = defoultSizeX * clickSmallSize;
+                size.y = defoultSizeX * clickSmallSize;
+                selectDirector.sctollButtonImage[buttonNumber].transform.localScale = size;
+                clickSmallFinish = true;
+            }
+        }
+        else if (clickSmallFinish && !clickAsBeforeFinish)
+        {
+            if (size.x < defoultSizeX)
+            {
+                size.x = size.x + size.x * 1 / clickSmallTime * defoultSizeX * Time.unscaledDeltaTime;
+                size.y = size.y + size.y * 1 / clickSmallTime * defoultSizeY * Time.unscaledDeltaTime;
+                selectDirector.sctollButtonImage[buttonNumber].transform.localScale = size;
+            }
+            else if (size.x > defoultSizeX)
+            {
+                Debug.Log("a");
+                size.x = defoultSizeX;
+                size.y = defoultSizeY;
+                selectDirector.sctollButtonImage[buttonNumber].transform.localScale = size;
+                clickAsBeforeFinish = true;
+            }
+        }
+        else if (clickAsBeforeFinish)
+        {
+            clickSmallFinish = false;
+            clickAsBeforeFinish = false;
+            return true;
+        }
+        return false;
+    }
+
     // オブジェクトの範囲内にマウスポインタが入った際に呼び出されます。
     // this method called by mouse-pointer enter the object.
     public void OnPointerEnter(PointerEventData eventData)
@@ -121,5 +177,10 @@ public class ScrollRutton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     public void OnPointerExit(PointerEventData eventData)
     {
         touchedButton = Buttons.smaller;
+    }
+
+    public void Click()
+    {
+        touchedButton = Buttons.click;
     }
 }

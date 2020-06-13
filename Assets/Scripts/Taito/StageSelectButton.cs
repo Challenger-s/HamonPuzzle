@@ -12,6 +12,11 @@ public class StageSelectButton : MonoBehaviour, IPointerEnterHandler, IPointerEx
     [SerializeField]
     StageSelectDirector selectDirector;
 
+    bool clickSmallFinish = false;
+    bool clickAsBeforeFinish = false;
+    float clickSmallSize = 0.9f;
+    float clickSmallTime = 0.35f;
+
     float largeSize = 1.2f;
     float changeSizeTime = 0.5f;
     float defoultSizeX = 0;
@@ -19,6 +24,7 @@ public class StageSelectButton : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
     public enum Button
     {
+        click,
         large,
         smaller,
 
@@ -36,13 +42,21 @@ public class StageSelectButton : MonoBehaviour, IPointerEnterHandler, IPointerEx
     public void OnClick()
     {      
         selectDirector.number = stageNumber;
-        selectDirector.sceneTransition = true; 
+        selectDirector.sceneTransition = true;
+        touchedButton = Button.click;
     }
 
     public void Update()
     {
         switch (touchedButton)
         {
+            case Button.click:
+                if (ClickProduction(stageNumber - 2))
+                {
+                    this.gameObject.SetActive(false);
+                }
+                break;
+
             case Button.large:
                
                 if(ButtonFalling(stageNumber - 2))
@@ -110,6 +124,52 @@ public class StageSelectButton : MonoBehaviour, IPointerEnterHandler, IPointerEx
             }
             selectDirector.stageButtons[buttonNumber].transform.GetChild(1).transform.localScale = size;
 
+            return true;
+        }
+        return false;
+    }
+
+    //　クリックしたときの演出
+    public bool ClickProduction(int buttonNumber)
+    {
+        var size = selectDirector.stageButtons[buttonNumber].transform.GetChild(1).transform.localScale;
+        if (!clickSmallFinish)
+        {
+            if (size.x > defoultSizeX * clickSmallSize)
+            {
+                size.x = size.x - size.x * 1 / clickSmallTime * clickSmallSize * Time.unscaledDeltaTime;
+                size.y = size.y - size.y * 1 / clickSmallTime * clickSmallSize * Time.unscaledDeltaTime;
+                selectDirector.stageButtons[buttonNumber].transform.GetChild(1).transform.localScale = size;
+            }
+            else if (size.x < defoultSizeX * clickSmallSize)
+            {
+                size.x = defoultSizeX * clickSmallSize;
+                size.y = defoultSizeX * clickSmallSize;
+                selectDirector.stageButtons[buttonNumber].transform.GetChild(1).transform.localScale = size;
+                clickSmallFinish = true;
+            }
+        }
+        else if (clickSmallFinish && !clickAsBeforeFinish)
+        {
+            if (size.x < defoultSizeX)
+            {
+                size.x = size.x + size.x * 1 / clickSmallTime * defoultSizeX * Time.unscaledDeltaTime;
+                size.y = size.y + size.y * 1 / clickSmallTime * defoultSizeY * Time.unscaledDeltaTime;
+                selectDirector.stageButtons[buttonNumber].transform.GetChild(1).transform.localScale = size;
+            }
+            else if (size.x > defoultSizeX)
+            {
+                Debug.Log("a");
+                size.x = defoultSizeX;
+                size.y = defoultSizeY;
+                selectDirector.stageButtons[buttonNumber].transform.GetChild(1).transform.localScale = size;
+                clickAsBeforeFinish = true;
+            }
+        }
+        else if (clickAsBeforeFinish)
+        {
+            clickSmallFinish = false;
+            clickAsBeforeFinish = false;
             return true;
         }
         return false;
