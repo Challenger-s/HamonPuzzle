@@ -79,6 +79,7 @@ public class GameD : MonoBehaviour
         }
     }
 
+    //　メニューボタン
     void Menu()
     {
         if (FadeOut(forwardImage))

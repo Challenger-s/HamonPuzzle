@@ -52,22 +52,27 @@ public class ScrollRutton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
             case Buttons.click:
                 if (ClickProduction())
                 {
-                    touchedButton = Buttons.normal;
+                    touchedButton = Buttons.large;
                 }
                 break;
 
             case Buttons.large:
-
-                if (ButtonFalling())
+                if (this.gameObject.GetComponent<Button>().interactable == true)
                 {
-                    touchedButton = Buttons.normal;
+                    if (ButtonFalling())
+                    {
+                        touchedButton = Buttons.normal;
+                    }
                 }
                 break;
 
             case Buttons.smaller:
-                if (NotButtonFalling())
+                if (this.gameObject.GetComponent<Button>().interactable == true)
                 {
-                    touchedButton = Buttons.normal;
+                    if (NotButtonFalling())
+                    {
+                        touchedButton = Buttons.normal;
+                    }
                 }
                 break;
         }
@@ -83,7 +88,6 @@ public class ScrollRutton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         Vector3 size = selectDirector.sctollButtonImage[buttonNumber].transform.localScale;
         if (size.x < defoultSizeX * largeSize)
         {
-
             size.x = size.x + size.x * 1 / changeSizeTime * largeSize * Time.unscaledDeltaTime;
             size.y = size.y + size.y * 1 / changeSizeTime * largeSize * Time.unscaledDeltaTime;
             selectDirector.sctollButtonImage[buttonNumber].transform.localScale = size;
@@ -101,7 +105,6 @@ public class ScrollRutton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
     public bool NotButtonFalling()
     {
-
         var size = selectDirector.sctollButtonImage[buttonNumber].transform.localScale;
         if (size.x > defoultSizeX)
         {
@@ -182,5 +185,6 @@ public class ScrollRutton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     public void Click()
     {
         touchedButton = Buttons.click;
+
     }
 }
